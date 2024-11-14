@@ -18,7 +18,6 @@ class PulseAudio {
   final ReceivePort _receiverPort;
   late final SendPort _sendPort;
   final Stream<dynamic> _broadcastStream;
-  Isolate? _isolate;
 
   /// Stream of [PulseAudioServerInfo]
   Stream<PulseAudioServerInfo> get onServerInfo => _broadcastStream
@@ -103,13 +102,12 @@ class PulseAudio {
         _sendPort = message;
       }
       if (message is OnReadyResponse) {
-        print('before complete');
         _initializedCompleter.complete();
         _initializizationInProgress = false;
       }
     });
 
-    _isolate = await Isolate.spawn(
+    await Isolate.spawn(
       (sendPort) {
         PulseIsolate(sendPort);
       },
@@ -120,10 +118,8 @@ class PulseAudio {
   }
 
   dispose() {
-    print('dispose client');
     _sendPort.send(const IsolateRequest.dispose());
     _receiverPort.close();
-    _isolate = null;
     _instance = null;
   }
 

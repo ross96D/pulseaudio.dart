@@ -86,7 +86,7 @@ class PulseIsolate {
     // Prepare the main loop for events
     pa.pa_mainloop_prepare(_instance!.mainloop, 50 * 1000);
     // Check for events without blocking
-    final numEvents = pa.pa_mainloop_poll(_instance!.mainloop);
+    pa.pa_mainloop_poll(_instance!.mainloop);
 
     pa.pa_mainloop_dispatch(_instance!.mainloop);
 
@@ -107,7 +107,6 @@ class PulseIsolate {
     Pointer<Void> userdata,
   ) {
     final state = pa.pa_context_get_state(context);
-    print('Context state: $state');
     switch (state) {
       case pa_context_state.PA_CONTEXT_CONNECTING:
       case pa_context_state.PA_CONTEXT_AUTHORIZING:
@@ -125,7 +124,6 @@ class PulseIsolate {
           nullptr,
           userdata,
         );
-        print(_instance);
 
         pa.pa_context_get_server_info(
           context,
@@ -151,10 +149,8 @@ class PulseIsolate {
         break;
       case pa_context_state.PA_CONTEXT_FAILED:
         final error = pa.pa_strerror(pa.pa_context_errno(context));
-        print("Connection failure: $error");
         break;
       case pa_context_state.PA_CONTEXT_UNCONNECTED:
-        // TODO: Handle this case.
         break;
     }
   }

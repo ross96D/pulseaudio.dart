@@ -1,5 +1,3 @@
-import 'dart:isolate';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pulseaudio/model/server_info.dart';
 import 'package:pulseaudio/model/sink.dart';

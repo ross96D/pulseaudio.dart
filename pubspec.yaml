@@ -1,7 +1,7 @@
 name: pulseaudio
 description: "Native Dart client library to interact with PulseAudio"
 version: 0.0.1
-homepage:
+repository: https://github.com/free-explorers/pulseaudio.dart
 
 environment:
   sdk: ^3.5.1
