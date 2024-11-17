@@ -186,56 +186,83 @@ class PulseAudio {
   }
 
   /// Set mute for sink by name
-  void setSinkMute(String sinkName, bool mute) {
+  Future<void> setSinkMute(String sinkName, bool mute) async {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
+    final requestId = newRequestId;
     _sendPort.send(IsolateRequest.setSinkMute(
-        requestId: newRequestId, sinkName: sinkName, mute: mute));
+        requestId: requestId, sinkName: sinkName, mute: mute));
+    await _broadcastStream.firstWhere((message) =>
+        message is SetSinkMuteResponse && message.requestId == requestId);
   }
 
   /// Set volume for sink by name
-  void setSinkVolume(String sinkName, double volume) {
+  Future<void> setSinkVolume(String sinkName, double volume) async {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
+    final requestId = newRequestId;
+
     _sendPort.send(IsolateRequest.setSinkVolume(
-        requestId: newRequestId, sinkName: sinkName, volume: volume));
+        requestId: requestId, sinkName: sinkName, volume: volume));
+    await _broadcastStream.firstWhere((message) =>
+        message is SetSinkVolumeResponse && message.requestId == requestId);
   }
 
   /// set mute for source by name
-  void setSourceMute(String sourceName, bool mute) {
+  Future<void> setSourceMute(String sourceName, bool mute) async {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
+    final requestId = newRequestId;
+
     _sendPort.send(IsolateRequest.setSourceMute(
-        requestId: newRequestId, sourceName: sourceName, mute: mute));
+        requestId: requestId, sourceName: sourceName, mute: mute));
+
+    await _broadcastStream.firstWhere((message) =>
+        message is SetSourceMuteResponse && message.requestId == requestId);
   }
 
   /// Set volume for source by name
-  void setSourceVolume(String sourceName, double volume) {
+  Future<void> setSourceVolume(String sourceName, double volume) async {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
+    final requestId = newRequestId;
+
     _sendPort.send(IsolateRequest.setSourceVolume(
-        requestId: newRequestId, sourceName: sourceName, volume: volume));
+        requestId: requestId, sourceName: sourceName, volume: volume));
+
+    await _broadcastStream.firstWhere((message) =>
+        message is SetSourceVolumeResponse && message.requestId == requestId);
   }
 
   /// Set default sink by name
-  void setDefaultSink(String sinkName) {
+  Future<void> setDefaultSink(String sinkName) async {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
+    final requestId = newRequestId;
+
     _sendPort.send(IsolateRequest.setDefaultSink(
-        requestId: newRequestId, sinkName: sinkName));
+        requestId: requestId, sinkName: sinkName));
+
+    await _broadcastStream.firstWhere((message) =>
+        message is SetDefaultSinkResponse && message.requestId == requestId);
   }
 
   /// Set default source by name
-  void setDefaultSource(String sourceName) {
+  void setDefaultSource(String sourceName) async {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
+    final requestId = newRequestId;
+
     _sendPort.send(IsolateRequest.setDefaultSource(
-        requestId: newRequestId, sourceName: sourceName));
+        requestId: requestId, sourceName: sourceName));
+
+    await _broadcastStream.firstWhere((message) =>
+        message is SetDefaultSourceResponse && message.requestId == requestId);
   }
 }

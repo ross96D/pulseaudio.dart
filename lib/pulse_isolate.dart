@@ -54,22 +54,23 @@ class PulseIsolate {
           dispose();
           break;
         case SetSinkVolumeRequest():
-          _setSinkVolume(message.sinkName, message.volume);
+          _setSinkVolume(message.requestId, message.sinkName, message.volume);
           break;
         case SetSourceVolumeRequest():
-          _setSourceVolume(message.sourceName, message.volume);
+          _setSourceVolume(
+              message.requestId, message.sourceName, message.volume);
           break;
         case SetSinkMuteRequest():
-          _setSinkMute(message.sinkName, message.mute);
+          _setSinkMute(message.requestId, message.sinkName, message.mute);
           break;
         case SetSourceMuteRequest():
-          _setSourceMute(message.sourceName, message.mute);
+          _setSourceMute(message.requestId, message.sourceName, message.mute);
           break;
         case SetDefaultSinkRequest():
-          _setDefaultSink(message.sinkName);
+          _setDefaultSink(message.requestId, message.sinkName);
           break;
         case SetDefaultSourceRequest():
-          _setDefaultSource(message.sourceName);
+          _setDefaultSource(message.requestId, message.sourceName);
           break;
         case GetSinkListRequest():
           _getSinkList(message.requestId);
@@ -348,73 +349,93 @@ class PulseIsolate {
     if (op.address != nullptr.address) pa.pa_operation_unref(op);
   }
 
-  static _setSinkVolume(String name, double volume) {
+  static _setSinkVolume(int requestId, String name, double volume) {
     using((Arena arena) {
       final pVolume = arena<pa_cvolume>();
       pa.pa_cvolume_init(pVolume);
       pa.pa_cvolume_set(pVolume, 2, (volume * PA_VOLUME_NORM).ceil());
 
-      pa.pa_context_set_sink_volume_by_name(
+      final operation = pa.pa_context_set_sink_volume_by_name(
         _instance!.context,
         name.toNativeUtf8().cast(),
         pVolume,
         nullptr,
         nullptr,
       );
+
+      _instance!.operationCallbackMap[operation] = () {
+        _instance!._sendPort.send(SetSinkVolumeResponse(requestId: requestId));
+      };
     });
   }
 
-  static _setSourceVolume(String name, double volume) {
+  static _setSourceVolume(int requestId, String name, double volume) {
     using((Arena arena) {
       final pVolume = arena<pa_cvolume>();
       pa.pa_cvolume_init(pVolume);
       pa.pa_cvolume_set(pVolume, 2, (volume * PA_VOLUME_NORM).ceil());
 
-      pa.pa_context_set_source_volume_by_name(
+      final operation = pa.pa_context_set_source_volume_by_name(
         _instance!.context,
         name.toNativeUtf8().cast(),
         pVolume,
         nullptr,
         nullptr,
       );
+      _instance!.operationCallbackMap[operation] = () {
+        _instance!._sendPort
+            .send(SetSourceVolumeResponse(requestId: requestId));
+      };
     });
   }
 
-  static _setSinkMute(String name, bool mute) {
-    pa.pa_context_set_sink_mute_by_name(
+  static _setSinkMute(int requestId, String name, bool mute) {
+    final operation = pa.pa_context_set_sink_mute_by_name(
       _instance!.context,
       name.toNativeUtf8().cast(),
       mute ? 1 : 0,
       nullptr,
       nullptr,
     );
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(SetSinkMuteResponse(requestId: requestId));
+    };
   }
 
-  static _setSourceMute(String name, bool mute) {
-    pa.pa_context_set_source_mute_by_name(
+  static _setSourceMute(int requestId, String name, bool mute) {
+    final operation = pa.pa_context_set_source_mute_by_name(
       _instance!.context,
       name.toNativeUtf8().cast(),
       mute ? 1 : 0,
       nullptr,
       nullptr,
     );
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(SetSourceMuteResponse(requestId: requestId));
+    };
   }
 
-  static _setDefaultSink(String name) {
-    pa.pa_context_set_default_sink(
+  static _setDefaultSink(int requestId, String name) {
+    final operation = pa.pa_context_set_default_sink(
       _instance!.context,
       name.toNativeUtf8().cast(),
       nullptr,
       nullptr,
     );
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(SetDefaultSinkResponse(requestId: requestId));
+    };
   }
 
-  static _setDefaultSource(String name) {
-    pa.pa_context_set_default_source(
+  static _setDefaultSource(int requestId, String name) {
+    final operation = pa.pa_context_set_default_source(
       _instance!.context,
       name.toNativeUtf8().cast(),
       nullptr,
       nullptr,
     );
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(SetDefaultSourceResponse(requestId: requestId));
+    };
   }
 }

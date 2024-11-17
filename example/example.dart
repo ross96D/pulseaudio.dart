@@ -30,5 +30,7 @@ void main() async {
     print('Sink Name: ${sink.name}, Description: ${sink.description}');
   }
 
+  await client.setSinkVolume(serverInfo.defaultSinkName, 0.5);
+
   client.dispose();
 }

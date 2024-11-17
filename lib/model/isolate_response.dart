@@ -27,4 +27,22 @@ sealed class IsolateResponse with _$IsolateResponse {
   const factory IsolateResponse.onServerInfo(
       {required int requestId,
       required PulseAudioServerInfo info}) = OnServerInfoResponse;
+  const factory IsolateResponse.setSinkVolume({
+    required int requestId,
+  }) = SetSinkVolumeResponse;
+  const factory IsolateResponse.setSourceVolume({
+    required int requestId,
+  }) = SetSourceVolumeResponse;
+  const factory IsolateResponse.setSinkMute({
+    required int requestId,
+  }) = SetSinkMuteResponse;
+  const factory IsolateResponse.setSourceMute({
+    required int requestId,
+  }) = SetSourceMuteResponse;
+  const factory IsolateResponse.setDefaultSink({
+    required int requestId,
+  }) = SetDefaultSinkResponse;
+  const factory IsolateResponse.setDefaultSource({
+    required int requestId,
+  }) = SetDefaultSourceResponse;
 }

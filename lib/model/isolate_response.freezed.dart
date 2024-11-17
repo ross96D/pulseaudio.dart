@@ -31,6 +31,12 @@ mixin _$IsolateResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +50,12 @@ mixin _$IsolateResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +69,12 @@ mixin _$IsolateResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +90,12 @@ mixin _$IsolateResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +109,12 @@ mixin _$IsolateResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +128,12 @@ mixin _$IsolateResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -178,6 +214,12 @@ class _$OnReadyResponseImpl implements OnReadyResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return ready();
   }
@@ -194,6 +236,12 @@ class _$OnReadyResponseImpl implements OnReadyResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return ready?.call();
   }
@@ -210,6 +258,12 @@ class _$OnReadyResponseImpl implements OnReadyResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -231,6 +285,12 @@ class _$OnReadyResponseImpl implements OnReadyResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return ready(this);
   }
@@ -247,6 +307,12 @@ class _$OnReadyResponseImpl implements OnReadyResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return ready?.call(this);
   }
@@ -263,6 +329,12 @@ class _$OnReadyResponseImpl implements OnReadyResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (ready != null) {
@@ -374,6 +446,12 @@ class _$OnServerInfoChangedResponseImpl implements OnServerInfoChangedResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return onServerInfoChanged(serverInfo);
   }
@@ -390,6 +468,12 @@ class _$OnServerInfoChangedResponseImpl implements OnServerInfoChangedResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return onServerInfoChanged?.call(serverInfo);
   }
@@ -406,6 +490,12 @@ class _$OnServerInfoChangedResponseImpl implements OnServerInfoChangedResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onServerInfoChanged != null) {
@@ -427,6 +517,12 @@ class _$OnServerInfoChangedResponseImpl implements OnServerInfoChangedResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return onServerInfoChanged(this);
   }
@@ -443,6 +539,12 @@ class _$OnServerInfoChangedResponseImpl implements OnServerInfoChangedResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return onServerInfoChanged?.call(this);
   }
@@ -459,6 +561,12 @@ class _$OnServerInfoChangedResponseImpl implements OnServerInfoChangedResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onServerInfoChanged != null) {
@@ -577,6 +685,12 @@ class _$OnSinkChangedResponseImpl implements OnSinkChangedResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return onSinkChanged(sink);
   }
@@ -593,6 +707,12 @@ class _$OnSinkChangedResponseImpl implements OnSinkChangedResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return onSinkChanged?.call(sink);
   }
@@ -609,6 +729,12 @@ class _$OnSinkChangedResponseImpl implements OnSinkChangedResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSinkChanged != null) {
@@ -630,6 +756,12 @@ class _$OnSinkChangedResponseImpl implements OnSinkChangedResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return onSinkChanged(this);
   }
@@ -646,6 +778,12 @@ class _$OnSinkChangedResponseImpl implements OnSinkChangedResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return onSinkChanged?.call(this);
   }
@@ -662,6 +800,12 @@ class _$OnSinkChangedResponseImpl implements OnSinkChangedResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSinkChanged != null) {
@@ -767,6 +911,12 @@ class _$OnSinkRemovedResponseImpl implements OnSinkRemovedResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return onSinkRemoved(index);
   }
@@ -783,6 +933,12 @@ class _$OnSinkRemovedResponseImpl implements OnSinkRemovedResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return onSinkRemoved?.call(index);
   }
@@ -799,6 +955,12 @@ class _$OnSinkRemovedResponseImpl implements OnSinkRemovedResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSinkRemoved != null) {
@@ -820,6 +982,12 @@ class _$OnSinkRemovedResponseImpl implements OnSinkRemovedResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return onSinkRemoved(this);
   }
@@ -836,6 +1004,12 @@ class _$OnSinkRemovedResponseImpl implements OnSinkRemovedResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return onSinkRemoved?.call(this);
   }
@@ -852,6 +1026,12 @@ class _$OnSinkRemovedResponseImpl implements OnSinkRemovedResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSinkRemoved != null) {
@@ -970,6 +1150,12 @@ class _$OnSourceChangedResponseImpl implements OnSourceChangedResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return onSourceChanged(source);
   }
@@ -986,6 +1172,12 @@ class _$OnSourceChangedResponseImpl implements OnSourceChangedResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return onSourceChanged?.call(source);
   }
@@ -1002,6 +1194,12 @@ class _$OnSourceChangedResponseImpl implements OnSourceChangedResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSourceChanged != null) {
@@ -1023,6 +1221,12 @@ class _$OnSourceChangedResponseImpl implements OnSourceChangedResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return onSourceChanged(this);
   }
@@ -1039,6 +1243,12 @@ class _$OnSourceChangedResponseImpl implements OnSourceChangedResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return onSourceChanged?.call(this);
   }
@@ -1055,6 +1265,12 @@ class _$OnSourceChangedResponseImpl implements OnSourceChangedResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSourceChanged != null) {
@@ -1161,6 +1377,12 @@ class _$OnSourceRemovedResponseImpl implements OnSourceRemovedResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return onSourceRemoved(index);
   }
@@ -1177,6 +1399,12 @@ class _$OnSourceRemovedResponseImpl implements OnSourceRemovedResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return onSourceRemoved?.call(index);
   }
@@ -1193,6 +1421,12 @@ class _$OnSourceRemovedResponseImpl implements OnSourceRemovedResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSourceRemoved != null) {
@@ -1214,6 +1448,12 @@ class _$OnSourceRemovedResponseImpl implements OnSourceRemovedResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return onSourceRemoved(this);
   }
@@ -1230,6 +1470,12 @@ class _$OnSourceRemovedResponseImpl implements OnSourceRemovedResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return onSourceRemoved?.call(this);
   }
@@ -1246,6 +1492,12 @@ class _$OnSourceRemovedResponseImpl implements OnSourceRemovedResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSourceRemoved != null) {
@@ -1367,6 +1619,12 @@ class _$OnSinkListResponseImpl implements OnSinkListResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return onSinkList(requestId, list);
   }
@@ -1383,6 +1641,12 @@ class _$OnSinkListResponseImpl implements OnSinkListResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return onSinkList?.call(requestId, list);
   }
@@ -1399,6 +1663,12 @@ class _$OnSinkListResponseImpl implements OnSinkListResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSinkList != null) {
@@ -1420,6 +1690,12 @@ class _$OnSinkListResponseImpl implements OnSinkListResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return onSinkList(this);
   }
@@ -1436,6 +1712,12 @@ class _$OnSinkListResponseImpl implements OnSinkListResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return onSinkList?.call(this);
   }
@@ -1452,6 +1734,12 @@ class _$OnSinkListResponseImpl implements OnSinkListResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSinkList != null) {
@@ -1576,6 +1864,12 @@ class _$OnSourceListResponseImpl implements OnSourceListResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return onSourceList(requestId, list);
   }
@@ -1592,6 +1886,12 @@ class _$OnSourceListResponseImpl implements OnSourceListResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return onSourceList?.call(requestId, list);
   }
@@ -1608,6 +1908,12 @@ class _$OnSourceListResponseImpl implements OnSourceListResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSourceList != null) {
@@ -1629,6 +1935,12 @@ class _$OnSourceListResponseImpl implements OnSourceListResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return onSourceList(this);
   }
@@ -1645,6 +1957,12 @@ class _$OnSourceListResponseImpl implements OnSourceListResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return onSourceList?.call(this);
   }
@@ -1661,6 +1979,12 @@ class _$OnSourceListResponseImpl implements OnSourceListResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onSourceList != null) {
@@ -1790,6 +2114,12 @@ class _$OnServerInfoResponseImpl implements OnServerInfoResponse {
         onSourceList,
     required TResult Function(int requestId, PulseAudioServerInfo info)
         onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
   }) {
     return onServerInfo(requestId, info);
   }
@@ -1806,6 +2136,12 @@ class _$OnServerInfoResponseImpl implements OnServerInfoResponse {
     TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
   }) {
     return onServerInfo?.call(requestId, info);
   }
@@ -1822,6 +2158,12 @@ class _$OnServerInfoResponseImpl implements OnServerInfoResponse {
     TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
     TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
     TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onServerInfo != null) {
@@ -1843,6 +2185,12 @@ class _$OnServerInfoResponseImpl implements OnServerInfoResponse {
     required TResult Function(OnSinkListResponse value) onSinkList,
     required TResult Function(OnSourceListResponse value) onSourceList,
     required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
   }) {
     return onServerInfo(this);
   }
@@ -1859,6 +2207,12 @@ class _$OnServerInfoResponseImpl implements OnServerInfoResponse {
     TResult? Function(OnSinkListResponse value)? onSinkList,
     TResult? Function(OnSourceListResponse value)? onSourceList,
     TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
   }) {
     return onServerInfo?.call(this);
   }
@@ -1875,6 +2229,12 @@ class _$OnServerInfoResponseImpl implements OnServerInfoResponse {
     TResult Function(OnSinkListResponse value)? onSinkList,
     TResult Function(OnSourceListResponse value)? onSourceList,
     TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
     required TResult orElse(),
   }) {
     if (onServerInfo != null) {
@@ -1896,5 +2256,1369 @@ abstract class OnServerInfoResponse implements IsolateResponse {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnServerInfoResponseImplCopyWith<_$OnServerInfoResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetSinkVolumeResponseImplCopyWith<$Res> {
+  factory _$$SetSinkVolumeResponseImplCopyWith(
+          _$SetSinkVolumeResponseImpl value,
+          $Res Function(_$SetSinkVolumeResponseImpl) then) =
+      __$$SetSinkVolumeResponseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$SetSinkVolumeResponseImplCopyWithImpl<$Res>
+    extends _$IsolateResponseCopyWithImpl<$Res, _$SetSinkVolumeResponseImpl>
+    implements _$$SetSinkVolumeResponseImplCopyWith<$Res> {
+  __$$SetSinkVolumeResponseImplCopyWithImpl(_$SetSinkVolumeResponseImpl _value,
+      $Res Function(_$SetSinkVolumeResponseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$SetSinkVolumeResponseImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetSinkVolumeResponseImpl implements SetSinkVolumeResponse {
+  const _$SetSinkVolumeResponseImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateResponse.setSinkVolume(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetSinkVolumeResponseImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetSinkVolumeResponseImplCopyWith<_$SetSinkVolumeResponseImpl>
+      get copyWith => __$$SetSinkVolumeResponseImplCopyWithImpl<
+          _$SetSinkVolumeResponseImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() ready,
+    required TResult Function(PulseAudioServerInfo serverInfo)
+        onServerInfoChanged,
+    required TResult Function(PulseAudioSink sink) onSinkChanged,
+    required TResult Function(int index) onSinkRemoved,
+    required TResult Function(PulseAudioSource source) onSourceChanged,
+    required TResult Function(int index) onSourceRemoved,
+    required TResult Function(int requestId, List<PulseAudioSink> list)
+        onSinkList,
+    required TResult Function(int requestId, List<PulseAudioSource> list)
+        onSourceList,
+    required TResult Function(int requestId, PulseAudioServerInfo info)
+        onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
+  }) {
+    return setSinkVolume(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? ready,
+    TResult? Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult? Function(PulseAudioSink sink)? onSinkChanged,
+    TResult? Function(int index)? onSinkRemoved,
+    TResult? Function(PulseAudioSource source)? onSourceChanged,
+    TResult? Function(int index)? onSourceRemoved,
+    TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
+  }) {
+    return setSinkVolume?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? ready,
+    TResult Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult Function(PulseAudioSink sink)? onSinkChanged,
+    TResult Function(int index)? onSinkRemoved,
+    TResult Function(PulseAudioSource source)? onSourceChanged,
+    TResult Function(int index)? onSourceRemoved,
+    TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setSinkVolume != null) {
+      return setSinkVolume(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnReadyResponse value) ready,
+    required TResult Function(OnServerInfoChangedResponse value)
+        onServerInfoChanged,
+    required TResult Function(OnSinkChangedResponse value) onSinkChanged,
+    required TResult Function(OnSinkRemovedResponse value) onSinkRemoved,
+    required TResult Function(OnSourceChangedResponse value) onSourceChanged,
+    required TResult Function(OnSourceRemovedResponse value) onSourceRemoved,
+    required TResult Function(OnSinkListResponse value) onSinkList,
+    required TResult Function(OnSourceListResponse value) onSourceList,
+    required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
+  }) {
+    return setSinkVolume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnReadyResponse value)? ready,
+    TResult? Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult? Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult? Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult? Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult? Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult? Function(OnSinkListResponse value)? onSinkList,
+    TResult? Function(OnSourceListResponse value)? onSourceList,
+    TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
+  }) {
+    return setSinkVolume?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnReadyResponse value)? ready,
+    TResult Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult Function(OnSinkListResponse value)? onSinkList,
+    TResult Function(OnSourceListResponse value)? onSourceList,
+    TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setSinkVolume != null) {
+      return setSinkVolume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetSinkVolumeResponse implements IsolateResponse {
+  const factory SetSinkVolumeResponse({required final int requestId}) =
+      _$SetSinkVolumeResponseImpl;
+
+  int get requestId;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetSinkVolumeResponseImplCopyWith<_$SetSinkVolumeResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetSourceVolumeResponseImplCopyWith<$Res> {
+  factory _$$SetSourceVolumeResponseImplCopyWith(
+          _$SetSourceVolumeResponseImpl value,
+          $Res Function(_$SetSourceVolumeResponseImpl) then) =
+      __$$SetSourceVolumeResponseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$SetSourceVolumeResponseImplCopyWithImpl<$Res>
+    extends _$IsolateResponseCopyWithImpl<$Res, _$SetSourceVolumeResponseImpl>
+    implements _$$SetSourceVolumeResponseImplCopyWith<$Res> {
+  __$$SetSourceVolumeResponseImplCopyWithImpl(
+      _$SetSourceVolumeResponseImpl _value,
+      $Res Function(_$SetSourceVolumeResponseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$SetSourceVolumeResponseImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetSourceVolumeResponseImpl implements SetSourceVolumeResponse {
+  const _$SetSourceVolumeResponseImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateResponse.setSourceVolume(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetSourceVolumeResponseImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetSourceVolumeResponseImplCopyWith<_$SetSourceVolumeResponseImpl>
+      get copyWith => __$$SetSourceVolumeResponseImplCopyWithImpl<
+          _$SetSourceVolumeResponseImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() ready,
+    required TResult Function(PulseAudioServerInfo serverInfo)
+        onServerInfoChanged,
+    required TResult Function(PulseAudioSink sink) onSinkChanged,
+    required TResult Function(int index) onSinkRemoved,
+    required TResult Function(PulseAudioSource source) onSourceChanged,
+    required TResult Function(int index) onSourceRemoved,
+    required TResult Function(int requestId, List<PulseAudioSink> list)
+        onSinkList,
+    required TResult Function(int requestId, List<PulseAudioSource> list)
+        onSourceList,
+    required TResult Function(int requestId, PulseAudioServerInfo info)
+        onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
+  }) {
+    return setSourceVolume(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? ready,
+    TResult? Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult? Function(PulseAudioSink sink)? onSinkChanged,
+    TResult? Function(int index)? onSinkRemoved,
+    TResult? Function(PulseAudioSource source)? onSourceChanged,
+    TResult? Function(int index)? onSourceRemoved,
+    TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
+  }) {
+    return setSourceVolume?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? ready,
+    TResult Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult Function(PulseAudioSink sink)? onSinkChanged,
+    TResult Function(int index)? onSinkRemoved,
+    TResult Function(PulseAudioSource source)? onSourceChanged,
+    TResult Function(int index)? onSourceRemoved,
+    TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setSourceVolume != null) {
+      return setSourceVolume(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnReadyResponse value) ready,
+    required TResult Function(OnServerInfoChangedResponse value)
+        onServerInfoChanged,
+    required TResult Function(OnSinkChangedResponse value) onSinkChanged,
+    required TResult Function(OnSinkRemovedResponse value) onSinkRemoved,
+    required TResult Function(OnSourceChangedResponse value) onSourceChanged,
+    required TResult Function(OnSourceRemovedResponse value) onSourceRemoved,
+    required TResult Function(OnSinkListResponse value) onSinkList,
+    required TResult Function(OnSourceListResponse value) onSourceList,
+    required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
+  }) {
+    return setSourceVolume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnReadyResponse value)? ready,
+    TResult? Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult? Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult? Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult? Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult? Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult? Function(OnSinkListResponse value)? onSinkList,
+    TResult? Function(OnSourceListResponse value)? onSourceList,
+    TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
+  }) {
+    return setSourceVolume?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnReadyResponse value)? ready,
+    TResult Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult Function(OnSinkListResponse value)? onSinkList,
+    TResult Function(OnSourceListResponse value)? onSourceList,
+    TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setSourceVolume != null) {
+      return setSourceVolume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetSourceVolumeResponse implements IsolateResponse {
+  const factory SetSourceVolumeResponse({required final int requestId}) =
+      _$SetSourceVolumeResponseImpl;
+
+  int get requestId;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetSourceVolumeResponseImplCopyWith<_$SetSourceVolumeResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetSinkMuteResponseImplCopyWith<$Res> {
+  factory _$$SetSinkMuteResponseImplCopyWith(_$SetSinkMuteResponseImpl value,
+          $Res Function(_$SetSinkMuteResponseImpl) then) =
+      __$$SetSinkMuteResponseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$SetSinkMuteResponseImplCopyWithImpl<$Res>
+    extends _$IsolateResponseCopyWithImpl<$Res, _$SetSinkMuteResponseImpl>
+    implements _$$SetSinkMuteResponseImplCopyWith<$Res> {
+  __$$SetSinkMuteResponseImplCopyWithImpl(_$SetSinkMuteResponseImpl _value,
+      $Res Function(_$SetSinkMuteResponseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$SetSinkMuteResponseImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetSinkMuteResponseImpl implements SetSinkMuteResponse {
+  const _$SetSinkMuteResponseImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateResponse.setSinkMute(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetSinkMuteResponseImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetSinkMuteResponseImplCopyWith<_$SetSinkMuteResponseImpl> get copyWith =>
+      __$$SetSinkMuteResponseImplCopyWithImpl<_$SetSinkMuteResponseImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() ready,
+    required TResult Function(PulseAudioServerInfo serverInfo)
+        onServerInfoChanged,
+    required TResult Function(PulseAudioSink sink) onSinkChanged,
+    required TResult Function(int index) onSinkRemoved,
+    required TResult Function(PulseAudioSource source) onSourceChanged,
+    required TResult Function(int index) onSourceRemoved,
+    required TResult Function(int requestId, List<PulseAudioSink> list)
+        onSinkList,
+    required TResult Function(int requestId, List<PulseAudioSource> list)
+        onSourceList,
+    required TResult Function(int requestId, PulseAudioServerInfo info)
+        onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
+  }) {
+    return setSinkMute(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? ready,
+    TResult? Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult? Function(PulseAudioSink sink)? onSinkChanged,
+    TResult? Function(int index)? onSinkRemoved,
+    TResult? Function(PulseAudioSource source)? onSourceChanged,
+    TResult? Function(int index)? onSourceRemoved,
+    TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
+  }) {
+    return setSinkMute?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? ready,
+    TResult Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult Function(PulseAudioSink sink)? onSinkChanged,
+    TResult Function(int index)? onSinkRemoved,
+    TResult Function(PulseAudioSource source)? onSourceChanged,
+    TResult Function(int index)? onSourceRemoved,
+    TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setSinkMute != null) {
+      return setSinkMute(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnReadyResponse value) ready,
+    required TResult Function(OnServerInfoChangedResponse value)
+        onServerInfoChanged,
+    required TResult Function(OnSinkChangedResponse value) onSinkChanged,
+    required TResult Function(OnSinkRemovedResponse value) onSinkRemoved,
+    required TResult Function(OnSourceChangedResponse value) onSourceChanged,
+    required TResult Function(OnSourceRemovedResponse value) onSourceRemoved,
+    required TResult Function(OnSinkListResponse value) onSinkList,
+    required TResult Function(OnSourceListResponse value) onSourceList,
+    required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
+  }) {
+    return setSinkMute(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnReadyResponse value)? ready,
+    TResult? Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult? Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult? Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult? Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult? Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult? Function(OnSinkListResponse value)? onSinkList,
+    TResult? Function(OnSourceListResponse value)? onSourceList,
+    TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
+  }) {
+    return setSinkMute?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnReadyResponse value)? ready,
+    TResult Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult Function(OnSinkListResponse value)? onSinkList,
+    TResult Function(OnSourceListResponse value)? onSourceList,
+    TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setSinkMute != null) {
+      return setSinkMute(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetSinkMuteResponse implements IsolateResponse {
+  const factory SetSinkMuteResponse({required final int requestId}) =
+      _$SetSinkMuteResponseImpl;
+
+  int get requestId;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetSinkMuteResponseImplCopyWith<_$SetSinkMuteResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetSourceMuteResponseImplCopyWith<$Res> {
+  factory _$$SetSourceMuteResponseImplCopyWith(
+          _$SetSourceMuteResponseImpl value,
+          $Res Function(_$SetSourceMuteResponseImpl) then) =
+      __$$SetSourceMuteResponseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$SetSourceMuteResponseImplCopyWithImpl<$Res>
+    extends _$IsolateResponseCopyWithImpl<$Res, _$SetSourceMuteResponseImpl>
+    implements _$$SetSourceMuteResponseImplCopyWith<$Res> {
+  __$$SetSourceMuteResponseImplCopyWithImpl(_$SetSourceMuteResponseImpl _value,
+      $Res Function(_$SetSourceMuteResponseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$SetSourceMuteResponseImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetSourceMuteResponseImpl implements SetSourceMuteResponse {
+  const _$SetSourceMuteResponseImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateResponse.setSourceMute(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetSourceMuteResponseImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetSourceMuteResponseImplCopyWith<_$SetSourceMuteResponseImpl>
+      get copyWith => __$$SetSourceMuteResponseImplCopyWithImpl<
+          _$SetSourceMuteResponseImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() ready,
+    required TResult Function(PulseAudioServerInfo serverInfo)
+        onServerInfoChanged,
+    required TResult Function(PulseAudioSink sink) onSinkChanged,
+    required TResult Function(int index) onSinkRemoved,
+    required TResult Function(PulseAudioSource source) onSourceChanged,
+    required TResult Function(int index) onSourceRemoved,
+    required TResult Function(int requestId, List<PulseAudioSink> list)
+        onSinkList,
+    required TResult Function(int requestId, List<PulseAudioSource> list)
+        onSourceList,
+    required TResult Function(int requestId, PulseAudioServerInfo info)
+        onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
+  }) {
+    return setSourceMute(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? ready,
+    TResult? Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult? Function(PulseAudioSink sink)? onSinkChanged,
+    TResult? Function(int index)? onSinkRemoved,
+    TResult? Function(PulseAudioSource source)? onSourceChanged,
+    TResult? Function(int index)? onSourceRemoved,
+    TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
+  }) {
+    return setSourceMute?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? ready,
+    TResult Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult Function(PulseAudioSink sink)? onSinkChanged,
+    TResult Function(int index)? onSinkRemoved,
+    TResult Function(PulseAudioSource source)? onSourceChanged,
+    TResult Function(int index)? onSourceRemoved,
+    TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setSourceMute != null) {
+      return setSourceMute(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnReadyResponse value) ready,
+    required TResult Function(OnServerInfoChangedResponse value)
+        onServerInfoChanged,
+    required TResult Function(OnSinkChangedResponse value) onSinkChanged,
+    required TResult Function(OnSinkRemovedResponse value) onSinkRemoved,
+    required TResult Function(OnSourceChangedResponse value) onSourceChanged,
+    required TResult Function(OnSourceRemovedResponse value) onSourceRemoved,
+    required TResult Function(OnSinkListResponse value) onSinkList,
+    required TResult Function(OnSourceListResponse value) onSourceList,
+    required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
+  }) {
+    return setSourceMute(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnReadyResponse value)? ready,
+    TResult? Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult? Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult? Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult? Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult? Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult? Function(OnSinkListResponse value)? onSinkList,
+    TResult? Function(OnSourceListResponse value)? onSourceList,
+    TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
+  }) {
+    return setSourceMute?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnReadyResponse value)? ready,
+    TResult Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult Function(OnSinkListResponse value)? onSinkList,
+    TResult Function(OnSourceListResponse value)? onSourceList,
+    TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setSourceMute != null) {
+      return setSourceMute(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetSourceMuteResponse implements IsolateResponse {
+  const factory SetSourceMuteResponse({required final int requestId}) =
+      _$SetSourceMuteResponseImpl;
+
+  int get requestId;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetSourceMuteResponseImplCopyWith<_$SetSourceMuteResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetDefaultSinkResponseImplCopyWith<$Res> {
+  factory _$$SetDefaultSinkResponseImplCopyWith(
+          _$SetDefaultSinkResponseImpl value,
+          $Res Function(_$SetDefaultSinkResponseImpl) then) =
+      __$$SetDefaultSinkResponseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$SetDefaultSinkResponseImplCopyWithImpl<$Res>
+    extends _$IsolateResponseCopyWithImpl<$Res, _$SetDefaultSinkResponseImpl>
+    implements _$$SetDefaultSinkResponseImplCopyWith<$Res> {
+  __$$SetDefaultSinkResponseImplCopyWithImpl(
+      _$SetDefaultSinkResponseImpl _value,
+      $Res Function(_$SetDefaultSinkResponseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$SetDefaultSinkResponseImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetDefaultSinkResponseImpl implements SetDefaultSinkResponse {
+  const _$SetDefaultSinkResponseImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateResponse.setDefaultSink(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetDefaultSinkResponseImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetDefaultSinkResponseImplCopyWith<_$SetDefaultSinkResponseImpl>
+      get copyWith => __$$SetDefaultSinkResponseImplCopyWithImpl<
+          _$SetDefaultSinkResponseImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() ready,
+    required TResult Function(PulseAudioServerInfo serverInfo)
+        onServerInfoChanged,
+    required TResult Function(PulseAudioSink sink) onSinkChanged,
+    required TResult Function(int index) onSinkRemoved,
+    required TResult Function(PulseAudioSource source) onSourceChanged,
+    required TResult Function(int index) onSourceRemoved,
+    required TResult Function(int requestId, List<PulseAudioSink> list)
+        onSinkList,
+    required TResult Function(int requestId, List<PulseAudioSource> list)
+        onSourceList,
+    required TResult Function(int requestId, PulseAudioServerInfo info)
+        onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
+  }) {
+    return setDefaultSink(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? ready,
+    TResult? Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult? Function(PulseAudioSink sink)? onSinkChanged,
+    TResult? Function(int index)? onSinkRemoved,
+    TResult? Function(PulseAudioSource source)? onSourceChanged,
+    TResult? Function(int index)? onSourceRemoved,
+    TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
+  }) {
+    return setDefaultSink?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? ready,
+    TResult Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult Function(PulseAudioSink sink)? onSinkChanged,
+    TResult Function(int index)? onSinkRemoved,
+    TResult Function(PulseAudioSource source)? onSourceChanged,
+    TResult Function(int index)? onSourceRemoved,
+    TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setDefaultSink != null) {
+      return setDefaultSink(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnReadyResponse value) ready,
+    required TResult Function(OnServerInfoChangedResponse value)
+        onServerInfoChanged,
+    required TResult Function(OnSinkChangedResponse value) onSinkChanged,
+    required TResult Function(OnSinkRemovedResponse value) onSinkRemoved,
+    required TResult Function(OnSourceChangedResponse value) onSourceChanged,
+    required TResult Function(OnSourceRemovedResponse value) onSourceRemoved,
+    required TResult Function(OnSinkListResponse value) onSinkList,
+    required TResult Function(OnSourceListResponse value) onSourceList,
+    required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
+  }) {
+    return setDefaultSink(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnReadyResponse value)? ready,
+    TResult? Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult? Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult? Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult? Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult? Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult? Function(OnSinkListResponse value)? onSinkList,
+    TResult? Function(OnSourceListResponse value)? onSourceList,
+    TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
+  }) {
+    return setDefaultSink?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnReadyResponse value)? ready,
+    TResult Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult Function(OnSinkListResponse value)? onSinkList,
+    TResult Function(OnSourceListResponse value)? onSourceList,
+    TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setDefaultSink != null) {
+      return setDefaultSink(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetDefaultSinkResponse implements IsolateResponse {
+  const factory SetDefaultSinkResponse({required final int requestId}) =
+      _$SetDefaultSinkResponseImpl;
+
+  int get requestId;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetDefaultSinkResponseImplCopyWith<_$SetDefaultSinkResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetDefaultSourceResponseImplCopyWith<$Res> {
+  factory _$$SetDefaultSourceResponseImplCopyWith(
+          _$SetDefaultSourceResponseImpl value,
+          $Res Function(_$SetDefaultSourceResponseImpl) then) =
+      __$$SetDefaultSourceResponseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$SetDefaultSourceResponseImplCopyWithImpl<$Res>
+    extends _$IsolateResponseCopyWithImpl<$Res, _$SetDefaultSourceResponseImpl>
+    implements _$$SetDefaultSourceResponseImplCopyWith<$Res> {
+  __$$SetDefaultSourceResponseImplCopyWithImpl(
+      _$SetDefaultSourceResponseImpl _value,
+      $Res Function(_$SetDefaultSourceResponseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$SetDefaultSourceResponseImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetDefaultSourceResponseImpl implements SetDefaultSourceResponse {
+  const _$SetDefaultSourceResponseImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateResponse.setDefaultSource(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetDefaultSourceResponseImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetDefaultSourceResponseImplCopyWith<_$SetDefaultSourceResponseImpl>
+      get copyWith => __$$SetDefaultSourceResponseImplCopyWithImpl<
+          _$SetDefaultSourceResponseImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() ready,
+    required TResult Function(PulseAudioServerInfo serverInfo)
+        onServerInfoChanged,
+    required TResult Function(PulseAudioSink sink) onSinkChanged,
+    required TResult Function(int index) onSinkRemoved,
+    required TResult Function(PulseAudioSource source) onSourceChanged,
+    required TResult Function(int index) onSourceRemoved,
+    required TResult Function(int requestId, List<PulseAudioSink> list)
+        onSinkList,
+    required TResult Function(int requestId, List<PulseAudioSource> list)
+        onSourceList,
+    required TResult Function(int requestId, PulseAudioServerInfo info)
+        onServerInfo,
+    required TResult Function(int requestId) setSinkVolume,
+    required TResult Function(int requestId) setSourceVolume,
+    required TResult Function(int requestId) setSinkMute,
+    required TResult Function(int requestId) setSourceMute,
+    required TResult Function(int requestId) setDefaultSink,
+    required TResult Function(int requestId) setDefaultSource,
+  }) {
+    return setDefaultSource(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? ready,
+    TResult? Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult? Function(PulseAudioSink sink)? onSinkChanged,
+    TResult? Function(int index)? onSinkRemoved,
+    TResult? Function(PulseAudioSource source)? onSourceChanged,
+    TResult? Function(int index)? onSourceRemoved,
+    TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? setSinkVolume,
+    TResult? Function(int requestId)? setSourceVolume,
+    TResult? Function(int requestId)? setSinkMute,
+    TResult? Function(int requestId)? setSourceMute,
+    TResult? Function(int requestId)? setDefaultSink,
+    TResult? Function(int requestId)? setDefaultSource,
+  }) {
+    return setDefaultSource?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? ready,
+    TResult Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult Function(PulseAudioSink sink)? onSinkChanged,
+    TResult Function(int index)? onSinkRemoved,
+    TResult Function(PulseAudioSource source)? onSourceChanged,
+    TResult Function(int index)? onSourceRemoved,
+    TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? setSinkVolume,
+    TResult Function(int requestId)? setSourceVolume,
+    TResult Function(int requestId)? setSinkMute,
+    TResult Function(int requestId)? setSourceMute,
+    TResult Function(int requestId)? setDefaultSink,
+    TResult Function(int requestId)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setDefaultSource != null) {
+      return setDefaultSource(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnReadyResponse value) ready,
+    required TResult Function(OnServerInfoChangedResponse value)
+        onServerInfoChanged,
+    required TResult Function(OnSinkChangedResponse value) onSinkChanged,
+    required TResult Function(OnSinkRemovedResponse value) onSinkRemoved,
+    required TResult Function(OnSourceChangedResponse value) onSourceChanged,
+    required TResult Function(OnSourceRemovedResponse value) onSourceRemoved,
+    required TResult Function(OnSinkListResponse value) onSinkList,
+    required TResult Function(OnSourceListResponse value) onSourceList,
+    required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(SetSinkVolumeResponse value) setSinkVolume,
+    required TResult Function(SetSourceVolumeResponse value) setSourceVolume,
+    required TResult Function(SetSinkMuteResponse value) setSinkMute,
+    required TResult Function(SetSourceMuteResponse value) setSourceMute,
+    required TResult Function(SetDefaultSinkResponse value) setDefaultSink,
+    required TResult Function(SetDefaultSourceResponse value) setDefaultSource,
+  }) {
+    return setDefaultSource(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnReadyResponse value)? ready,
+    TResult? Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult? Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult? Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult? Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult? Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult? Function(OnSinkListResponse value)? onSinkList,
+    TResult? Function(OnSourceListResponse value)? onSourceList,
+    TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult? Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult? Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult? Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceResponse value)? setDefaultSource,
+  }) {
+    return setDefaultSource?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnReadyResponse value)? ready,
+    TResult Function(OnServerInfoChangedResponse value)? onServerInfoChanged,
+    TResult Function(OnSinkChangedResponse value)? onSinkChanged,
+    TResult Function(OnSinkRemovedResponse value)? onSinkRemoved,
+    TResult Function(OnSourceChangedResponse value)? onSourceChanged,
+    TResult Function(OnSourceRemovedResponse value)? onSourceRemoved,
+    TResult Function(OnSinkListResponse value)? onSinkList,
+    TResult Function(OnSourceListResponse value)? onSourceList,
+    TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(SetSinkVolumeResponse value)? setSinkVolume,
+    TResult Function(SetSourceVolumeResponse value)? setSourceVolume,
+    TResult Function(SetSinkMuteResponse value)? setSinkMute,
+    TResult Function(SetSourceMuteResponse value)? setSourceMute,
+    TResult Function(SetDefaultSinkResponse value)? setDefaultSink,
+    TResult Function(SetDefaultSourceResponse value)? setDefaultSource,
+    required TResult orElse(),
+  }) {
+    if (setDefaultSource != null) {
+      return setDefaultSource(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetDefaultSourceResponse implements IsolateResponse {
+  const factory SetDefaultSourceResponse({required final int requestId}) =
+      _$SetDefaultSourceResponseImpl;
+
+  int get requestId;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetDefaultSourceResponseImplCopyWith<_$SetDefaultSourceResponseImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
