@@ -1,3 +1,18 @@
+/// A Dart library for interacting with PulseAudio, a sound server.
+///
+/// This library provides an interface to PulseAudio, allowing you to retrieve
+/// server information, manage sinks (output devices), and manage sources (input
+/// devices). The library also provides streams for listening to changes in
+/// server information, sinks, and sources.
+///
+/// To use this library, create an instance of [PulseAudio], then call
+/// [initialize] to start the communication with the PulseAudio server. After
+/// that, you can use the various methods and streams provided by [PulseAudio]
+/// to interact with the server.
+///
+/// This library uses Dart's isolates to communicate with the PulseAudio
+/// server, which allows for asynchronous communication and prevents blocking
+/// the main isolate.
 library pulseaudio;
 
 import 'dart:async';
@@ -10,7 +25,7 @@ import 'package:pulseaudio/model/sink.dart';
 import 'package:pulseaudio/model/source.dart';
 import 'package:pulseaudio/pulse_isolate.dart';
 
-/// A PulseAudio.
+/// A class for interacting with the PulseAudio sound server.
 class PulseAudio {
   static PulseAudio? _instance;
 
@@ -18,6 +33,12 @@ class PulseAudio {
   final ReceivePort _receiverPort;
   late final SendPort _sendPort;
   final Stream<dynamic> _broadcastStream;
+
+  int _lastRequestId = 0;
+
+  get newRequestId {
+    return _lastRequestId++;
+  }
 
   /// Stream of [PulseAudioServerInfo]
   Stream<PulseAudioServerInfo> get onServerInfo => _broadcastStream
@@ -74,14 +95,15 @@ class PulseAudio {
   factory PulseAudio() {
     if (_instance != null) return _instance!;
     final receivePort = ReceivePort();
-
+    final broadcast = receivePort.asBroadcastStream();
     _instance = PulseAudio._(
       receivePort,
-      receivePort.asBroadcastStream(),
+      broadcast,
     );
     return _instance!;
   }
 
+  /// Initializes the PulseAudio connection.
   Future<void> initialize() async {
     if (_initializedCompleter.isCompleted) return;
     if (_initializizationInProgress) return await _initializedCompleter.future;
@@ -117,54 +139,103 @@ class PulseAudio {
     await _initializedCompleter.future;
   }
 
+  /// Disposes the PulseAudio connection.
   dispose() {
-    _sendPort.send(const IsolateRequest.dispose());
+    _sendPort.send(IsolateRequest.dispose(requestId: newRequestId));
     _receiverPort.close();
     _instance = null;
   }
 
+  /// Get Lists of [PulseAudioSink]
+  Future<List<PulseAudioSink>> getSinkList() async {
+    if (!_initializedCompleter.isCompleted) {
+      throw Exception("PulseAudio is not initialized");
+    }
+    final requestId = newRequestId;
+    _sendPort.send(IsolateRequest.getSinkList(requestId: requestId));
+    final response = await _broadcastStream.firstWhere((message) =>
+            message is OnSinkListResponse && message.requestId == requestId)
+        as OnSinkListResponse;
+    return response.list;
+  }
+
+  /// Get Lists of [PulseAudioSource]
+  Future<List<PulseAudioSource>> getSourceList() async {
+    if (!_initializedCompleter.isCompleted) {
+      throw Exception("PulseAudio is not initialized");
+    }
+    final requestId = newRequestId;
+    _sendPort.send(IsolateRequest.getSourceList(requestId: requestId));
+    final response = await _broadcastStream.firstWhere((message) =>
+            message is OnSourceListResponse && message.requestId == requestId)
+        as OnSourceListResponse;
+    return response.list;
+  }
+
+  /// Get [PulseAudioSink] by name
+  Future<PulseAudioServerInfo> getServerInfo() async {
+    if (!_initializedCompleter.isCompleted) {
+      throw Exception("PulseAudio is not initialized");
+    }
+    final requestId = newRequestId;
+    _sendPort.send(IsolateRequest.getServerInfo(requestId: requestId));
+    final response = await _broadcastStream.firstWhere((message) =>
+            message is OnServerInfoResponse && message.requestId == requestId)
+        as OnServerInfoResponse;
+    return response.info;
+  }
+
+  /// Set mute for sink by name
   void setSinkMute(String sinkName, bool mute) {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
-    _sendPort.send(IsolateRequest.setSinkMute(sinkName: sinkName, mute: mute));
+    _sendPort.send(IsolateRequest.setSinkMute(
+        requestId: newRequestId, sinkName: sinkName, mute: mute));
   }
 
+  /// Set volume for sink by name
   void setSinkVolume(String sinkName, double volume) {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
-    _sendPort
-        .send(IsolateRequest.setSinkVolume(sinkName: sinkName, volume: volume));
+    _sendPort.send(IsolateRequest.setSinkVolume(
+        requestId: newRequestId, sinkName: sinkName, volume: volume));
   }
 
+  /// set mute for source by name
   void setSourceMute(String sourceName, bool mute) {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
-    _sendPort
-        .send(IsolateRequest.setSourceMute(sourceName: sourceName, mute: mute));
+    _sendPort.send(IsolateRequest.setSourceMute(
+        requestId: newRequestId, sourceName: sourceName, mute: mute));
   }
 
+  /// Set volume for source by name
   void setSourceVolume(String sourceName, double volume) {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
-    _sendPort.send(
-        IsolateRequest.setSourceVolume(sourceName: sourceName, volume: volume));
+    _sendPort.send(IsolateRequest.setSourceVolume(
+        requestId: newRequestId, sourceName: sourceName, volume: volume));
   }
 
+  /// Set default sink by name
   void setDefaultSink(String sinkName) {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
-    _sendPort.send(IsolateRequest.setDefaultSink(sinkName: sinkName));
+    _sendPort.send(IsolateRequest.setDefaultSink(
+        requestId: newRequestId, sinkName: sinkName));
   }
 
+  /// Set default source by name
   void setDefaultSource(String sourceName) {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
-    _sendPort.send(IsolateRequest.setDefaultSource(sourceName: sourceName));
+    _sendPort.send(IsolateRequest.setDefaultSource(
+        requestId: newRequestId, sourceName: sourceName));
   }
 }

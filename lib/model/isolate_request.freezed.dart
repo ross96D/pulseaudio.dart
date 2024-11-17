@@ -16,42 +16,66 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$IsolateRequest {
+  int get requestId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sinkName, double volume) setSinkVolume,
-    required TResult Function(String sourceName, double volume) setSourceVolume,
-    required TResult Function(String sinkName, bool mute) setSinkMute,
-    required TResult Function(String sourceName, bool mute) setSourceMute,
-    required TResult Function(String sinkName) setDefaultSink,
-    required TResult Function(String sourceName) setDefaultSource,
-    required TResult Function() dispose,
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sinkName, double volume)? setSinkVolume,
-    TResult? Function(String sourceName, double volume)? setSourceVolume,
-    TResult? Function(String sinkName, bool mute)? setSinkMute,
-    TResult? Function(String sourceName, bool mute)? setSourceMute,
-    TResult? Function(String sinkName)? setDefaultSink,
-    TResult? Function(String sourceName)? setDefaultSource,
-    TResult? Function()? dispose,
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sinkName, double volume)? setSinkVolume,
-    TResult Function(String sourceName, double volume)? setSourceVolume,
-    TResult Function(String sinkName, bool mute)? setSinkMute,
-    TResult Function(String sourceName, bool mute)? setSourceMute,
-    TResult Function(String sinkName)? setDefaultSink,
-    TResult Function(String sourceName)? setDefaultSource,
-    TResult Function()? dispose,
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
     required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
     required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
     required TResult Function(SetSinkMuteRequest value) setSinkMute,
@@ -63,6 +87,9 @@ mixin _$IsolateRequest {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
     TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult? Function(SetSinkMuteRequest value)? setSinkMute,
@@ -74,6 +101,9 @@ mixin _$IsolateRequest {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
     TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult Function(SetSinkMuteRequest value)? setSinkMute,
@@ -84,6 +114,12 @@ mixin _$IsolateRequest {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $IsolateRequestCopyWith<IsolateRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -91,6 +127,8 @@ abstract class $IsolateRequestCopyWith<$Res> {
   factory $IsolateRequestCopyWith(
           IsolateRequest value, $Res Function(IsolateRequest) then) =
       _$IsolateRequestCopyWithImpl<$Res, IsolateRequest>;
+  @useResult
+  $Res call({int requestId});
 }
 
 /// @nodoc
@@ -105,15 +143,649 @@ class _$IsolateRequestCopyWithImpl<$Res, $Val extends IsolateRequest>
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_value.copyWith(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$SetSinkVolumeRequestImplCopyWith<$Res> {
+abstract class _$$GetSinkListRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
+  factory _$$GetSinkListRequestImplCopyWith(_$GetSinkListRequestImpl value,
+          $Res Function(_$GetSinkListRequestImpl) then) =
+      __$$GetSinkListRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$GetSinkListRequestImplCopyWithImpl<$Res>
+    extends _$IsolateRequestCopyWithImpl<$Res, _$GetSinkListRequestImpl>
+    implements _$$GetSinkListRequestImplCopyWith<$Res> {
+  __$$GetSinkListRequestImplCopyWithImpl(_$GetSinkListRequestImpl _value,
+      $Res Function(_$GetSinkListRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$GetSinkListRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetSinkListRequestImpl implements GetSinkListRequest {
+  const _$GetSinkListRequestImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateRequest.getSinkList(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetSinkListRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetSinkListRequestImplCopyWith<_$GetSinkListRequestImpl> get copyWith =>
+      __$$GetSinkListRequestImplCopyWithImpl<_$GetSinkListRequestImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
+  }) {
+    return getSinkList(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
+  }) {
+    return getSinkList?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
+    required TResult orElse(),
+  }) {
+    if (getSinkList != null) {
+      return getSinkList(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
+    required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
+    required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
+    required TResult Function(SetSinkMuteRequest value) setSinkMute,
+    required TResult Function(SetSourceMuteRequest value) setSourceMute,
+    required TResult Function(SetDefaultSinkRequest value) setDefaultSink,
+    required TResult Function(SetDefaultSourceRequest value) setDefaultSource,
+    required TResult Function(DisposeRequest value) dispose,
+  }) {
+    return getSinkList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
+    TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
+    TResult? Function(SetSinkMuteRequest value)? setSinkMute,
+    TResult? Function(SetSourceMuteRequest value)? setSourceMute,
+    TResult? Function(SetDefaultSinkRequest value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceRequest value)? setDefaultSource,
+    TResult? Function(DisposeRequest value)? dispose,
+  }) {
+    return getSinkList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
+    TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
+    TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
+    TResult Function(SetSinkMuteRequest value)? setSinkMute,
+    TResult Function(SetSourceMuteRequest value)? setSourceMute,
+    TResult Function(SetDefaultSinkRequest value)? setDefaultSink,
+    TResult Function(SetDefaultSourceRequest value)? setDefaultSource,
+    TResult Function(DisposeRequest value)? dispose,
+    required TResult orElse(),
+  }) {
+    if (getSinkList != null) {
+      return getSinkList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetSinkListRequest implements IsolateRequest {
+  const factory GetSinkListRequest({required final int requestId}) =
+      _$GetSinkListRequestImpl;
+
+  @override
+  int get requestId;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetSinkListRequestImplCopyWith<_$GetSinkListRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetSourceListRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
+  factory _$$GetSourceListRequestImplCopyWith(_$GetSourceListRequestImpl value,
+          $Res Function(_$GetSourceListRequestImpl) then) =
+      __$$GetSourceListRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$GetSourceListRequestImplCopyWithImpl<$Res>
+    extends _$IsolateRequestCopyWithImpl<$Res, _$GetSourceListRequestImpl>
+    implements _$$GetSourceListRequestImplCopyWith<$Res> {
+  __$$GetSourceListRequestImplCopyWithImpl(_$GetSourceListRequestImpl _value,
+      $Res Function(_$GetSourceListRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$GetSourceListRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetSourceListRequestImpl implements GetSourceListRequest {
+  const _$GetSourceListRequestImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateRequest.getSourceList(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetSourceListRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetSourceListRequestImplCopyWith<_$GetSourceListRequestImpl>
+      get copyWith =>
+          __$$GetSourceListRequestImplCopyWithImpl<_$GetSourceListRequestImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
+  }) {
+    return getSourceList(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
+  }) {
+    return getSourceList?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
+    required TResult orElse(),
+  }) {
+    if (getSourceList != null) {
+      return getSourceList(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
+    required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
+    required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
+    required TResult Function(SetSinkMuteRequest value) setSinkMute,
+    required TResult Function(SetSourceMuteRequest value) setSourceMute,
+    required TResult Function(SetDefaultSinkRequest value) setDefaultSink,
+    required TResult Function(SetDefaultSourceRequest value) setDefaultSource,
+    required TResult Function(DisposeRequest value) dispose,
+  }) {
+    return getSourceList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
+    TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
+    TResult? Function(SetSinkMuteRequest value)? setSinkMute,
+    TResult? Function(SetSourceMuteRequest value)? setSourceMute,
+    TResult? Function(SetDefaultSinkRequest value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceRequest value)? setDefaultSource,
+    TResult? Function(DisposeRequest value)? dispose,
+  }) {
+    return getSourceList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
+    TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
+    TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
+    TResult Function(SetSinkMuteRequest value)? setSinkMute,
+    TResult Function(SetSourceMuteRequest value)? setSourceMute,
+    TResult Function(SetDefaultSinkRequest value)? setDefaultSink,
+    TResult Function(SetDefaultSourceRequest value)? setDefaultSource,
+    TResult Function(DisposeRequest value)? dispose,
+    required TResult orElse(),
+  }) {
+    if (getSourceList != null) {
+      return getSourceList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetSourceListRequest implements IsolateRequest {
+  const factory GetSourceListRequest({required final int requestId}) =
+      _$GetSourceListRequestImpl;
+
+  @override
+  int get requestId;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetSourceListRequestImplCopyWith<_$GetSourceListRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetServerInfoRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
+  factory _$$GetServerInfoRequestImplCopyWith(_$GetServerInfoRequestImpl value,
+          $Res Function(_$GetServerInfoRequestImpl) then) =
+      __$$GetServerInfoRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class __$$GetServerInfoRequestImplCopyWithImpl<$Res>
+    extends _$IsolateRequestCopyWithImpl<$Res, _$GetServerInfoRequestImpl>
+    implements _$$GetServerInfoRequestImplCopyWith<$Res> {
+  __$$GetServerInfoRequestImplCopyWithImpl(_$GetServerInfoRequestImpl _value,
+      $Res Function(_$GetServerInfoRequestImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$GetServerInfoRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetServerInfoRequestImpl implements GetServerInfoRequest {
+  const _$GetServerInfoRequestImpl({required this.requestId});
+
+  @override
+  final int requestId;
+
+  @override
+  String toString() {
+    return 'IsolateRequest.getServerInfo(requestId: $requestId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetServerInfoRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetServerInfoRequestImplCopyWith<_$GetServerInfoRequestImpl>
+      get copyWith =>
+          __$$GetServerInfoRequestImplCopyWithImpl<_$GetServerInfoRequestImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
+  }) {
+    return getServerInfo(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
+  }) {
+    return getServerInfo?.call(requestId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
+    required TResult orElse(),
+  }) {
+    if (getServerInfo != null) {
+      return getServerInfo(requestId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
+    required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
+    required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
+    required TResult Function(SetSinkMuteRequest value) setSinkMute,
+    required TResult Function(SetSourceMuteRequest value) setSourceMute,
+    required TResult Function(SetDefaultSinkRequest value) setDefaultSink,
+    required TResult Function(SetDefaultSourceRequest value) setDefaultSource,
+    required TResult Function(DisposeRequest value) dispose,
+  }) {
+    return getServerInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
+    TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
+    TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
+    TResult? Function(SetSinkMuteRequest value)? setSinkMute,
+    TResult? Function(SetSourceMuteRequest value)? setSourceMute,
+    TResult? Function(SetDefaultSinkRequest value)? setDefaultSink,
+    TResult? Function(SetDefaultSourceRequest value)? setDefaultSource,
+    TResult? Function(DisposeRequest value)? dispose,
+  }) {
+    return getServerInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
+    TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
+    TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
+    TResult Function(SetSinkMuteRequest value)? setSinkMute,
+    TResult Function(SetSourceMuteRequest value)? setSourceMute,
+    TResult Function(SetDefaultSinkRequest value)? setDefaultSink,
+    TResult Function(SetDefaultSourceRequest value)? setDefaultSource,
+    TResult Function(DisposeRequest value)? dispose,
+    required TResult orElse(),
+  }) {
+    if (getServerInfo != null) {
+      return getServerInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetServerInfoRequest implements IsolateRequest {
+  const factory GetServerInfoRequest({required final int requestId}) =
+      _$GetServerInfoRequestImpl;
+
+  @override
+  int get requestId;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetServerInfoRequestImplCopyWith<_$GetServerInfoRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetSinkVolumeRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
   factory _$$SetSinkVolumeRequestImplCopyWith(_$SetSinkVolumeRequestImpl value,
           $Res Function(_$SetSinkVolumeRequestImpl) then) =
       __$$SetSinkVolumeRequestImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String sinkName, double volume});
+  $Res call({int requestId, String sinkName, double volume});
 }
 
 /// @nodoc
@@ -129,10 +801,15 @@ class __$$SetSinkVolumeRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? requestId = null,
     Object? sinkName = null,
     Object? volume = null,
   }) {
     return _then(_$SetSinkVolumeRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
       sinkName: null == sinkName
           ? _value.sinkName
           : sinkName // ignore: cast_nullable_to_non_nullable
@@ -149,8 +826,10 @@ class __$$SetSinkVolumeRequestImplCopyWithImpl<$Res>
 
 class _$SetSinkVolumeRequestImpl implements SetSinkVolumeRequest {
   const _$SetSinkVolumeRequestImpl(
-      {required this.sinkName, required this.volume});
+      {required this.requestId, required this.sinkName, required this.volume});
 
+  @override
+  final int requestId;
   @override
   final String sinkName;
   @override
@@ -158,7 +837,7 @@ class _$SetSinkVolumeRequestImpl implements SetSinkVolumeRequest {
 
   @override
   String toString() {
-    return 'IsolateRequest.setSinkVolume(sinkName: $sinkName, volume: $volume)';
+    return 'IsolateRequest.setSinkVolume(requestId: $requestId, sinkName: $sinkName, volume: $volume)';
   }
 
   @override
@@ -166,13 +845,15 @@ class _$SetSinkVolumeRequestImpl implements SetSinkVolumeRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetSinkVolumeRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
             (identical(other.sinkName, sinkName) ||
                 other.sinkName == sinkName) &&
             (identical(other.volume, volume) || other.volume == volume));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, sinkName, volume);
+  int get hashCode => Object.hash(runtimeType, requestId, sinkName, volume);
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -187,45 +868,65 @@ class _$SetSinkVolumeRequestImpl implements SetSinkVolumeRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sinkName, double volume) setSinkVolume,
-    required TResult Function(String sourceName, double volume) setSourceVolume,
-    required TResult Function(String sinkName, bool mute) setSinkMute,
-    required TResult Function(String sourceName, bool mute) setSourceMute,
-    required TResult Function(String sinkName) setDefaultSink,
-    required TResult Function(String sourceName) setDefaultSource,
-    required TResult Function() dispose,
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
   }) {
-    return setSinkVolume(sinkName, volume);
+    return setSinkVolume(requestId, sinkName, volume);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sinkName, double volume)? setSinkVolume,
-    TResult? Function(String sourceName, double volume)? setSourceVolume,
-    TResult? Function(String sinkName, bool mute)? setSinkMute,
-    TResult? Function(String sourceName, bool mute)? setSourceMute,
-    TResult? Function(String sinkName)? setDefaultSink,
-    TResult? Function(String sourceName)? setDefaultSource,
-    TResult? Function()? dispose,
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
   }) {
-    return setSinkVolume?.call(sinkName, volume);
+    return setSinkVolume?.call(requestId, sinkName, volume);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sinkName, double volume)? setSinkVolume,
-    TResult Function(String sourceName, double volume)? setSourceVolume,
-    TResult Function(String sinkName, bool mute)? setSinkMute,
-    TResult Function(String sourceName, bool mute)? setSourceMute,
-    TResult Function(String sinkName)? setDefaultSink,
-    TResult Function(String sourceName)? setDefaultSource,
-    TResult Function()? dispose,
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
     required TResult orElse(),
   }) {
     if (setSinkVolume != null) {
-      return setSinkVolume(sinkName, volume);
+      return setSinkVolume(requestId, sinkName, volume);
     }
     return orElse();
   }
@@ -233,6 +934,9 @@ class _$SetSinkVolumeRequestImpl implements SetSinkVolumeRequest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
     required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
     required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
     required TResult Function(SetSinkMuteRequest value) setSinkMute,
@@ -247,6 +951,9 @@ class _$SetSinkVolumeRequestImpl implements SetSinkVolumeRequest {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
     TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult? Function(SetSinkMuteRequest value)? setSinkMute,
@@ -261,6 +968,9 @@ class _$SetSinkVolumeRequestImpl implements SetSinkVolumeRequest {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
     TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult Function(SetSinkMuteRequest value)? setSinkMute,
@@ -279,27 +989,33 @@ class _$SetSinkVolumeRequestImpl implements SetSinkVolumeRequest {
 
 abstract class SetSinkVolumeRequest implements IsolateRequest {
   const factory SetSinkVolumeRequest(
-      {required final String sinkName,
+      {required final int requestId,
+      required final String sinkName,
       required final double volume}) = _$SetSinkVolumeRequestImpl;
 
+  @override
+  int get requestId;
   String get sinkName;
   double get volume;
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetSinkVolumeRequestImplCopyWith<_$SetSinkVolumeRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SetSourceVolumeRequestImplCopyWith<$Res> {
+abstract class _$$SetSourceVolumeRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
   factory _$$SetSourceVolumeRequestImplCopyWith(
           _$SetSourceVolumeRequestImpl value,
           $Res Function(_$SetSourceVolumeRequestImpl) then) =
       __$$SetSourceVolumeRequestImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String sourceName, double volume});
+  $Res call({int requestId, String sourceName, double volume});
 }
 
 /// @nodoc
@@ -316,10 +1032,15 @@ class __$$SetSourceVolumeRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? requestId = null,
     Object? sourceName = null,
     Object? volume = null,
   }) {
     return _then(_$SetSourceVolumeRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
       sourceName: null == sourceName
           ? _value.sourceName
           : sourceName // ignore: cast_nullable_to_non_nullable
@@ -336,8 +1057,12 @@ class __$$SetSourceVolumeRequestImplCopyWithImpl<$Res>
 
 class _$SetSourceVolumeRequestImpl implements SetSourceVolumeRequest {
   const _$SetSourceVolumeRequestImpl(
-      {required this.sourceName, required this.volume});
+      {required this.requestId,
+      required this.sourceName,
+      required this.volume});
 
+  @override
+  final int requestId;
   @override
   final String sourceName;
   @override
@@ -345,7 +1070,7 @@ class _$SetSourceVolumeRequestImpl implements SetSourceVolumeRequest {
 
   @override
   String toString() {
-    return 'IsolateRequest.setSourceVolume(sourceName: $sourceName, volume: $volume)';
+    return 'IsolateRequest.setSourceVolume(requestId: $requestId, sourceName: $sourceName, volume: $volume)';
   }
 
   @override
@@ -353,13 +1078,15 @@ class _$SetSourceVolumeRequestImpl implements SetSourceVolumeRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetSourceVolumeRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
             (identical(other.sourceName, sourceName) ||
                 other.sourceName == sourceName) &&
             (identical(other.volume, volume) || other.volume == volume));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, sourceName, volume);
+  int get hashCode => Object.hash(runtimeType, requestId, sourceName, volume);
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -373,45 +1100,65 @@ class _$SetSourceVolumeRequestImpl implements SetSourceVolumeRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sinkName, double volume) setSinkVolume,
-    required TResult Function(String sourceName, double volume) setSourceVolume,
-    required TResult Function(String sinkName, bool mute) setSinkMute,
-    required TResult Function(String sourceName, bool mute) setSourceMute,
-    required TResult Function(String sinkName) setDefaultSink,
-    required TResult Function(String sourceName) setDefaultSource,
-    required TResult Function() dispose,
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
   }) {
-    return setSourceVolume(sourceName, volume);
+    return setSourceVolume(requestId, sourceName, volume);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sinkName, double volume)? setSinkVolume,
-    TResult? Function(String sourceName, double volume)? setSourceVolume,
-    TResult? Function(String sinkName, bool mute)? setSinkMute,
-    TResult? Function(String sourceName, bool mute)? setSourceMute,
-    TResult? Function(String sinkName)? setDefaultSink,
-    TResult? Function(String sourceName)? setDefaultSource,
-    TResult? Function()? dispose,
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
   }) {
-    return setSourceVolume?.call(sourceName, volume);
+    return setSourceVolume?.call(requestId, sourceName, volume);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sinkName, double volume)? setSinkVolume,
-    TResult Function(String sourceName, double volume)? setSourceVolume,
-    TResult Function(String sinkName, bool mute)? setSinkMute,
-    TResult Function(String sourceName, bool mute)? setSourceMute,
-    TResult Function(String sinkName)? setDefaultSink,
-    TResult Function(String sourceName)? setDefaultSource,
-    TResult Function()? dispose,
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
     required TResult orElse(),
   }) {
     if (setSourceVolume != null) {
-      return setSourceVolume(sourceName, volume);
+      return setSourceVolume(requestId, sourceName, volume);
     }
     return orElse();
   }
@@ -419,6 +1166,9 @@ class _$SetSourceVolumeRequestImpl implements SetSourceVolumeRequest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
     required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
     required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
     required TResult Function(SetSinkMuteRequest value) setSinkMute,
@@ -433,6 +1183,9 @@ class _$SetSourceVolumeRequestImpl implements SetSourceVolumeRequest {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
     TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult? Function(SetSinkMuteRequest value)? setSinkMute,
@@ -447,6 +1200,9 @@ class _$SetSourceVolumeRequestImpl implements SetSourceVolumeRequest {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
     TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult Function(SetSinkMuteRequest value)? setSinkMute,
@@ -465,26 +1221,32 @@ class _$SetSourceVolumeRequestImpl implements SetSourceVolumeRequest {
 
 abstract class SetSourceVolumeRequest implements IsolateRequest {
   const factory SetSourceVolumeRequest(
-      {required final String sourceName,
+      {required final int requestId,
+      required final String sourceName,
       required final double volume}) = _$SetSourceVolumeRequestImpl;
 
+  @override
+  int get requestId;
   String get sourceName;
   double get volume;
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetSourceVolumeRequestImplCopyWith<_$SetSourceVolumeRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SetSinkMuteRequestImplCopyWith<$Res> {
+abstract class _$$SetSinkMuteRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
   factory _$$SetSinkMuteRequestImplCopyWith(_$SetSinkMuteRequestImpl value,
           $Res Function(_$SetSinkMuteRequestImpl) then) =
       __$$SetSinkMuteRequestImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String sinkName, bool mute});
+  $Res call({int requestId, String sinkName, bool mute});
 }
 
 /// @nodoc
@@ -500,10 +1262,15 @@ class __$$SetSinkMuteRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? requestId = null,
     Object? sinkName = null,
     Object? mute = null,
   }) {
     return _then(_$SetSinkMuteRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
       sinkName: null == sinkName
           ? _value.sinkName
           : sinkName // ignore: cast_nullable_to_non_nullable
@@ -519,8 +1286,11 @@ class __$$SetSinkMuteRequestImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SetSinkMuteRequestImpl implements SetSinkMuteRequest {
-  const _$SetSinkMuteRequestImpl({required this.sinkName, required this.mute});
+  const _$SetSinkMuteRequestImpl(
+      {required this.requestId, required this.sinkName, required this.mute});
 
+  @override
+  final int requestId;
   @override
   final String sinkName;
   @override
@@ -528,7 +1298,7 @@ class _$SetSinkMuteRequestImpl implements SetSinkMuteRequest {
 
   @override
   String toString() {
-    return 'IsolateRequest.setSinkMute(sinkName: $sinkName, mute: $mute)';
+    return 'IsolateRequest.setSinkMute(requestId: $requestId, sinkName: $sinkName, mute: $mute)';
   }
 
   @override
@@ -536,13 +1306,15 @@ class _$SetSinkMuteRequestImpl implements SetSinkMuteRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetSinkMuteRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
             (identical(other.sinkName, sinkName) ||
                 other.sinkName == sinkName) &&
             (identical(other.mute, mute) || other.mute == mute));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, sinkName, mute);
+  int get hashCode => Object.hash(runtimeType, requestId, sinkName, mute);
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -556,45 +1328,65 @@ class _$SetSinkMuteRequestImpl implements SetSinkMuteRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sinkName, double volume) setSinkVolume,
-    required TResult Function(String sourceName, double volume) setSourceVolume,
-    required TResult Function(String sinkName, bool mute) setSinkMute,
-    required TResult Function(String sourceName, bool mute) setSourceMute,
-    required TResult Function(String sinkName) setDefaultSink,
-    required TResult Function(String sourceName) setDefaultSource,
-    required TResult Function() dispose,
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
   }) {
-    return setSinkMute(sinkName, mute);
+    return setSinkMute(requestId, sinkName, mute);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sinkName, double volume)? setSinkVolume,
-    TResult? Function(String sourceName, double volume)? setSourceVolume,
-    TResult? Function(String sinkName, bool mute)? setSinkMute,
-    TResult? Function(String sourceName, bool mute)? setSourceMute,
-    TResult? Function(String sinkName)? setDefaultSink,
-    TResult? Function(String sourceName)? setDefaultSource,
-    TResult? Function()? dispose,
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
   }) {
-    return setSinkMute?.call(sinkName, mute);
+    return setSinkMute?.call(requestId, sinkName, mute);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sinkName, double volume)? setSinkVolume,
-    TResult Function(String sourceName, double volume)? setSourceVolume,
-    TResult Function(String sinkName, bool mute)? setSinkMute,
-    TResult Function(String sourceName, bool mute)? setSourceMute,
-    TResult Function(String sinkName)? setDefaultSink,
-    TResult Function(String sourceName)? setDefaultSource,
-    TResult Function()? dispose,
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
     required TResult orElse(),
   }) {
     if (setSinkMute != null) {
-      return setSinkMute(sinkName, mute);
+      return setSinkMute(requestId, sinkName, mute);
     }
     return orElse();
   }
@@ -602,6 +1394,9 @@ class _$SetSinkMuteRequestImpl implements SetSinkMuteRequest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
     required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
     required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
     required TResult Function(SetSinkMuteRequest value) setSinkMute,
@@ -616,6 +1411,9 @@ class _$SetSinkMuteRequestImpl implements SetSinkMuteRequest {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
     TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult? Function(SetSinkMuteRequest value)? setSinkMute,
@@ -630,6 +1428,9 @@ class _$SetSinkMuteRequestImpl implements SetSinkMuteRequest {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
     TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult Function(SetSinkMuteRequest value)? setSinkMute,
@@ -648,26 +1449,32 @@ class _$SetSinkMuteRequestImpl implements SetSinkMuteRequest {
 
 abstract class SetSinkMuteRequest implements IsolateRequest {
   const factory SetSinkMuteRequest(
-      {required final String sinkName,
+      {required final int requestId,
+      required final String sinkName,
       required final bool mute}) = _$SetSinkMuteRequestImpl;
 
+  @override
+  int get requestId;
   String get sinkName;
   bool get mute;
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetSinkMuteRequestImplCopyWith<_$SetSinkMuteRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SetSourceMuteRequestImplCopyWith<$Res> {
+abstract class _$$SetSourceMuteRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
   factory _$$SetSourceMuteRequestImplCopyWith(_$SetSourceMuteRequestImpl value,
           $Res Function(_$SetSourceMuteRequestImpl) then) =
       __$$SetSourceMuteRequestImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String sourceName, bool mute});
+  $Res call({int requestId, String sourceName, bool mute});
 }
 
 /// @nodoc
@@ -683,10 +1490,15 @@ class __$$SetSourceMuteRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? requestId = null,
     Object? sourceName = null,
     Object? mute = null,
   }) {
     return _then(_$SetSourceMuteRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
       sourceName: null == sourceName
           ? _value.sourceName
           : sourceName // ignore: cast_nullable_to_non_nullable
@@ -703,8 +1515,10 @@ class __$$SetSourceMuteRequestImplCopyWithImpl<$Res>
 
 class _$SetSourceMuteRequestImpl implements SetSourceMuteRequest {
   const _$SetSourceMuteRequestImpl(
-      {required this.sourceName, required this.mute});
+      {required this.requestId, required this.sourceName, required this.mute});
 
+  @override
+  final int requestId;
   @override
   final String sourceName;
   @override
@@ -712,7 +1526,7 @@ class _$SetSourceMuteRequestImpl implements SetSourceMuteRequest {
 
   @override
   String toString() {
-    return 'IsolateRequest.setSourceMute(sourceName: $sourceName, mute: $mute)';
+    return 'IsolateRequest.setSourceMute(requestId: $requestId, sourceName: $sourceName, mute: $mute)';
   }
 
   @override
@@ -720,13 +1534,15 @@ class _$SetSourceMuteRequestImpl implements SetSourceMuteRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetSourceMuteRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
             (identical(other.sourceName, sourceName) ||
                 other.sourceName == sourceName) &&
             (identical(other.mute, mute) || other.mute == mute));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, sourceName, mute);
+  int get hashCode => Object.hash(runtimeType, requestId, sourceName, mute);
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -741,45 +1557,65 @@ class _$SetSourceMuteRequestImpl implements SetSourceMuteRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sinkName, double volume) setSinkVolume,
-    required TResult Function(String sourceName, double volume) setSourceVolume,
-    required TResult Function(String sinkName, bool mute) setSinkMute,
-    required TResult Function(String sourceName, bool mute) setSourceMute,
-    required TResult Function(String sinkName) setDefaultSink,
-    required TResult Function(String sourceName) setDefaultSource,
-    required TResult Function() dispose,
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
   }) {
-    return setSourceMute(sourceName, mute);
+    return setSourceMute(requestId, sourceName, mute);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sinkName, double volume)? setSinkVolume,
-    TResult? Function(String sourceName, double volume)? setSourceVolume,
-    TResult? Function(String sinkName, bool mute)? setSinkMute,
-    TResult? Function(String sourceName, bool mute)? setSourceMute,
-    TResult? Function(String sinkName)? setDefaultSink,
-    TResult? Function(String sourceName)? setDefaultSource,
-    TResult? Function()? dispose,
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
   }) {
-    return setSourceMute?.call(sourceName, mute);
+    return setSourceMute?.call(requestId, sourceName, mute);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sinkName, double volume)? setSinkVolume,
-    TResult Function(String sourceName, double volume)? setSourceVolume,
-    TResult Function(String sinkName, bool mute)? setSinkMute,
-    TResult Function(String sourceName, bool mute)? setSourceMute,
-    TResult Function(String sinkName)? setDefaultSink,
-    TResult Function(String sourceName)? setDefaultSource,
-    TResult Function()? dispose,
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
     required TResult orElse(),
   }) {
     if (setSourceMute != null) {
-      return setSourceMute(sourceName, mute);
+      return setSourceMute(requestId, sourceName, mute);
     }
     return orElse();
   }
@@ -787,6 +1623,9 @@ class _$SetSourceMuteRequestImpl implements SetSourceMuteRequest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
     required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
     required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
     required TResult Function(SetSinkMuteRequest value) setSinkMute,
@@ -801,6 +1640,9 @@ class _$SetSourceMuteRequestImpl implements SetSourceMuteRequest {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
     TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult? Function(SetSinkMuteRequest value)? setSinkMute,
@@ -815,6 +1657,9 @@ class _$SetSourceMuteRequestImpl implements SetSourceMuteRequest {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
     TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult Function(SetSinkMuteRequest value)? setSinkMute,
@@ -833,27 +1678,33 @@ class _$SetSourceMuteRequestImpl implements SetSourceMuteRequest {
 
 abstract class SetSourceMuteRequest implements IsolateRequest {
   const factory SetSourceMuteRequest(
-      {required final String sourceName,
+      {required final int requestId,
+      required final String sourceName,
       required final bool mute}) = _$SetSourceMuteRequestImpl;
 
+  @override
+  int get requestId;
   String get sourceName;
   bool get mute;
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetSourceMuteRequestImplCopyWith<_$SetSourceMuteRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SetDefaultSinkRequestImplCopyWith<$Res> {
+abstract class _$$SetDefaultSinkRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
   factory _$$SetDefaultSinkRequestImplCopyWith(
           _$SetDefaultSinkRequestImpl value,
           $Res Function(_$SetDefaultSinkRequestImpl) then) =
       __$$SetDefaultSinkRequestImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String sinkName});
+  $Res call({int requestId, String sinkName});
 }
 
 /// @nodoc
@@ -869,9 +1720,14 @@ class __$$SetDefaultSinkRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? requestId = null,
     Object? sinkName = null,
   }) {
     return _then(_$SetDefaultSinkRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
       sinkName: null == sinkName
           ? _value.sinkName
           : sinkName // ignore: cast_nullable_to_non_nullable
@@ -883,14 +1739,17 @@ class __$$SetDefaultSinkRequestImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SetDefaultSinkRequestImpl implements SetDefaultSinkRequest {
-  const _$SetDefaultSinkRequestImpl({required this.sinkName});
+  const _$SetDefaultSinkRequestImpl(
+      {required this.requestId, required this.sinkName});
 
+  @override
+  final int requestId;
   @override
   final String sinkName;
 
   @override
   String toString() {
-    return 'IsolateRequest.setDefaultSink(sinkName: $sinkName)';
+    return 'IsolateRequest.setDefaultSink(requestId: $requestId, sinkName: $sinkName)';
   }
 
   @override
@@ -898,12 +1757,14 @@ class _$SetDefaultSinkRequestImpl implements SetDefaultSinkRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetDefaultSinkRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
             (identical(other.sinkName, sinkName) ||
                 other.sinkName == sinkName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, sinkName);
+  int get hashCode => Object.hash(runtimeType, requestId, sinkName);
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -917,45 +1778,65 @@ class _$SetDefaultSinkRequestImpl implements SetDefaultSinkRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sinkName, double volume) setSinkVolume,
-    required TResult Function(String sourceName, double volume) setSourceVolume,
-    required TResult Function(String sinkName, bool mute) setSinkMute,
-    required TResult Function(String sourceName, bool mute) setSourceMute,
-    required TResult Function(String sinkName) setDefaultSink,
-    required TResult Function(String sourceName) setDefaultSource,
-    required TResult Function() dispose,
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
   }) {
-    return setDefaultSink(sinkName);
+    return setDefaultSink(requestId, sinkName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sinkName, double volume)? setSinkVolume,
-    TResult? Function(String sourceName, double volume)? setSourceVolume,
-    TResult? Function(String sinkName, bool mute)? setSinkMute,
-    TResult? Function(String sourceName, bool mute)? setSourceMute,
-    TResult? Function(String sinkName)? setDefaultSink,
-    TResult? Function(String sourceName)? setDefaultSource,
-    TResult? Function()? dispose,
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
   }) {
-    return setDefaultSink?.call(sinkName);
+    return setDefaultSink?.call(requestId, sinkName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sinkName, double volume)? setSinkVolume,
-    TResult Function(String sourceName, double volume)? setSourceVolume,
-    TResult Function(String sinkName, bool mute)? setSinkMute,
-    TResult Function(String sourceName, bool mute)? setSourceMute,
-    TResult Function(String sinkName)? setDefaultSink,
-    TResult Function(String sourceName)? setDefaultSource,
-    TResult Function()? dispose,
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
     required TResult orElse(),
   }) {
     if (setDefaultSink != null) {
-      return setDefaultSink(sinkName);
+      return setDefaultSink(requestId, sinkName);
     }
     return orElse();
   }
@@ -963,6 +1844,9 @@ class _$SetDefaultSinkRequestImpl implements SetDefaultSinkRequest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
     required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
     required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
     required TResult Function(SetSinkMuteRequest value) setSinkMute,
@@ -977,6 +1861,9 @@ class _$SetDefaultSinkRequestImpl implements SetDefaultSinkRequest {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
     TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult? Function(SetSinkMuteRequest value)? setSinkMute,
@@ -991,6 +1878,9 @@ class _$SetDefaultSinkRequestImpl implements SetDefaultSinkRequest {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
     TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult Function(SetSinkMuteRequest value)? setSinkMute,
@@ -1008,26 +1898,32 @@ class _$SetDefaultSinkRequestImpl implements SetDefaultSinkRequest {
 }
 
 abstract class SetDefaultSinkRequest implements IsolateRequest {
-  const factory SetDefaultSinkRequest({required final String sinkName}) =
-      _$SetDefaultSinkRequestImpl;
+  const factory SetDefaultSinkRequest(
+      {required final int requestId,
+      required final String sinkName}) = _$SetDefaultSinkRequestImpl;
 
+  @override
+  int get requestId;
   String get sinkName;
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetDefaultSinkRequestImplCopyWith<_$SetDefaultSinkRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SetDefaultSourceRequestImplCopyWith<$Res> {
+abstract class _$$SetDefaultSourceRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
   factory _$$SetDefaultSourceRequestImplCopyWith(
           _$SetDefaultSourceRequestImpl value,
           $Res Function(_$SetDefaultSourceRequestImpl) then) =
       __$$SetDefaultSourceRequestImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({String sourceName});
+  $Res call({int requestId, String sourceName});
 }
 
 /// @nodoc
@@ -1044,9 +1940,14 @@ class __$$SetDefaultSourceRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? requestId = null,
     Object? sourceName = null,
   }) {
     return _then(_$SetDefaultSourceRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
       sourceName: null == sourceName
           ? _value.sourceName
           : sourceName // ignore: cast_nullable_to_non_nullable
@@ -1058,14 +1959,17 @@ class __$$SetDefaultSourceRequestImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SetDefaultSourceRequestImpl implements SetDefaultSourceRequest {
-  const _$SetDefaultSourceRequestImpl({required this.sourceName});
+  const _$SetDefaultSourceRequestImpl(
+      {required this.requestId, required this.sourceName});
 
+  @override
+  final int requestId;
   @override
   final String sourceName;
 
   @override
   String toString() {
-    return 'IsolateRequest.setDefaultSource(sourceName: $sourceName)';
+    return 'IsolateRequest.setDefaultSource(requestId: $requestId, sourceName: $sourceName)';
   }
 
   @override
@@ -1073,12 +1977,14 @@ class _$SetDefaultSourceRequestImpl implements SetDefaultSourceRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SetDefaultSourceRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
             (identical(other.sourceName, sourceName) ||
                 other.sourceName == sourceName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, sourceName);
+  int get hashCode => Object.hash(runtimeType, requestId, sourceName);
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
@@ -1092,45 +1998,65 @@ class _$SetDefaultSourceRequestImpl implements SetDefaultSourceRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sinkName, double volume) setSinkVolume,
-    required TResult Function(String sourceName, double volume) setSourceVolume,
-    required TResult Function(String sinkName, bool mute) setSinkMute,
-    required TResult Function(String sourceName, bool mute) setSourceMute,
-    required TResult Function(String sinkName) setDefaultSink,
-    required TResult Function(String sourceName) setDefaultSource,
-    required TResult Function() dispose,
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
   }) {
-    return setDefaultSource(sourceName);
+    return setDefaultSource(requestId, sourceName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sinkName, double volume)? setSinkVolume,
-    TResult? Function(String sourceName, double volume)? setSourceVolume,
-    TResult? Function(String sinkName, bool mute)? setSinkMute,
-    TResult? Function(String sourceName, bool mute)? setSourceMute,
-    TResult? Function(String sinkName)? setDefaultSink,
-    TResult? Function(String sourceName)? setDefaultSource,
-    TResult? Function()? dispose,
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
   }) {
-    return setDefaultSource?.call(sourceName);
+    return setDefaultSource?.call(requestId, sourceName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sinkName, double volume)? setSinkVolume,
-    TResult Function(String sourceName, double volume)? setSourceVolume,
-    TResult Function(String sinkName, bool mute)? setSinkMute,
-    TResult Function(String sourceName, bool mute)? setSourceMute,
-    TResult Function(String sinkName)? setDefaultSink,
-    TResult Function(String sourceName)? setDefaultSource,
-    TResult Function()? dispose,
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
     required TResult orElse(),
   }) {
     if (setDefaultSource != null) {
-      return setDefaultSource(sourceName);
+      return setDefaultSource(requestId, sourceName);
     }
     return orElse();
   }
@@ -1138,6 +2064,9 @@ class _$SetDefaultSourceRequestImpl implements SetDefaultSourceRequest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
     required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
     required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
     required TResult Function(SetSinkMuteRequest value) setSinkMute,
@@ -1152,6 +2081,9 @@ class _$SetDefaultSourceRequestImpl implements SetDefaultSourceRequest {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
     TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult? Function(SetSinkMuteRequest value)? setSinkMute,
@@ -1166,6 +2098,9 @@ class _$SetDefaultSourceRequestImpl implements SetDefaultSourceRequest {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
     TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult Function(SetSinkMuteRequest value)? setSinkMute,
@@ -1183,23 +2118,31 @@ class _$SetDefaultSourceRequestImpl implements SetDefaultSourceRequest {
 }
 
 abstract class SetDefaultSourceRequest implements IsolateRequest {
-  const factory SetDefaultSourceRequest({required final String sourceName}) =
-      _$SetDefaultSourceRequestImpl;
+  const factory SetDefaultSourceRequest(
+      {required final int requestId,
+      required final String sourceName}) = _$SetDefaultSourceRequestImpl;
 
+  @override
+  int get requestId;
   String get sourceName;
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetDefaultSourceRequestImplCopyWith<_$SetDefaultSourceRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DisposeRequestImplCopyWith<$Res> {
+abstract class _$$DisposeRequestImplCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
   factory _$$DisposeRequestImplCopyWith(_$DisposeRequestImpl value,
           $Res Function(_$DisposeRequestImpl) then) =
       __$$DisposeRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int requestId});
 }
 
 /// @nodoc
@@ -1212,69 +2155,116 @@ class __$$DisposeRequestImplCopyWithImpl<$Res>
 
   /// Create a copy of IsolateRequest
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_$DisposeRequestImpl(
+      requestId: null == requestId
+          ? _value.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$DisposeRequestImpl implements DisposeRequest {
-  const _$DisposeRequestImpl();
+  const _$DisposeRequestImpl({required this.requestId});
+
+  @override
+  final int requestId;
 
   @override
   String toString() {
-    return 'IsolateRequest.dispose()';
+    return 'IsolateRequest.dispose(requestId: $requestId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DisposeRequestImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$DisposeRequestImpl &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DisposeRequestImplCopyWith<_$DisposeRequestImpl> get copyWith =>
+      __$$DisposeRequestImplCopyWithImpl<_$DisposeRequestImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sinkName, double volume) setSinkVolume,
-    required TResult Function(String sourceName, double volume) setSourceVolume,
-    required TResult Function(String sinkName, bool mute) setSinkMute,
-    required TResult Function(String sourceName, bool mute) setSourceMute,
-    required TResult Function(String sinkName) setDefaultSink,
-    required TResult Function(String sourceName) setDefaultSource,
-    required TResult Function() dispose,
+    required TResult Function(int requestId) getSinkList,
+    required TResult Function(int requestId) getSourceList,
+    required TResult Function(int requestId) getServerInfo,
+    required TResult Function(int requestId, String sinkName, double volume)
+        setSinkVolume,
+    required TResult Function(int requestId, String sourceName, double volume)
+        setSourceVolume,
+    required TResult Function(int requestId, String sinkName, bool mute)
+        setSinkMute,
+    required TResult Function(int requestId, String sourceName, bool mute)
+        setSourceMute,
+    required TResult Function(int requestId, String sinkName) setDefaultSink,
+    required TResult Function(int requestId, String sourceName)
+        setDefaultSource,
+    required TResult Function(int requestId) dispose,
   }) {
-    return dispose();
+    return dispose(requestId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sinkName, double volume)? setSinkVolume,
-    TResult? Function(String sourceName, double volume)? setSourceVolume,
-    TResult? Function(String sinkName, bool mute)? setSinkMute,
-    TResult? Function(String sourceName, bool mute)? setSourceMute,
-    TResult? Function(String sinkName)? setDefaultSink,
-    TResult? Function(String sourceName)? setDefaultSource,
-    TResult? Function()? dispose,
+    TResult? Function(int requestId)? getSinkList,
+    TResult? Function(int requestId)? getSourceList,
+    TResult? Function(int requestId)? getServerInfo,
+    TResult? Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult? Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult? Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult? Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult? Function(int requestId, String sinkName)? setDefaultSink,
+    TResult? Function(int requestId, String sourceName)? setDefaultSource,
+    TResult? Function(int requestId)? dispose,
   }) {
-    return dispose?.call();
+    return dispose?.call(requestId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sinkName, double volume)? setSinkVolume,
-    TResult Function(String sourceName, double volume)? setSourceVolume,
-    TResult Function(String sinkName, bool mute)? setSinkMute,
-    TResult Function(String sourceName, bool mute)? setSourceMute,
-    TResult Function(String sinkName)? setDefaultSink,
-    TResult Function(String sourceName)? setDefaultSource,
-    TResult Function()? dispose,
+    TResult Function(int requestId)? getSinkList,
+    TResult Function(int requestId)? getSourceList,
+    TResult Function(int requestId)? getServerInfo,
+    TResult Function(int requestId, String sinkName, double volume)?
+        setSinkVolume,
+    TResult Function(int requestId, String sourceName, double volume)?
+        setSourceVolume,
+    TResult Function(int requestId, String sinkName, bool mute)? setSinkMute,
+    TResult Function(int requestId, String sourceName, bool mute)?
+        setSourceMute,
+    TResult Function(int requestId, String sinkName)? setDefaultSink,
+    TResult Function(int requestId, String sourceName)? setDefaultSource,
+    TResult Function(int requestId)? dispose,
     required TResult orElse(),
   }) {
     if (dispose != null) {
-      return dispose();
+      return dispose(requestId);
     }
     return orElse();
   }
@@ -1282,6 +2272,9 @@ class _$DisposeRequestImpl implements DisposeRequest {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetSinkListRequest value) getSinkList,
+    required TResult Function(GetSourceListRequest value) getSourceList,
+    required TResult Function(GetServerInfoRequest value) getServerInfo,
     required TResult Function(SetSinkVolumeRequest value) setSinkVolume,
     required TResult Function(SetSourceVolumeRequest value) setSourceVolume,
     required TResult Function(SetSinkMuteRequest value) setSinkMute,
@@ -1296,6 +2289,9 @@ class _$DisposeRequestImpl implements DisposeRequest {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetSinkListRequest value)? getSinkList,
+    TResult? Function(GetSourceListRequest value)? getSourceList,
+    TResult? Function(GetServerInfoRequest value)? getServerInfo,
     TResult? Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult? Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult? Function(SetSinkMuteRequest value)? setSinkMute,
@@ -1310,6 +2306,9 @@ class _$DisposeRequestImpl implements DisposeRequest {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetSinkListRequest value)? getSinkList,
+    TResult Function(GetSourceListRequest value)? getSourceList,
+    TResult Function(GetServerInfoRequest value)? getServerInfo,
     TResult Function(SetSinkVolumeRequest value)? setSinkVolume,
     TResult Function(SetSourceVolumeRequest value)? setSourceVolume,
     TResult Function(SetSinkMuteRequest value)? setSinkMute,
@@ -1327,5 +2326,16 @@ class _$DisposeRequestImpl implements DisposeRequest {
 }
 
 abstract class DisposeRequest implements IsolateRequest {
-  const factory DisposeRequest() = _$DisposeRequestImpl;
+  const factory DisposeRequest({required final int requestId}) =
+      _$DisposeRequestImpl;
+
+  @override
+  int get requestId;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DisposeRequestImplCopyWith<_$DisposeRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
