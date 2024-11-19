@@ -15,7 +15,7 @@ To use this library, you will need to have Dart installed on your system. You ca
 
 ```yaml
 dependencies:
-  pulseaudio: ^0.0.4
+  pulseaudio: ^0.0.5
 ```
 
 You can also clone this repository and run the example to see how the library works in practice.
