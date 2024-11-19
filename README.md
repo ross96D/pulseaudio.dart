@@ -15,7 +15,7 @@ To use this library, you will need to have Dart installed on your system. You ca
 
 ```yaml
 dependencies:
-  pulseaudio: ^0.0.3
+  pulseaudio: ^0.0.4
 ```
 
 You can also clone this repository and run the example to see how the library works in practice.
@@ -29,18 +29,39 @@ import 'package:pulseaudio/pulseaudio.dart';
 
 void main() async {
   final client = PulseAudio();
-  client.onServerInfo.listen((event) {
+  client.onServerInfoChanged.listen((event) {
     print(event);
   });
   client.onSinkChanged.listen((event) {
     print(event);
   });
+  client.onSourceChanged.listen((event) {
+    print(event);
+  });
   await client.initialize();
+  final serverInfo = await client.getServerInfo();
+  print('Server Information:');
+  print('Name: ${serverInfo.name}');
+  print('Default Sink: ${serverInfo.defaultSinkName}');
+  print('Default Source: ${serverInfo.defaultSourceName}');
 
-  // wait 3 sec
-  await Future.delayed(const Duration(seconds: 3));
+  final sourceList = await client.getSourceList();
+  print('\nAvailable Sources:');
+  for (var source in sourceList) {
+    print('Source Name: ${source.name}, Description: ${source.description}');
+  }
+
+  final sinkList = await client.getSinkList();
+  print('\nAvailable Sinks:');
+  for (var sink in sinkList) {
+    print('Sink Name: ${sink.name}, Description: ${sink.description}');
+  }
+
+  await client.setSinkVolume(serverInfo.defaultSinkName, 0.5);
+
   client.dispose();
 }
+
 ```
 
 For more detailed usage examples, please refer to the `example` directory in this repository.
