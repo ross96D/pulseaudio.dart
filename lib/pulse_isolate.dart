@@ -159,6 +159,7 @@ class PulseIsolate {
       case pa_context_state.PA_CONTEXT_TERMINATED:
         break;
       case pa_context_state.PA_CONTEXT_FAILED:
+        // ignore: unused_local_variable
         final error = pa.pa_strerror(pa.pa_context_errno(context));
         break;
       case pa_context_state.PA_CONTEXT_UNCONNECTED:
