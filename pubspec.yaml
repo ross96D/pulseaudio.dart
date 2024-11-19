@@ -1,6 +1,6 @@
 name: pulseaudio
-description: "Native Dart client library to interact with PulseAudio"
-version: 0.0.1
+description: "This repository contains a Dart client library to interact with PulseAudio, a sound server that provides a sound system for POSIX systems. The library is written in Dart and uses Dart's FFI package to interact with the native PulseAudio library."
+version: 0.0.2
 repository: https://github.com/free-explorers/pulseaudio.dart
 
 environment:
@@ -58,7 +58,11 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/to/font-from-package
-
+  plugin:
+    platforms:
+      linux:
+        ffiPlugin: true
+        
 ffigen:
   name: 'PulseAudioBindings'
   description: 'Bindings for PulseAudio'

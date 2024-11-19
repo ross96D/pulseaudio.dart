@@ -41,7 +41,7 @@ class PulseAudio {
   }
 
   /// Stream of [PulseAudioServerInfo]
-  Stream<PulseAudioServerInfo> get onServerInfo => _broadcastStream
+  Stream<PulseAudioServerInfo> get onServerInfoChanged => _broadcastStream
       .where(
         (event) => event is OnServerInfoChangedResponse,
       )
@@ -253,7 +253,7 @@ class PulseAudio {
   }
 
   /// Set default source by name
-  void setDefaultSource(String sourceName) async {
+  Future<void> setDefaultSource(String sourceName) async {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
