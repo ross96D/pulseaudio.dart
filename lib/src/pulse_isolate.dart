@@ -3,12 +3,12 @@ import 'dart:ffi';
 import 'dart:isolate';
 
 import 'package:ffi/ffi.dart';
-import 'package:pulseaudio/generated_bindings.dart';
-import 'package:pulseaudio/model/isolate_request.dart';
-import 'package:pulseaudio/model/isolate_response.dart';
-import 'package:pulseaudio/model/server_info.dart';
-import 'package:pulseaudio/model/sink.dart';
-import 'package:pulseaudio/model/source.dart';
+import 'package:pulseaudio/src/generated_bindings.dart';
+import 'package:pulseaudio/src/model/isolate_request.dart';
+import 'package:pulseaudio/src/model/isolate_response.dart';
+import 'package:pulseaudio/src/model/server_info.dart';
+import 'package:pulseaudio/src/model/sink.dart';
+import 'package:pulseaudio/src/model/source.dart';
 
 final PulseAudioBindings pa =
     PulseAudioBindings(DynamicLibrary.open('libpulse.so'));

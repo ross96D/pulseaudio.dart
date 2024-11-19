@@ -356,8 +356,6 @@ abstract class _$$OnServerInfoChangedResponseImplCopyWith<$Res> {
       __$$OnServerInfoChangedResponseImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PulseAudioServerInfo serverInfo});
-
-  $PulseAudioServerInfoCopyWith<$Res> get serverInfo;
 }
 
 /// @nodoc
@@ -375,24 +373,14 @@ class __$$OnServerInfoChangedResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? serverInfo = null,
+    Object? serverInfo = freezed,
   }) {
     return _then(_$OnServerInfoChangedResponseImpl(
-      serverInfo: null == serverInfo
+      serverInfo: freezed == serverInfo
           ? _value.serverInfo
           : serverInfo // ignore: cast_nullable_to_non_nullable
               as PulseAudioServerInfo,
     ));
-  }
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PulseAudioServerInfoCopyWith<$Res> get serverInfo {
-    return $PulseAudioServerInfoCopyWith<$Res>(_value.serverInfo, (value) {
-      return _then(_value.copyWith(serverInfo: value));
-    });
   }
 }
 
@@ -414,12 +402,13 @@ class _$OnServerInfoChangedResponseImpl implements OnServerInfoChangedResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnServerInfoChangedResponseImpl &&
-            (identical(other.serverInfo, serverInfo) ||
-                other.serverInfo == serverInfo));
+            const DeepCollectionEquality()
+                .equals(other.serverInfo, serverInfo));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, serverInfo);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(serverInfo));
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -598,8 +587,6 @@ abstract class _$$OnSinkChangedResponseImplCopyWith<$Res> {
       __$$OnSinkChangedResponseImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PulseAudioSink sink});
-
-  $PulseAudioSinkCopyWith<$Res> get sink;
 }
 
 /// @nodoc
@@ -615,24 +602,14 @@ class __$$OnSinkChangedResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sink = null,
+    Object? sink = freezed,
   }) {
     return _then(_$OnSinkChangedResponseImpl(
-      sink: null == sink
+      sink: freezed == sink
           ? _value.sink
           : sink // ignore: cast_nullable_to_non_nullable
               as PulseAudioSink,
     ));
-  }
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PulseAudioSinkCopyWith<$Res> get sink {
-    return $PulseAudioSinkCopyWith<$Res>(_value.sink, (value) {
-      return _then(_value.copyWith(sink: value));
-    });
   }
 }
 
@@ -654,11 +631,12 @@ class _$OnSinkChangedResponseImpl implements OnSinkChangedResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnSinkChangedResponseImpl &&
-            (identical(other.sink, sink) || other.sink == sink));
+            const DeepCollectionEquality().equals(other.sink, sink));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, sink);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(sink));
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -1062,8 +1040,6 @@ abstract class _$$OnSourceChangedResponseImplCopyWith<$Res> {
       __$$OnSourceChangedResponseImplCopyWithImpl<$Res>;
   @useResult
   $Res call({PulseAudioSource source});
-
-  $PulseAudioSourceCopyWith<$Res> get source;
 }
 
 /// @nodoc
@@ -1080,24 +1056,14 @@ class __$$OnSourceChangedResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? source = null,
+    Object? source = freezed,
   }) {
     return _then(_$OnSourceChangedResponseImpl(
-      source: null == source
+      source: freezed == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
               as PulseAudioSource,
     ));
-  }
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PulseAudioSourceCopyWith<$Res> get source {
-    return $PulseAudioSourceCopyWith<$Res>(_value.source, (value) {
-      return _then(_value.copyWith(source: value));
-    });
   }
 }
 
@@ -1119,11 +1085,12 @@ class _$OnSourceChangedResponseImpl implements OnSourceChangedResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnSourceChangedResponseImpl &&
-            (identical(other.source, source) || other.source == source));
+            const DeepCollectionEquality().equals(other.source, source));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, source);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(source));
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
@@ -2016,8 +1983,6 @@ abstract class _$$OnServerInfoResponseImplCopyWith<$Res> {
       __$$OnServerInfoResponseImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int requestId, PulseAudioServerInfo info});
-
-  $PulseAudioServerInfoCopyWith<$Res> get info;
 }
 
 /// @nodoc
@@ -2034,28 +1999,18 @@ class __$$OnServerInfoResponseImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? requestId = null,
-    Object? info = null,
+    Object? info = freezed,
   }) {
     return _then(_$OnServerInfoResponseImpl(
       requestId: null == requestId
           ? _value.requestId
           : requestId // ignore: cast_nullable_to_non_nullable
               as int,
-      info: null == info
+      info: freezed == info
           ? _value.info
           : info // ignore: cast_nullable_to_non_nullable
               as PulseAudioServerInfo,
     ));
-  }
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PulseAudioServerInfoCopyWith<$Res> get info {
-    return $PulseAudioServerInfoCopyWith<$Res>(_value.info, (value) {
-      return _then(_value.copyWith(info: value));
-    });
   }
 }
 
@@ -2082,11 +2037,12 @@ class _$OnServerInfoResponseImpl implements OnServerInfoResponse {
             other is _$OnServerInfoResponseImpl &&
             (identical(other.requestId, requestId) ||
                 other.requestId == requestId) &&
-            (identical(other.info, info) || other.info == info));
+            const DeepCollectionEquality().equals(other.info, info));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, requestId, info);
+  int get hashCode => Object.hash(
+      runtimeType, requestId, const DeepCollectionEquality().hash(info));
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.

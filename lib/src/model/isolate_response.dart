@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pulseaudio/model/server_info.dart';
-import 'package:pulseaudio/model/sink.dart';
-import 'package:pulseaudio/model/source.dart';
+import 'package:pulseaudio/src/model/server_info.dart';
+import 'package:pulseaudio/src/model/sink.dart';
+import 'package:pulseaudio/src/model/source.dart';
 
 part 'isolate_response.freezed.dart';
 

@@ -2,8 +2,8 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:pulseaudio/generated_bindings.dart';
-import 'package:pulseaudio/pulse_isolate.dart';
+import 'package:pulseaudio/src/generated_bindings.dart';
+import 'package:pulseaudio/src/pulse_isolate.dart';
 
 part 'sink.freezed.dart';
 

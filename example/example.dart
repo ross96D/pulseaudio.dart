@@ -1,7 +1,7 @@
 import 'package:pulseaudio/pulseaudio.dart';
 
 void main() async {
-  final client = PulseAudio();
+  final client = PulseAudioClient();
   client.onServerInfoChanged.listen((event) {
     print(event);
   });

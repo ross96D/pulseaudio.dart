@@ -1,3 +1,6 @@
+## 0.0.6
+* refactor to improve documentation
+
 ## 0.0.5
 * fix linux platform
 

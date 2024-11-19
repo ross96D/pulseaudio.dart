@@ -15,7 +15,7 @@ To use this library, you will need to have Dart installed on your system. You ca
 
 ```yaml
 dependencies:
-  pulseaudio: ^0.0.5
+  pulseaudio: ^0.0.6
 ```
 
 You can also clone this repository and run the example to see how the library works in practice.
@@ -28,7 +28,7 @@ Here is a simple example of how to use the library to get information about the 
 import 'package:pulseaudio/pulseaudio.dart';
 
 void main() async {
-  final client = PulseAudio();
+  final client = PulseAudioClient();
   client.onServerInfoChanged.listen((event) {
     print(event);
   });
@@ -61,7 +61,6 @@ void main() async {
 
   client.dispose();
 }
-
 ```
 
 For more detailed usage examples, please refer to the `example` directory in this repository.
