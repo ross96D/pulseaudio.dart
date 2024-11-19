@@ -5,7 +5,7 @@ repository: https://github.com/free-explorers/pulseaudio.dart
 
 environment:
   sdk: ^3.5.1
-  flutter: ">=1.17.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:
