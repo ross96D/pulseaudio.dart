@@ -1,3 +1,6 @@
+## 0.0.7
+* link dynamic lib to `libpulse.so.0` instead of `libpulse.so`
+
 ## 0.0.6
 * refactor to improve documentation
 

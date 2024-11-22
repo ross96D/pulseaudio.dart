@@ -11,7 +11,7 @@ import 'package:pulseaudio/src/model/sink.dart';
 import 'package:pulseaudio/src/model/source.dart';
 
 final PulseAudioBindings pa =
-    PulseAudioBindings(DynamicLibrary.open('libpulse.so'));
+    PulseAudioBindings(DynamicLibrary.open('libpulse.so.0'));
 
 class PulseIsolate {
   static PulseIsolate? _instance;
