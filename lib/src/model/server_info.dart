@@ -5,7 +5,7 @@ import 'package:pulseaudio/src/generated_bindings.dart';
 part 'server_info.freezed.dart';
 
 @freezed
-class PulseAudioServerInfo with _$PulseAudioServerInfo {
+abstract class PulseAudioServerInfo with _$PulseAudioServerInfo {
   const factory PulseAudioServerInfo({
     required String name,
     required String version,
