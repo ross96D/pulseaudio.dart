@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,101 +10,65 @@ part of 'source.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PulseAudioSource {
-  int get index => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  bool get mute => throw _privateConstructorUsedError;
-  double get volume => throw _privateConstructorUsedError;
+  int get index;
+  String get name;
+  String get description;
+  bool get mute;
+  double get volume;
 
   /// Create a copy of PulseAudioSource
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PulseAudioSourceCopyWith<PulseAudioSource> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PulseAudioSourceCopyWith<$Res> {
-  factory $PulseAudioSourceCopyWith(
-          PulseAudioSource value, $Res Function(PulseAudioSource) then) =
-      _$PulseAudioSourceCopyWithImpl<$Res, PulseAudioSource>;
-  @useResult
-  $Res call(
-      {int index, String name, String description, bool mute, double volume});
-}
-
-/// @nodoc
-class _$PulseAudioSourceCopyWithImpl<$Res, $Val extends PulseAudioSource>
-    implements $PulseAudioSourceCopyWith<$Res> {
-  _$PulseAudioSourceCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of PulseAudioSource
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $PulseAudioSourceCopyWith<PulseAudioSource> get copyWith =>
+      _$PulseAudioSourceCopyWithImpl<PulseAudioSource>(
+          this as PulseAudioSource, _$identity);
+
   @override
-  $Res call({
-    Object? index = null,
-    Object? name = null,
-    Object? description = null,
-    Object? mute = null,
-    Object? volume = null,
-  }) {
-    return _then(_value.copyWith(
-      index: null == index
-          ? _value.index
-          : index // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      mute: null == mute
-          ? _value.mute
-          : mute // ignore: cast_nullable_to_non_nullable
-              as bool,
-      volume: null == volume
-          ? _value.volume
-          : volume // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is PulseAudioSource &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.mute, mute) || other.mute == mute) &&
+            (identical(other.volume, volume) || other.volume == volume));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, index, name, description, mute, volume);
+
+  @override
+  String toString() {
+    return 'PulseAudioSource(index: $index, name: $name, description: $description, mute: $mute, volume: $volume)';
   }
 }
 
 /// @nodoc
-abstract class _$$PulseAudioSourceImplCopyWith<$Res>
-    implements $PulseAudioSourceCopyWith<$Res> {
-  factory _$$PulseAudioSourceImplCopyWith(_$PulseAudioSourceImpl value,
-          $Res Function(_$PulseAudioSourceImpl) then) =
-      __$$PulseAudioSourceImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $PulseAudioSourceCopyWith<$Res> {
+  factory $PulseAudioSourceCopyWith(
+          PulseAudioSource value, $Res Function(PulseAudioSource) _then) =
+      _$PulseAudioSourceCopyWithImpl;
   @useResult
   $Res call(
       {int index, String name, String description, bool mute, double volume});
 }
 
 /// @nodoc
-class __$$PulseAudioSourceImplCopyWithImpl<$Res>
-    extends _$PulseAudioSourceCopyWithImpl<$Res, _$PulseAudioSourceImpl>
-    implements _$$PulseAudioSourceImplCopyWith<$Res> {
-  __$$PulseAudioSourceImplCopyWithImpl(_$PulseAudioSourceImpl _value,
-      $Res Function(_$PulseAudioSourceImpl) _then)
-      : super(_value, _then);
+class _$PulseAudioSourceCopyWithImpl<$Res>
+    implements $PulseAudioSourceCopyWith<$Res> {
+  _$PulseAudioSourceCopyWithImpl(this._self, this._then);
+
+  final PulseAudioSource _self;
+  final $Res Function(PulseAudioSource) _then;
 
   /// Create a copy of PulseAudioSource
   /// with the given fields replaced by the non-null parameter values.
@@ -116,25 +81,25 @@ class __$$PulseAudioSourceImplCopyWithImpl<$Res>
     Object? mute = null,
     Object? volume = null,
   }) {
-    return _then(_$PulseAudioSourceImpl(
+    return _then(_self.copyWith(
       index: null == index
-          ? _value.index
+          ? _self.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
       mute: null == mute
-          ? _value.mute
+          ? _self.mute
           : mute // ignore: cast_nullable_to_non_nullable
               as bool,
       volume: null == volume
-          ? _value.volume
+          ? _self.volume
           : volume // ignore: cast_nullable_to_non_nullable
               as double,
     ));
@@ -143,8 +108,8 @@ class __$$PulseAudioSourceImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PulseAudioSourceImpl implements _PulseAudioSource {
-  const _$PulseAudioSourceImpl(
+class _PulseAudioSource implements PulseAudioSource {
+  const _PulseAudioSource(
       {required this.index,
       required this.name,
       required this.description,
@@ -162,16 +127,19 @@ class _$PulseAudioSourceImpl implements _PulseAudioSource {
   @override
   final double volume;
 
+  /// Create a copy of PulseAudioSource
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'PulseAudioSource(index: $index, name: $name, description: $description, mute: $mute, volume: $volume)';
-  }
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$PulseAudioSourceCopyWith<_PulseAudioSource> get copyWith =>
+      __$PulseAudioSourceCopyWithImpl<_PulseAudioSource>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PulseAudioSourceImpl &&
+            other is _PulseAudioSource &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -184,39 +152,66 @@ class _$PulseAudioSourceImpl implements _PulseAudioSource {
   int get hashCode =>
       Object.hash(runtimeType, index, name, description, mute, volume);
 
+  @override
+  String toString() {
+    return 'PulseAudioSource(index: $index, name: $name, description: $description, mute: $mute, volume: $volume)';
+  }
+}
+
+/// @nodoc
+abstract mixin class _$PulseAudioSourceCopyWith<$Res>
+    implements $PulseAudioSourceCopyWith<$Res> {
+  factory _$PulseAudioSourceCopyWith(
+          _PulseAudioSource value, $Res Function(_PulseAudioSource) _then) =
+      __$PulseAudioSourceCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {int index, String name, String description, bool mute, double volume});
+}
+
+/// @nodoc
+class __$PulseAudioSourceCopyWithImpl<$Res>
+    implements _$PulseAudioSourceCopyWith<$Res> {
+  __$PulseAudioSourceCopyWithImpl(this._self, this._then);
+
+  final _PulseAudioSource _self;
+  final $Res Function(_PulseAudioSource) _then;
+
   /// Create a copy of PulseAudioSource
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PulseAudioSourceImplCopyWith<_$PulseAudioSourceImpl> get copyWith =>
-      __$$PulseAudioSourceImplCopyWithImpl<_$PulseAudioSourceImpl>(
-          this, _$identity);
+  $Res call({
+    Object? index = null,
+    Object? name = null,
+    Object? description = null,
+    Object? mute = null,
+    Object? volume = null,
+  }) {
+    return _then(_PulseAudioSource(
+      index: null == index
+          ? _self.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      mute: null == mute
+          ? _self.mute
+          : mute // ignore: cast_nullable_to_non_nullable
+              as bool,
+      volume: null == volume
+          ? _self.volume
+          : volume // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
 }
 
-abstract class _PulseAudioSource implements PulseAudioSource {
-  const factory _PulseAudioSource(
-      {required final int index,
-      required final String name,
-      required final String description,
-      required final bool mute,
-      required final double volume}) = _$PulseAudioSourceImpl;
-
-  @override
-  int get index;
-  @override
-  String get name;
-  @override
-  String get description;
-  @override
-  bool get mute;
-  @override
-  double get volume;
-
-  /// Create a copy of PulseAudioSource
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PulseAudioSourceImplCopyWith<_$PulseAudioSourceImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on
