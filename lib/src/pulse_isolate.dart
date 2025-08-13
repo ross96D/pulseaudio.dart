@@ -12,7 +12,7 @@ import 'package:pulseaudio/src/model/sink.dart';
 import 'package:pulseaudio/src/model/sink_input.dart';
 import 'package:pulseaudio/src/model/source.dart';
 
-final PulseAudioBindings pa = PulseAudioBindings(DynamicLibrary.open('libpulse.so.0'));
+late final PulseAudioBindings pa;
 
 class PulseIsolate {
   static PulseIsolate? _instance;
@@ -32,6 +32,8 @@ class PulseIsolate {
 
   factory PulseIsolate(SendPort sendPort, String applicationName) {
     if (_instance != null) return _instance!;
+    pa = PulseAudioBindings(DynamicLibrary.open('libpulse.so.0'));
+
     final mainloop = pa.pa_mainloop_new();
     final mainloopApi = pa.pa_mainloop_get_api(mainloop);
     final context = pa.pa_context_new(mainloopApi, applicationName.toNativeUtf8().cast());
