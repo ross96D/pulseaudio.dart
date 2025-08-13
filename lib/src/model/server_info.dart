@@ -4,7 +4,7 @@ import 'package:pulseaudio/src/generated_bindings.dart';
 
 part 'server_info.freezed.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 abstract class PulseAudioServerInfo with _$PulseAudioServerInfo {
   const factory PulseAudioServerInfo({
     required String name,

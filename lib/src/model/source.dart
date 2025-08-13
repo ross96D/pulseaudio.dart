@@ -7,7 +7,7 @@ import 'package:pulseaudio/src/pulse_isolate.dart';
 
 part 'source.freezed.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 abstract class PulseAudioSource with _$PulseAudioSource {
   const factory PulseAudioSource({
     required int index,

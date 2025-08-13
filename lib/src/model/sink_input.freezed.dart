@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sink.dart';
+part of 'sink_input.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,72 +13,84 @@ part of 'sink.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$PulseAudioSink {
+mixin _$PulseAudioSinkInput {
   int get index;
   String get name;
-  String get description;
   bool get mute;
   double get volume;
+  int get clientIdx;
+  int get sinkIdx;
+  PropList get props;
 
-  /// Create a copy of PulseAudioSink
+  /// Create a copy of PulseAudioSinkInput
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $PulseAudioSinkCopyWith<PulseAudioSink> get copyWith =>
-      _$PulseAudioSinkCopyWithImpl<PulseAudioSink>(
-          this as PulseAudioSink, _$identity);
+  $PulseAudioSinkInputCopyWith<PulseAudioSinkInput> get copyWith =>
+      _$PulseAudioSinkInputCopyWithImpl<PulseAudioSinkInput>(
+          this as PulseAudioSinkInput, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is PulseAudioSink &&
+            other is PulseAudioSinkInput &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.mute, mute) || other.mute == mute) &&
-            (identical(other.volume, volume) || other.volume == volume));
+            (identical(other.volume, volume) || other.volume == volume) &&
+            (identical(other.clientIdx, clientIdx) ||
+                other.clientIdx == clientIdx) &&
+            (identical(other.sinkIdx, sinkIdx) || other.sinkIdx == sinkIdx) &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, index, name, description, mute, volume);
+  int get hashCode => Object.hash(runtimeType, index, name, mute, volume,
+      clientIdx, sinkIdx, const DeepCollectionEquality().hash(props));
 
   @override
   String toString() {
-    return 'PulseAudioSink(index: $index, name: $name, description: $description, mute: $mute, volume: $volume)';
+    return 'PulseAudioSinkInput(index: $index, name: $name, mute: $mute, volume: $volume, clientIdx: $clientIdx, sinkIdx: $sinkIdx, props: $props)';
   }
 }
 
 /// @nodoc
-abstract mixin class $PulseAudioSinkCopyWith<$Res> {
-  factory $PulseAudioSinkCopyWith(
-          PulseAudioSink value, $Res Function(PulseAudioSink) _then) =
-      _$PulseAudioSinkCopyWithImpl;
+abstract mixin class $PulseAudioSinkInputCopyWith<$Res> {
+  factory $PulseAudioSinkInputCopyWith(
+          PulseAudioSinkInput value, $Res Function(PulseAudioSinkInput) _then) =
+      _$PulseAudioSinkInputCopyWithImpl;
   @useResult
   $Res call(
-      {int index, String name, String description, bool mute, double volume});
+      {int index,
+      String name,
+      bool mute,
+      double volume,
+      int clientIdx,
+      int sinkIdx,
+      PropList props});
 }
 
 /// @nodoc
-class _$PulseAudioSinkCopyWithImpl<$Res>
-    implements $PulseAudioSinkCopyWith<$Res> {
-  _$PulseAudioSinkCopyWithImpl(this._self, this._then);
+class _$PulseAudioSinkInputCopyWithImpl<$Res>
+    implements $PulseAudioSinkInputCopyWith<$Res> {
+  _$PulseAudioSinkInputCopyWithImpl(this._self, this._then);
 
-  final PulseAudioSink _self;
-  final $Res Function(PulseAudioSink) _then;
+  final PulseAudioSinkInput _self;
+  final $Res Function(PulseAudioSinkInput) _then;
 
-  /// Create a copy of PulseAudioSink
+  /// Create a copy of PulseAudioSinkInput
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? index = null,
     Object? name = null,
-    Object? description = null,
     Object? mute = null,
     Object? volume = null,
+    Object? clientIdx = null,
+    Object? sinkIdx = null,
+    Object? props = null,
   }) {
     return _then(_self.copyWith(
       index: null == index
@@ -89,10 +101,6 @@ class _$PulseAudioSinkCopyWithImpl<$Res>
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
       mute: null == mute
           ? _self.mute
           : mute // ignore: cast_nullable_to_non_nullable
@@ -101,12 +109,24 @@ class _$PulseAudioSinkCopyWithImpl<$Res>
           ? _self.volume
           : volume // ignore: cast_nullable_to_non_nullable
               as double,
+      clientIdx: null == clientIdx
+          ? _self.clientIdx
+          : clientIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+      sinkIdx: null == sinkIdx
+          ? _self.sinkIdx
+          : sinkIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+      props: null == props
+          ? _self.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as PropList,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [PulseAudioSink].
-extension PulseAudioSinkPatterns on PulseAudioSink {
+/// Adds pattern-matching-related methods to [PulseAudioSinkInput].
+extension PulseAudioSinkInputPatterns on PulseAudioSinkInput {
   /// A variant of `map` that fallback to returning `orElse`.
   ///
   /// It is equivalent to doing:
@@ -121,12 +141,12 @@ extension PulseAudioSinkPatterns on PulseAudioSink {
 
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PulseAudioSink value)? $default, {
+    TResult Function(_PulseAudioSinkInput value)? $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _PulseAudioSink() when $default != null:
+      case _PulseAudioSinkInput() when $default != null:
         return $default(_that);
       case _:
         return orElse();
@@ -148,11 +168,11 @@ extension PulseAudioSinkPatterns on PulseAudioSink {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_PulseAudioSink value) $default,
+    TResult Function(_PulseAudioSinkInput value) $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PulseAudioSink():
+      case _PulseAudioSinkInput():
         return $default(_that);
       case _:
         throw StateError('Unexpected subclass');
@@ -173,11 +193,11 @@ extension PulseAudioSinkPatterns on PulseAudioSink {
 
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_PulseAudioSink value)? $default,
+    TResult? Function(_PulseAudioSinkInput value)? $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PulseAudioSink() when $default != null:
+      case _PulseAudioSinkInput() when $default != null:
         return $default(_that);
       case _:
         return null;
@@ -198,16 +218,16 @@ extension PulseAudioSinkPatterns on PulseAudioSink {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(int index, String name, String description, bool mute,
-            double volume)?
+    TResult Function(int index, String name, bool mute, double volume,
+            int clientIdx, int sinkIdx, PropList props)?
         $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
-      case _PulseAudioSink() when $default != null:
-        return $default(_that.index, _that.name, _that.description, _that.mute,
-            _that.volume);
+      case _PulseAudioSinkInput() when $default != null:
+        return $default(_that.index, _that.name, _that.mute, _that.volume,
+            _that.clientIdx, _that.sinkIdx, _that.props);
       case _:
         return orElse();
     }
@@ -228,15 +248,15 @@ extension PulseAudioSinkPatterns on PulseAudioSink {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(int index, String name, String description, bool mute,
-            double volume)
+    TResult Function(int index, String name, bool mute, double volume,
+            int clientIdx, int sinkIdx, PropList props)
         $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PulseAudioSink():
-        return $default(_that.index, _that.name, _that.description, _that.mute,
-            _that.volume);
+      case _PulseAudioSinkInput():
+        return $default(_that.index, _that.name, _that.mute, _that.volume,
+            _that.clientIdx, _that.sinkIdx, _that.props);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -256,15 +276,15 @@ extension PulseAudioSinkPatterns on PulseAudioSink {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(int index, String name, String description, bool mute,
-            double volume)?
+    TResult? Function(int index, String name, bool mute, double volume,
+            int clientIdx, int sinkIdx, PropList props)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
-      case _PulseAudioSink() when $default != null:
-        return $default(_that.index, _that.name, _that.description, _that.mute,
-            _that.volume);
+      case _PulseAudioSinkInput() when $default != null:
+        return $default(_that.index, _that.name, _that.mute, _that.volume,
+            _that.clientIdx, _that.sinkIdx, _that.props);
       case _:
         return null;
     }
@@ -273,88 +293,105 @@ extension PulseAudioSinkPatterns on PulseAudioSink {
 
 /// @nodoc
 
-class _PulseAudioSink implements PulseAudioSink {
-  const _PulseAudioSink(
+class _PulseAudioSinkInput implements PulseAudioSinkInput {
+  const _PulseAudioSinkInput(
       {required this.index,
       required this.name,
-      required this.description,
       required this.mute,
-      required this.volume});
+      required this.volume,
+      required this.clientIdx,
+      required this.sinkIdx,
+      required this.props});
 
   @override
   final int index;
   @override
   final String name;
   @override
-  final String description;
-  @override
   final bool mute;
   @override
   final double volume;
+  @override
+  final int clientIdx;
+  @override
+  final int sinkIdx;
+  @override
+  final PropList props;
 
-  /// Create a copy of PulseAudioSink
+  /// Create a copy of PulseAudioSinkInput
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  _$PulseAudioSinkCopyWith<_PulseAudioSink> get copyWith =>
-      __$PulseAudioSinkCopyWithImpl<_PulseAudioSink>(this, _$identity);
+  _$PulseAudioSinkInputCopyWith<_PulseAudioSinkInput> get copyWith =>
+      __$PulseAudioSinkInputCopyWithImpl<_PulseAudioSinkInput>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PulseAudioSink &&
+            other is _PulseAudioSinkInput &&
             (identical(other.index, index) || other.index == index) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.mute, mute) || other.mute == mute) &&
-            (identical(other.volume, volume) || other.volume == volume));
+            (identical(other.volume, volume) || other.volume == volume) &&
+            (identical(other.clientIdx, clientIdx) ||
+                other.clientIdx == clientIdx) &&
+            (identical(other.sinkIdx, sinkIdx) || other.sinkIdx == sinkIdx) &&
+            const DeepCollectionEquality().equals(other.props, props));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, index, name, description, mute, volume);
+  int get hashCode => Object.hash(runtimeType, index, name, mute, volume,
+      clientIdx, sinkIdx, const DeepCollectionEquality().hash(props));
 
   @override
   String toString() {
-    return 'PulseAudioSink(index: $index, name: $name, description: $description, mute: $mute, volume: $volume)';
+    return 'PulseAudioSinkInput(index: $index, name: $name, mute: $mute, volume: $volume, clientIdx: $clientIdx, sinkIdx: $sinkIdx, props: $props)';
   }
 }
 
 /// @nodoc
-abstract mixin class _$PulseAudioSinkCopyWith<$Res>
-    implements $PulseAudioSinkCopyWith<$Res> {
-  factory _$PulseAudioSinkCopyWith(
-          _PulseAudioSink value, $Res Function(_PulseAudioSink) _then) =
-      __$PulseAudioSinkCopyWithImpl;
+abstract mixin class _$PulseAudioSinkInputCopyWith<$Res>
+    implements $PulseAudioSinkInputCopyWith<$Res> {
+  factory _$PulseAudioSinkInputCopyWith(_PulseAudioSinkInput value,
+          $Res Function(_PulseAudioSinkInput) _then) =
+      __$PulseAudioSinkInputCopyWithImpl;
   @override
   @useResult
   $Res call(
-      {int index, String name, String description, bool mute, double volume});
+      {int index,
+      String name,
+      bool mute,
+      double volume,
+      int clientIdx,
+      int sinkIdx,
+      PropList props});
 }
 
 /// @nodoc
-class __$PulseAudioSinkCopyWithImpl<$Res>
-    implements _$PulseAudioSinkCopyWith<$Res> {
-  __$PulseAudioSinkCopyWithImpl(this._self, this._then);
+class __$PulseAudioSinkInputCopyWithImpl<$Res>
+    implements _$PulseAudioSinkInputCopyWith<$Res> {
+  __$PulseAudioSinkInputCopyWithImpl(this._self, this._then);
 
-  final _PulseAudioSink _self;
-  final $Res Function(_PulseAudioSink) _then;
+  final _PulseAudioSinkInput _self;
+  final $Res Function(_PulseAudioSinkInput) _then;
 
-  /// Create a copy of PulseAudioSink
+  /// Create a copy of PulseAudioSinkInput
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? index = null,
     Object? name = null,
-    Object? description = null,
     Object? mute = null,
     Object? volume = null,
+    Object? clientIdx = null,
+    Object? sinkIdx = null,
+    Object? props = null,
   }) {
-    return _then(_PulseAudioSink(
+    return _then(_PulseAudioSinkInput(
       index: null == index
           ? _self.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -362,10 +399,6 @@ class __$PulseAudioSinkCopyWithImpl<$Res>
       name: null == name
           ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _self.description
-          : description // ignore: cast_nullable_to_non_nullable
               as String,
       mute: null == mute
           ? _self.mute
@@ -375,6 +408,18 @@ class __$PulseAudioSinkCopyWithImpl<$Res>
           ? _self.volume
           : volume // ignore: cast_nullable_to_non_nullable
               as double,
+      clientIdx: null == clientIdx
+          ? _self.clientIdx
+          : clientIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+      sinkIdx: null == sinkIdx
+          ? _self.sinkIdx
+          : sinkIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+      props: null == props
+          ? _self.props
+          : props // ignore: cast_nullable_to_non_nullable
+              as PropList,
     ));
   }
 }

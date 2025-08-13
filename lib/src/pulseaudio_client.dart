@@ -5,9 +5,9 @@
 /// devices). The library also provides streams for listening to changes in
 /// server information, sinks, and sources.
 ///
-/// To use this library, create an instance of [PulseAudioClient], then call
+/// To use this library, create an instance of [PulseAudio], then call
 /// [initialize] to start the communication with the PulseAudio server. After
-/// that, you can use the various methods and streams provided by [PulseAudioClient]
+/// that, you can use the various methods and streams provided by [PulseAudio]
 /// to interact with the server.
 ///
 /// This library uses Dart's isolates to communicate with the PulseAudio
@@ -18,18 +18,20 @@ library pulseaudio;
 import 'dart:async';
 import 'dart:isolate';
 
+import 'package:pulseaudio/src/model/client.dart';
 import 'package:pulseaudio/src/model/isolate_request.dart';
 import 'package:pulseaudio/src/model/isolate_response.dart';
 import 'package:pulseaudio/src/model/server_info.dart';
 import 'package:pulseaudio/src/model/sink.dart';
+import 'package:pulseaudio/src/model/sink_input.dart';
 import 'package:pulseaudio/src/model/source.dart';
 import 'package:pulseaudio/src/pulse_isolate.dart';
 
 /// A class for interacting with the PulseAudio sound server.
-class PulseAudioClient {
-  static PulseAudioClient? _instance;
+class PulseAudio {
+  static PulseAudio? _instance;
 
-  PulseAudioClient._(this._receiverPort, this._broadcastStream);
+  PulseAudio._(this._receiverPort, this._broadcastStream);
   final ReceivePort _receiverPort;
   late final SendPort _sendPort;
   final Stream<dynamic> _broadcastStream;
@@ -43,17 +45,17 @@ class PulseAudioClient {
   /// Stream of [PulseAudioServerInfo]
   Stream<PulseAudioServerInfo> get onServerInfoChanged => _broadcastStream
       .where(
-        (event) => event is OnServerInfoChangedResponse,
+        (event) => event is OnServerInfoChangedStream,
       )
-      .cast<OnServerInfoChangedResponse>()
+      .cast<OnServerInfoChangedStream>()
       .map((message) => message.serverInfo);
 
   /// Stream of [PulseAudioSink]
   Stream<PulseAudioSink> get onSinkChanged => _broadcastStream
       .where((message) {
-        return message is OnSinkChangedResponse;
+        return message is OnSinkChangedStream;
       })
-      .cast<OnSinkChangedResponse>()
+      .cast<OnSinkChangedStream>()
       .map((message) {
         return message.sink;
       });
@@ -61,9 +63,9 @@ class PulseAudioClient {
   /// Stream of [PulseAudioSource]
   Stream<PulseAudioSource> get onSourceChanged => _broadcastStream
       .where((message) {
-        return message is OnSourceChangedResponse;
+        return message is OnSourceChangedStream;
       })
-      .cast<OnSourceChangedResponse>()
+      .cast<OnSourceChangedStream>()
       .map((message) {
         return message.source;
       });
@@ -71,9 +73,9 @@ class PulseAudioClient {
   /// When a sink is removed
   Stream<int> get onSinkRemoved => _broadcastStream
       .where((message) {
-        return message is OnSinkRemovedResponse;
+        return message is OnSinkRemovedStream;
       })
-      .cast<OnSinkRemovedResponse>()
+      .cast<OnSinkRemovedStream>()
       .map((message) {
         return message.index;
       });
@@ -81,9 +83,9 @@ class PulseAudioClient {
   /// When a source is removed
   Stream<int> get onSourceRemoved => _broadcastStream
       .where((message) {
-        return message is OnSourceRemovedResponse;
+        return message is OnSourceRemovedStream;
       })
-      .cast<OnSourceRemovedResponse>()
+      .cast<OnSourceRemovedStream>()
       .map((message) {
         return message.index;
       });
@@ -92,11 +94,11 @@ class PulseAudioClient {
 
   bool _initializizationInProgress = false;
 
-  factory PulseAudioClient() {
+  factory PulseAudio() {
     if (_instance != null) return _instance!;
     final receivePort = ReceivePort();
     final broadcast = receivePort.asBroadcastStream();
-    _instance = PulseAudioClient._(
+    _instance = PulseAudio._(
       receivePort,
       broadcast,
     );
@@ -104,7 +106,7 @@ class PulseAudioClient {
   }
 
   /// Initializes the PulseAudio connection.
-  Future<void> initialize() async {
+  Future<void> initialize(String applicationName) async {
     if (_initializedCompleter.isCompleted) return;
     if (_initializizationInProgress) return await _initializedCompleter.future;
     _initializizationInProgress = true;
@@ -123,17 +125,17 @@ class PulseAudioClient {
       if (message is SendPort) {
         _sendPort = message;
       }
-      if (message is OnReadyResponse) {
+      if (message is OnReadyStream) {
         _initializedCompleter.complete();
         _initializizationInProgress = false;
       }
     });
 
     await Isolate.spawn(
-      (sendPort) {
-        PulseIsolate(sendPort);
+      (args) {
+        PulseIsolate(args.$1, args.$2);
       },
-      _receiverPort.sendPort,
+      (_receiverPort.sendPort, applicationName),
     );
 
     await _initializedCompleter.future;
@@ -146,123 +148,170 @@ class PulseAudioClient {
     _instance = null;
   }
 
+  Future<PulseAudioSink> getSink(int index) async {
+    checkInitialized();
+    final requestId = newRequestId;
+    final response = await _request<OnSinkListResponse>(
+      IsolateRequest.getSink(requestId: requestId, index: index),
+    );
+    return response.list[0];
+  }
+
   /// Get Lists of [PulseAudioSink]
   Future<List<PulseAudioSink>> getSinkList() async {
-    if (!_initializedCompleter.isCompleted) {
-      throw Exception("PulseAudio is not initialized");
-    }
+    checkInitialized();
     final requestId = newRequestId;
-    _sendPort.send(IsolateRequest.getSinkList(requestId: requestId));
-    final response = await _broadcastStream.firstWhere((message) =>
-            message is OnSinkListResponse && message.requestId == requestId)
-        as OnSinkListResponse;
+    final response = await _request<OnSinkListResponse>(
+      IsolateRequest.getSinkList(requestId: requestId),
+    );
     return response.list;
+  }
+
+  Future<PulseAudioClient> getClient(int index) async {
+    checkInitialized();
+    final requestId = newRequestId;
+    final response = await _request<OnClientListResponse>(
+      IsolateRequest.getClient(requestId: requestId, index: index),
+    );
+    return response.list[0];
+  }
+
+  Future<List<PulseAudioClient>> getClientList() async {
+    checkInitialized();
+    final requestId = newRequestId;
+    final response = await _request<OnClientListResponse>(
+      IsolateRequest.getClientList(requestId: requestId),
+    );
+    return response.list;
+  }
+
+  Future<PulseAudioSource> getSource(int index) async {
+    checkInitialized();
+    final requestId = newRequestId;
+    final response = await _request<OnSourceListResponse>(
+      IsolateRequest.getSource(requestId: requestId, index: index),
+    );
+    return response.list[0];
   }
 
   /// Get Lists of [PulseAudioSource]
   Future<List<PulseAudioSource>> getSourceList() async {
-    if (!_initializedCompleter.isCompleted) {
-      throw Exception("PulseAudio is not initialized");
-    }
+    checkInitialized();
     final requestId = newRequestId;
-    _sendPort.send(IsolateRequest.getSourceList(requestId: requestId));
-    final response = await _broadcastStream.firstWhere((message) =>
-            message is OnSourceListResponse && message.requestId == requestId)
-        as OnSourceListResponse;
+    final response = await _request<OnSourceListResponse>(
+      IsolateRequest.getSourceList(requestId: requestId),
+    );
+    return response.list;
+  }
+
+  Future<PulseAudioSinkInput> getSinkInput(int index) async {
+    checkInitialized();
+    final requestId = newRequestId;
+    final response = await _request<OnSinkInputListResponse>(
+        IsolateRequest.getSinkInput(requestId: requestId, index: index));
+    return response.list[0];
+  }
+
+  /// Get List of [PulseAudioSinkInput]
+  Future<List<PulseAudioSinkInput>> getSinkInputList() async {
+    checkInitialized();
+    final requestId = newRequestId;
+    final response = await _request<OnSinkInputListResponse>(
+      IsolateRequest.getSinkInputList(requestId: requestId),
+    );
     return response.list;
   }
 
   /// Get [PulseAudioSink] by name
   Future<PulseAudioServerInfo> getServerInfo() async {
-    if (!_initializedCompleter.isCompleted) {
-      throw Exception("PulseAudio is not initialized");
-    }
+    checkInitialized();
     final requestId = newRequestId;
-    _sendPort.send(IsolateRequest.getServerInfo(requestId: requestId));
-    final response = await _broadcastStream.firstWhere((message) =>
-            message is OnServerInfoResponse && message.requestId == requestId)
-        as OnServerInfoResponse;
+    final response = await _request<OnServerInfoResponse>(
+      IsolateRequest.getServerInfo(requestId: requestId),
+    );
     return response.info;
   }
 
   /// Set mute for sink by name
   Future<void> setSinkMute(String sinkName, bool mute) async {
-    if (!_initializedCompleter.isCompleted) {
-      throw Exception("PulseAudio is not initialized");
-    }
+    checkInitialized();
     final requestId = newRequestId;
-    _sendPort.send(IsolateRequest.setSinkMute(
-        requestId: requestId, sinkName: sinkName, mute: mute));
-    await _broadcastStream.firstWhere((message) =>
-        message is SetSinkMuteResponse && message.requestId == requestId);
+    await _request<EmptyResponse>(
+      IsolateRequest.setSinkMute(requestId: requestId, sinkName: sinkName, mute: mute),
+    );
+  }
+
+  /// Set mute for sink by name
+  Future<void> setSinkInputMute(int index, bool mute) async {
+    checkInitialized();
+    final requestId = newRequestId;
+    await _request<EmptyResponse>(
+      IsolateRequest.setSinkInputMute(requestId: requestId, index: index, mute: mute),
+    );
   }
 
   /// Set volume for sink by name
   Future<void> setSinkVolume(String sinkName, double volume) async {
-    if (!_initializedCompleter.isCompleted) {
-      throw Exception("PulseAudio is not initialized");
-    }
+    checkInitialized();
     final requestId = newRequestId;
+    await _request<EmptyResponse>(
+      IsolateRequest.setSinkVolume(requestId: requestId, sinkName: sinkName, volume: volume),
+    );
+  }
 
-    _sendPort.send(IsolateRequest.setSinkVolume(
-        requestId: requestId, sinkName: sinkName, volume: volume));
-    await _broadcastStream.firstWhere((message) =>
-        message is SetSinkVolumeResponse && message.requestId == requestId);
+  /// Set volume for sink by name
+  Future<void> setSinkInputVolume(int index, double volume) async {
+    checkInitialized();
+    final requestId = newRequestId;
+    await _request<EmptyResponse>(
+      IsolateRequest.setSinkInputVolume(requestId: requestId, index: index, volume: volume),
+    );
   }
 
   /// set mute for source by name
   Future<void> setSourceMute(String sourceName, bool mute) async {
-    if (!_initializedCompleter.isCompleted) {
-      throw Exception("PulseAudio is not initialized");
-    }
+    checkInitialized();
     final requestId = newRequestId;
-
-    _sendPort.send(IsolateRequest.setSourceMute(
-        requestId: requestId, sourceName: sourceName, mute: mute));
-
-    await _broadcastStream.firstWhere((message) =>
-        message is SetSourceMuteResponse && message.requestId == requestId);
+    await _request<EmptyResponse>(
+      IsolateRequest.setSourceMute(requestId: requestId, sourceName: sourceName, mute: mute),
+    );
   }
 
   /// Set volume for source by name
   Future<void> setSourceVolume(String sourceName, double volume) async {
-    if (!_initializedCompleter.isCompleted) {
-      throw Exception("PulseAudio is not initialized");
-    }
+    checkInitialized();
     final requestId = newRequestId;
-
-    _sendPort.send(IsolateRequest.setSourceVolume(
-        requestId: requestId, sourceName: sourceName, volume: volume));
-
-    await _broadcastStream.firstWhere((message) =>
-        message is SetSourceVolumeResponse && message.requestId == requestId);
+    await _request<EmptyResponse>(
+      IsolateRequest.setSourceVolume(requestId: requestId, sourceName: sourceName, volume: volume),
+    );
   }
 
   /// Set default sink by name
   Future<void> setDefaultSink(String sinkName) async {
-    if (!_initializedCompleter.isCompleted) {
-      throw Exception("PulseAudio is not initialized");
-    }
+    checkInitialized();
     final requestId = newRequestId;
-
-    _sendPort.send(IsolateRequest.setDefaultSink(
-        requestId: requestId, sinkName: sinkName));
-
-    await _broadcastStream.firstWhere((message) =>
-        message is SetDefaultSinkResponse && message.requestId == requestId);
+    await _request<EmptyResponse>(
+      IsolateRequest.setDefaultSink(requestId: requestId, sinkName: sinkName),
+    );
   }
 
   /// Set default source by name
   Future<void> setDefaultSource(String sourceName) async {
+    checkInitialized();
+    final requestId = newRequestId;
+    await _request<EmptyResponse>(
+      IsolateRequest.setDefaultSource(requestId: requestId, sourceName: sourceName),
+    );
+  }
+
+  void checkInitialized() {
     if (!_initializedCompleter.isCompleted) {
       throw Exception("PulseAudio is not initialized");
     }
-    final requestId = newRequestId;
+  }
 
-    _sendPort.send(IsolateRequest.setDefaultSource(
-        requestId: requestId, sourceName: sourceName));
-
-    await _broadcastStream.firstWhere((message) =>
-        message is SetDefaultSourceResponse && message.requestId == requestId);
+  Future<R> _request<R extends IsolateResponse>(IsolateRequest request) async {
+    _sendPort.send(request);
+    return (await _broadcastStream.firstWhere((msg) => msg.requestId == request.requestId)) as R;
   }
 }

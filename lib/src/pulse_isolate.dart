@@ -4,43 +4,43 @@ import 'dart:isolate';
 
 import 'package:ffi/ffi.dart';
 import 'package:pulseaudio/src/generated_bindings.dart';
+import 'package:pulseaudio/src/model/client.dart';
 import 'package:pulseaudio/src/model/isolate_request.dart';
 import 'package:pulseaudio/src/model/isolate_response.dart';
 import 'package:pulseaudio/src/model/server_info.dart';
 import 'package:pulseaudio/src/model/sink.dart';
+import 'package:pulseaudio/src/model/sink_input.dart';
 import 'package:pulseaudio/src/model/source.dart';
 
-final PulseAudioBindings pa =
-    PulseAudioBindings(DynamicLibrary.open('libpulse.so.0'));
+final PulseAudioBindings pa = PulseAudioBindings(DynamicLibrary.open('libpulse.so.0'));
 
 class PulseIsolate {
   static PulseIsolate? _instance;
+  static Pointer<pa_context> get context => _instance!.__context;
 
   final ret = calloc<Int>();
   final Pointer<pa_mainloop> mainloop;
   final Pointer<pa_mainloop_api> mainloopApi;
-  final Pointer<pa_context> context;
+  final Pointer<pa_context> __context;
   final SendPort _sendPort;
 
   final operationCallbackMap = <Pointer<pa_operation>, Function()>{};
 
   final responsePerIdMap = <int, IsolateResponse>{};
 
-  PulseIsolate._(this._sendPort, this.mainloop, this.mainloopApi, this.context);
+  PulseIsolate._(this._sendPort, this.mainloop, this.mainloopApi, this.__context);
 
-  factory PulseIsolate(SendPort sendPort) {
+  factory PulseIsolate(SendPort sendPort, String applicationName) {
     if (_instance != null) return _instance!;
     final mainloop = pa.pa_mainloop_new();
     final mainloopApi = pa.pa_mainloop_get_api(mainloop);
-    final context =
-        pa.pa_context_new(mainloopApi, 'PulseClientDart'.toNativeUtf8().cast());
-    pa.pa_context_connect(
-        context, nullptr, pa_context_flags.PA_CONTEXT_NOAUTOSPAWN, nullptr);
+    final context = pa.pa_context_new(mainloopApi, applicationName.toNativeUtf8().cast());
+    pa.pa_context_connect(context, nullptr, pa_context_flags.PA_CONTEXT_NOAUTOSPAWN, nullptr);
 
     _instance = PulseIsolate._(sendPort, mainloop, mainloopApi, context);
 
     pa.pa_context_set_state_callback(
-      _instance!.context,
+      _instance!.__context,
       Pointer.fromFunction(_contextSetState),
       nullptr,
     );
@@ -56,12 +56,17 @@ class PulseIsolate {
         case SetSinkVolumeRequest():
           _setSinkVolume(message.requestId, message.sinkName, message.volume);
           break;
+        case SetSinkInputVolumeRequest():
+          _setSinkInputVolume(message.requestId, message.index, message.volume);
+          break;
         case SetSourceVolumeRequest():
-          _setSourceVolume(
-              message.requestId, message.sourceName, message.volume);
+          _setSourceVolume(message.requestId, message.sourceName, message.volume);
           break;
         case SetSinkMuteRequest():
           _setSinkMute(message.requestId, message.sinkName, message.mute);
+          break;
+        case SetSinkInputMuteRequest():
+          _setSinkInputMute(message.requestId, message.index, message.mute);
           break;
         case SetSourceMuteRequest():
           _setSourceMute(message.requestId, message.sourceName, message.mute);
@@ -78,9 +83,26 @@ class PulseIsolate {
         case GetSourceListRequest():
           _getSourceList(message.requestId);
           break;
+        case GetSinkInputListRequest():
+          _getSinkInputList(message.requestId);
+          break;
         case GetServerInfoRequest():
           _getServerInfo(message.requestId);
           break;
+        case GetClientListRequest():
+          _getClientList(message.requestId);
+          break;
+        case GetClientRequest():
+          _getClient(message.requestId, message.index);
+          break;
+        case GetSourceRequest():
+          _getSource(message.requestId, message.index);
+          break;
+        case GetSinkRequest():
+          _getSink(message.requestId, message.index);
+          break;
+        case GetSinkInputRequest():
+          _getSinkInput(message.requestId, message.index);
       }
     });
 
@@ -107,15 +129,18 @@ class PulseIsolate {
       while (_instance!.operationCallbackMap.isNotEmpty) {
         pa.pa_mainloop_iterate(_instance!.mainloop, 1, _instance!.ret);
 
-        final operations = _instance!.operationCallbackMap.keys.toList();
+        List<Pointer<pa_operation>> toRemove = [];
+        final operations = _instance!.operationCallbackMap.keys;
         for (final operation in operations) {
-          if (pa.pa_operation_get_state(operation) ==
-              pa_operation_state.PA_OPERATION_DONE) {
+          if (pa.pa_operation_get_state(operation) == pa_operation_state.PA_OPERATION_DONE) {
             final callback = _instance!.operationCallbackMap[operation]!;
             callback.call();
-            _instance!.operationCallbackMap.remove(operation);
-            pa.pa_operation_unref(operation);
+            toRemove.add(operation);
           }
+        }
+        for (final key in toRemove) {
+          _instance!.operationCallbackMap.remove(key);
+          pa.pa_operation_unref(key);
         }
       }
     }
@@ -123,8 +148,8 @@ class PulseIsolate {
   }
 
   static void dispose() {
-    pa.pa_context_disconnect(_instance!.context);
-    pa.pa_context_unref(_instance!.context);
+    pa.pa_context_disconnect(context);
+    pa.pa_context_unref(context);
     pa.pa_mainloop_free(_instance!.mainloop);
     calloc.free(_instance!.ret);
     _instance = null;
@@ -154,7 +179,7 @@ class PulseIsolate {
           userdata,
         );
 
-        _instance!._sendPort.send(const IsolateResponse.ready());
+        _instance!._sendPort.send(const IsolateStream.ready());
         break;
       case pa_context_state.PA_CONTEXT_TERMINATED:
         break;
@@ -167,14 +192,25 @@ class PulseIsolate {
     }
   }
 
-  static void _getSinkList(int requestId) {
-    final requestIdNative = calloc<Int>()
-      ..value = requestId; // Allocate memory explicitly
+  static void _getSink(int requestId, int index) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+    _instance!.responsePerIdMap[requestId] = OnSinkListResponse(requestId: requestId, list: []);
 
-    _instance!.responsePerIdMap[requestId] =
-        OnSinkListResponse(requestId: requestId, list: []);
+    final operation = pa.pa_context_get_sink_info_by_index(
+        context, index, Pointer.fromFunction(_onSinkListInfo), requestIdNative.cast());
+
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(_instance!.responsePerIdMap[requestId]!);
+      calloc.free(requestIdNative); // Free memory when the operation is done
+    };
+  }
+
+  static void _getSinkList(int requestId) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+
+    _instance!.responsePerIdMap[requestId] = OnSinkListResponse(requestId: requestId, list: []);
     final operation = pa.pa_context_get_sink_info_list(
-      _instance!.context,
+      context,
       Pointer.fromFunction(_onSinkListInfo),
       requestIdNative.cast(),
     );
@@ -195,21 +231,72 @@ class PulseIsolate {
       return;
     }
     final requestId = userdata.cast<Int>().value;
-    final response =
-        _instance!.responsePerIdMap[requestId]! as OnSinkListResponse;
+    final response = _instance!.responsePerIdMap[requestId]! as OnSinkListResponse;
+    response.list.add(PulseAudioSink.fromNative(sink.ref));
+  }
 
-    _instance!.responsePerIdMap[requestId] = response.copyWith(
-        list: [...response.list, PulseAudioSink.fromNative(sink.ref)]);
+  static void _getClient(int requestId, int clientIdx) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+    _instance!.responsePerIdMap[requestId] = OnClientListResponse(requestId: requestId, list: []);
+
+    final operation = pa.pa_context_get_client_info(
+        context, clientIdx, Pointer.fromFunction(_onClientListInfo), requestIdNative.cast());
+
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(_instance!.responsePerIdMap[requestId]!);
+      calloc.free(requestIdNative); // Free memory when the operation is done
+    };
+  }
+
+  static void _getClientList(int requestId) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+    _instance!.responsePerIdMap[requestId] = OnSourceListResponse(requestId: requestId, list: []);
+
+    _instance!.responsePerIdMap[requestId] = OnClientListResponse(requestId: requestId, list: []);
+
+    final operation = pa.pa_context_get_client_info_list(
+        context, Pointer.fromFunction(_onClientListInfo), requestIdNative.cast());
+
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(_instance!.responsePerIdMap[requestId]!);
+      calloc.free(requestIdNative); // Free memory when the operation is done
+    };
+  }
+
+  static void _onClientListInfo(
+    Pointer<pa_context> context,
+    Pointer<pa_client_info> client,
+    int eol,
+    Pointer<Void> userdata,
+  ) {
+    if (eol > 0) {
+      return;
+    }
+    final requestId = userdata.cast<Int>().value;
+    final response = _instance!.responsePerIdMap[requestId]! as OnClientListResponse;
+    response.list.add(PulseAudioClient.fromNative(client.ref));
+  }
+
+  static void _getSource(int requestId, int index) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+    _instance!.responsePerIdMap[requestId] = OnSourceListResponse(requestId: requestId, list: []);
+
+    final operation = pa.pa_context_get_source_info_by_index(
+        context, index, Pointer.fromFunction(_onSourceListInfo), requestIdNative.cast());
+
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(_instance!.responsePerIdMap[requestId]!);
+      calloc.free(requestIdNative); // Free memory when the operation is done
+    };
   }
 
   static void _getSourceList(int requestId) {
-    final requestIdNative = calloc<Int>()
-      ..value = requestId; // Allocate memory explicitly
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
 
-    _instance!.responsePerIdMap[requestId] =
-        OnSourceListResponse(requestId: requestId, list: []);
+    _instance!.responsePerIdMap[requestId] = OnSourceListResponse(requestId: requestId, list: []);
+
     final operation = pa.pa_context_get_source_info_list(
-      _instance!.context,
+      context,
       Pointer.fromFunction(_onSourceListInfo),
       requestIdNative.cast(),
     );
@@ -230,19 +317,65 @@ class PulseIsolate {
       return;
     }
     final requestId = userdata.cast<Int>().value;
-    final response =
-        _instance!.responsePerIdMap[requestId]! as OnSourceListResponse;
+    final response = _instance!.responsePerIdMap[requestId]! as OnSourceListResponse;
+    response.list.add(PulseAudioSource.fromNative(source.ref));
+  }
 
-    _instance!.responsePerIdMap[requestId] = response.copyWith(
-        list: [...response.list, PulseAudioSource.fromNative(source.ref)]);
+  static void _getSinkInput(int requestId, int index) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+    _instance!.responsePerIdMap[requestId] =
+        OnSinkInputListResponse(requestId: requestId, list: []);
+
+    final operation = pa.pa_context_get_sink_input_info(
+      context,
+      index,
+      Pointer.fromFunction(_onSinkInputListInfo),
+      requestIdNative.cast(),
+    );
+
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(_instance!.responsePerIdMap[requestId]!);
+      calloc.free(requestIdNative); // Free memory when the operation is done
+    };
+  }
+
+  static void _getSinkInputList(int requestId) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+
+    _instance!.responsePerIdMap[requestId] =
+        OnSinkInputListResponse(requestId: requestId, list: []);
+
+    final operation = pa.pa_context_get_sink_input_info_list(
+      context,
+      Pointer.fromFunction(_onSinkInputListInfo),
+      requestIdNative.cast(),
+    );
+
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(_instance!.responsePerIdMap[requestId]!);
+      calloc.free(requestIdNative); // Free memory when the operation is done
+    };
+  }
+
+  static void _onSinkInputListInfo(
+    Pointer<pa_context> context,
+    Pointer<pa_sink_input_info> device,
+    int eol,
+    Pointer<Void> userdata,
+  ) {
+    if (eol > 0) {
+      return;
+    }
+    final requestId = userdata.cast<Int>().value;
+    final response = _instance!.responsePerIdMap[requestId]! as OnSinkInputListResponse;
+    response.list.add(PulseAudioSinkInput.fromNative(device.ref));
   }
 
   static void _getServerInfo(int requestId) {
-    final requestIdNative = calloc<Int>()
-      ..value = requestId; // Allocate memory explicitly
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
 
     final operation = pa.pa_context_get_server_info(
-      _instance!.context,
+      context,
       Pointer.fromFunction(_onServerInfo),
       requestIdNative.cast(),
     );
@@ -260,8 +393,7 @@ class PulseIsolate {
   ) {
     final requestId = userdata.cast<Int>().value;
     _instance!.responsePerIdMap[requestId] = OnServerInfoResponse(
-        requestId: requestId,
-        info: PulseAudioServerInfo.fromNative(serverInfo.ref));
+        requestId: requestId, info: PulseAudioServerInfo.fromNative(serverInfo.ref));
   }
 
   static void _onServerInfoChanged(
@@ -269,7 +401,7 @@ class PulseIsolate {
     Pointer<pa_server_info> serverInfo,
     Pointer<Void> userdata,
   ) {
-    _instance!._sendPort.send(IsolateResponse.onServerInfoChanged(
+    _instance!._sendPort.send(IsolateStream.onServerInfoChanged(
         serverInfo: PulseAudioServerInfo.fromNative(serverInfo.ref)));
   }
 
@@ -281,7 +413,7 @@ class PulseIsolate {
   ) {
     // The first call doesn't have info of the sink
     if (sink != nullptr) {
-      _instance!._sendPort.send(IsolateResponse.onSinkChanged(
+      _instance!._sendPort.send(IsolateStream.onSinkChanged(
         sink: PulseAudioSink.fromNative(sink.ref),
       ));
     }
@@ -295,8 +427,8 @@ class PulseIsolate {
   ) {
     // The first call doesn't have info of the sink
     if (source != nullptr) {
-      _instance!._sendPort.send(IsolateResponse.onSourceChanged(
-          source: PulseAudioSource.fromNative(source.ref)));
+      _instance!._sendPort
+          .send(IsolateStream.onSourceChanged(source: PulseAudioSource.fromNative(source.ref)));
     }
   }
 
@@ -321,7 +453,7 @@ class PulseIsolate {
         break;
       case PA_SUBSCRIPTION_EVENT_SINK:
         if (eventType == PA_SUBSCRIPTION_EVENT_REMOVE) {
-          _instance!._sendPort.send(IsolateResponse.onSinkRemoved(index: idx));
+          _instance!._sendPort.send(IsolateStream.onSinkRemoved(index: idx));
         } else {
           op = pa.pa_context_get_sink_info_by_index(
             context,
@@ -334,8 +466,7 @@ class PulseIsolate {
 
       case PA_SUBSCRIPTION_EVENT_SOURCE:
         if (eventType == PA_SUBSCRIPTION_EVENT_REMOVE) {
-          _instance!._sendPort
-              .send(IsolateResponse.onSourceRemoved(index: idx));
+          _instance!._sendPort.send(IsolateStream.onSourceRemoved(index: idx));
         } else {
           op = pa.pa_context_get_source_info_by_index(
             context,
@@ -345,9 +476,30 @@ class PulseIsolate {
           );
         }
         break;
+
+      case PA_SUBSCRIPTION_EVENT_SINK_INPUT:
+        print("TODO implement sink input");
+
+      case PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT:
+        print("TODO implement source output");
     }
 
     if (op.address != nullptr.address) pa.pa_operation_unref(op);
+  }
+
+  static _setSinkInputVolume(int requestId, int index, double volume) {
+    using((Arena arena) {
+      final pVolume = arena<pa_cvolume>();
+      pa.pa_cvolume_init(pVolume);
+      pa.pa_cvolume_set(pVolume, 2, (volume * PA_VOLUME_NORM).ceil());
+
+      final operation =
+          pa.pa_context_set_sink_input_volume(context, index, pVolume, nullptr, nullptr);
+
+      _instance!.operationCallbackMap[operation] = () {
+        _instance!._sendPort.send(EmptyResponse(requestId: requestId));
+      };
+    });
   }
 
   static _setSinkVolume(int requestId, String name, double volume) {
@@ -357,15 +509,10 @@ class PulseIsolate {
       pa.pa_cvolume_set(pVolume, 2, (volume * PA_VOLUME_NORM).ceil());
 
       final operation = pa.pa_context_set_sink_volume_by_name(
-        _instance!.context,
-        name.toNativeUtf8().cast(),
-        pVolume,
-        nullptr,
-        nullptr,
-      );
+          context, name.toNativeUtf8().cast(), pVolume, nullptr, nullptr);
 
       _instance!.operationCallbackMap[operation] = () {
-        _instance!._sendPort.send(SetSinkVolumeResponse(requestId: requestId));
+        _instance!._sendPort.send(EmptyResponse(requestId: requestId));
       };
     });
   }
@@ -377,66 +524,50 @@ class PulseIsolate {
       pa.pa_cvolume_set(pVolume, 2, (volume * PA_VOLUME_NORM).ceil());
 
       final operation = pa.pa_context_set_source_volume_by_name(
-        _instance!.context,
-        name.toNativeUtf8().cast(),
-        pVolume,
-        nullptr,
-        nullptr,
-      );
+          context, name.toNativeUtf8().cast(), pVolume, nullptr, nullptr);
       _instance!.operationCallbackMap[operation] = () {
-        _instance!._sendPort
-            .send(SetSourceVolumeResponse(requestId: requestId));
+        _instance!._sendPort.send(EmptyResponse(requestId: requestId));
       };
     });
   }
 
   static _setSinkMute(int requestId, String name, bool mute) {
     final operation = pa.pa_context_set_sink_mute_by_name(
-      _instance!.context,
-      name.toNativeUtf8().cast(),
-      mute ? 1 : 0,
-      nullptr,
-      nullptr,
-    );
+        context, name.toNativeUtf8().cast(), mute ? 1 : 0, nullptr, nullptr);
     _instance!.operationCallbackMap[operation] = () {
-      _instance!._sendPort.send(SetSinkMuteResponse(requestId: requestId));
+      _instance!._sendPort.send(EmptyResponse(requestId: requestId));
     };
   }
 
-  static _setSourceMute(int requestId, String name, bool mute) {
-    final operation = pa.pa_context_set_source_mute_by_name(
-      _instance!.context,
-      name.toNativeUtf8().cast(),
-      mute ? 1 : 0,
-      nullptr,
-      nullptr,
-    );
+  static void _setSinkInputMute(int requestId, int index, bool mute) {
+    final operation =
+        pa.pa_context_set_sink_input_mute(context, index, mute ? 1 : 0, nullptr, nullptr);
     _instance!.operationCallbackMap[operation] = () {
-      _instance!._sendPort.send(SetSourceMuteResponse(requestId: requestId));
+      _instance!._sendPort.send(EmptyResponse(requestId: requestId));
+    };
+  }
+
+  static void _setSourceMute(int requestId, String name, bool mute) {
+    final operation = pa.pa_context_set_source_mute_by_name(
+        context, name.toNativeUtf8().cast(), mute ? 1 : 0, nullptr, nullptr);
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(EmptyResponse(requestId: requestId));
     };
   }
 
   static _setDefaultSink(int requestId, String name) {
-    final operation = pa.pa_context_set_default_sink(
-      _instance!.context,
-      name.toNativeUtf8().cast(),
-      nullptr,
-      nullptr,
-    );
+    final operation =
+        pa.pa_context_set_default_sink(context, name.toNativeUtf8().cast(), nullptr, nullptr);
     _instance!.operationCallbackMap[operation] = () {
-      _instance!._sendPort.send(SetDefaultSinkResponse(requestId: requestId));
+      _instance!._sendPort.send(EmptyResponse(requestId: requestId));
     };
   }
 
   static _setDefaultSource(int requestId, String name) {
-    final operation = pa.pa_context_set_default_source(
-      _instance!.context,
-      name.toNativeUtf8().cast(),
-      nullptr,
-      nullptr,
-    );
+    final operation =
+        pa.pa_context_set_default_source(context, name.toNativeUtf8().cast(), nullptr, nullptr);
     _instance!.operationCallbackMap[operation] = () {
-      _instance!._sendPort.send(SetDefaultSourceResponse(requestId: requestId));
+      _instance!._sendPort.send(EmptyResponse(requestId: requestId));
     };
   }
 }

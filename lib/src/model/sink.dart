@@ -7,7 +7,7 @@ import 'package:pulseaudio/src/pulse_isolate.dart';
 
 part 'sink.freezed.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 abstract class PulseAudioSink with _$PulseAudioSink {
   const factory PulseAudioSink({
     required int index,

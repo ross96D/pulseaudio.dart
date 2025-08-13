@@ -1,6 +1,5 @@
-// dart format width=80
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -14,11 +13,11 @@ part of 'isolate_response.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$IsolateResponse {
+mixin _$IsolateStream {
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is IsolateResponse);
+        (other.runtimeType == runtimeType && other is IsolateStream);
   }
 
   @override
@@ -26,25 +25,269 @@ mixin _$IsolateResponse {
 
   @override
   String toString() {
-    return 'IsolateResponse()';
+    return 'IsolateStream()';
   }
 }
 
 /// @nodoc
-class $IsolateResponseCopyWith<$Res> {
-  $IsolateResponseCopyWith(
-      IsolateResponse _, $Res Function(IsolateResponse) __);
+class $IsolateStreamCopyWith<$Res> {
+  $IsolateStreamCopyWith(IsolateStream _, $Res Function(IsolateStream) __);
+}
+
+/// Adds pattern-matching-related methods to [IsolateStream].
+extension IsolateStreamPatterns on IsolateStream {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnReadyStream value)? ready,
+    TResult Function(OnServerInfoChangedStream value)? onServerInfoChanged,
+    TResult Function(OnSinkChangedStream value)? onSinkChanged,
+    TResult Function(OnSinkRemovedStream value)? onSinkRemoved,
+    TResult Function(OnSourceChangedStream value)? onSourceChanged,
+    TResult Function(OnSourceRemovedStream value)? onSourceRemoved,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnReadyStream() when ready != null:
+        return ready(_that);
+      case OnServerInfoChangedStream() when onServerInfoChanged != null:
+        return onServerInfoChanged(_that);
+      case OnSinkChangedStream() when onSinkChanged != null:
+        return onSinkChanged(_that);
+      case OnSinkRemovedStream() when onSinkRemoved != null:
+        return onSinkRemoved(_that);
+      case OnSourceChangedStream() when onSourceChanged != null:
+        return onSourceChanged(_that);
+      case OnSourceRemovedStream() when onSourceRemoved != null:
+        return onSourceRemoved(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnReadyStream value) ready,
+    required TResult Function(OnServerInfoChangedStream value)
+        onServerInfoChanged,
+    required TResult Function(OnSinkChangedStream value) onSinkChanged,
+    required TResult Function(OnSinkRemovedStream value) onSinkRemoved,
+    required TResult Function(OnSourceChangedStream value) onSourceChanged,
+    required TResult Function(OnSourceRemovedStream value) onSourceRemoved,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnReadyStream():
+        return ready(_that);
+      case OnServerInfoChangedStream():
+        return onServerInfoChanged(_that);
+      case OnSinkChangedStream():
+        return onSinkChanged(_that);
+      case OnSinkRemovedStream():
+        return onSinkRemoved(_that);
+      case OnSourceChangedStream():
+        return onSourceChanged(_that);
+      case OnSourceRemovedStream():
+        return onSourceRemoved(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnReadyStream value)? ready,
+    TResult? Function(OnServerInfoChangedStream value)? onServerInfoChanged,
+    TResult? Function(OnSinkChangedStream value)? onSinkChanged,
+    TResult? Function(OnSinkRemovedStream value)? onSinkRemoved,
+    TResult? Function(OnSourceChangedStream value)? onSourceChanged,
+    TResult? Function(OnSourceRemovedStream value)? onSourceRemoved,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnReadyStream() when ready != null:
+        return ready(_that);
+      case OnServerInfoChangedStream() when onServerInfoChanged != null:
+        return onServerInfoChanged(_that);
+      case OnSinkChangedStream() when onSinkChanged != null:
+        return onSinkChanged(_that);
+      case OnSinkRemovedStream() when onSinkRemoved != null:
+        return onSinkRemoved(_that);
+      case OnSourceChangedStream() when onSourceChanged != null:
+        return onSourceChanged(_that);
+      case OnSourceRemovedStream() when onSourceRemoved != null:
+        return onSourceRemoved(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? ready,
+    TResult Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult Function(PulseAudioSink sink)? onSinkChanged,
+    TResult Function(int index)? onSinkRemoved,
+    TResult Function(PulseAudioSource source)? onSourceChanged,
+    TResult Function(int index)? onSourceRemoved,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnReadyStream() when ready != null:
+        return ready();
+      case OnServerInfoChangedStream() when onServerInfoChanged != null:
+        return onServerInfoChanged(_that.serverInfo);
+      case OnSinkChangedStream() when onSinkChanged != null:
+        return onSinkChanged(_that.sink);
+      case OnSinkRemovedStream() when onSinkRemoved != null:
+        return onSinkRemoved(_that.index);
+      case OnSourceChangedStream() when onSourceChanged != null:
+        return onSourceChanged(_that.source);
+      case OnSourceRemovedStream() when onSourceRemoved != null:
+        return onSourceRemoved(_that.index);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() ready,
+    required TResult Function(PulseAudioServerInfo serverInfo)
+        onServerInfoChanged,
+    required TResult Function(PulseAudioSink sink) onSinkChanged,
+    required TResult Function(int index) onSinkRemoved,
+    required TResult Function(PulseAudioSource source) onSourceChanged,
+    required TResult Function(int index) onSourceRemoved,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnReadyStream():
+        return ready();
+      case OnServerInfoChangedStream():
+        return onServerInfoChanged(_that.serverInfo);
+      case OnSinkChangedStream():
+        return onSinkChanged(_that.sink);
+      case OnSinkRemovedStream():
+        return onSinkRemoved(_that.index);
+      case OnSourceChangedStream():
+        return onSourceChanged(_that.source);
+      case OnSourceRemovedStream():
+        return onSourceRemoved(_that.index);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? ready,
+    TResult? Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
+    TResult? Function(PulseAudioSink sink)? onSinkChanged,
+    TResult? Function(int index)? onSinkRemoved,
+    TResult? Function(PulseAudioSource source)? onSourceChanged,
+    TResult? Function(int index)? onSourceRemoved,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnReadyStream() when ready != null:
+        return ready();
+      case OnServerInfoChangedStream() when onServerInfoChanged != null:
+        return onServerInfoChanged(_that.serverInfo);
+      case OnSinkChangedStream() when onSinkChanged != null:
+        return onSinkChanged(_that.sink);
+      case OnSinkRemovedStream() when onSinkRemoved != null:
+        return onSinkRemoved(_that.index);
+      case OnSourceChangedStream() when onSourceChanged != null:
+        return onSourceChanged(_that.source);
+      case OnSourceRemovedStream() when onSourceRemoved != null:
+        return onSourceRemoved(_that.index);
+      case _:
+        return null;
+    }
+  }
 }
 
 /// @nodoc
 
-class OnReadyResponse implements IsolateResponse {
-  const OnReadyResponse();
+class OnReadyStream implements IsolateStream {
+  const OnReadyStream();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is OnReadyResponse);
+        (other.runtimeType == runtimeType && other is OnReadyStream);
   }
 
   @override
@@ -52,30 +295,30 @@ class OnReadyResponse implements IsolateResponse {
 
   @override
   String toString() {
-    return 'IsolateResponse.ready()';
+    return 'IsolateStream.ready()';
   }
 }
 
 /// @nodoc
 
-class OnServerInfoChangedResponse implements IsolateResponse {
-  const OnServerInfoChangedResponse({required this.serverInfo});
+class OnServerInfoChangedStream implements IsolateStream {
+  const OnServerInfoChangedStream({required this.serverInfo});
 
   final PulseAudioServerInfo serverInfo;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $OnServerInfoChangedResponseCopyWith<OnServerInfoChangedResponse>
-      get copyWith => _$OnServerInfoChangedResponseCopyWithImpl<
-          OnServerInfoChangedResponse>(this, _$identity);
+  $OnServerInfoChangedStreamCopyWith<OnServerInfoChangedStream> get copyWith =>
+      _$OnServerInfoChangedStreamCopyWithImpl<OnServerInfoChangedStream>(
+          this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is OnServerInfoChangedResponse &&
+            other is OnServerInfoChangedStream &&
             (identical(other.serverInfo, serverInfo) ||
                 other.serverInfo == serverInfo));
   }
@@ -85,17 +328,16 @@ class OnServerInfoChangedResponse implements IsolateResponse {
 
   @override
   String toString() {
-    return 'IsolateResponse.onServerInfoChanged(serverInfo: $serverInfo)';
+    return 'IsolateStream.onServerInfoChanged(serverInfo: $serverInfo)';
   }
 }
 
 /// @nodoc
-abstract mixin class $OnServerInfoChangedResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $OnServerInfoChangedResponseCopyWith(
-          OnServerInfoChangedResponse value,
-          $Res Function(OnServerInfoChangedResponse) _then) =
-      _$OnServerInfoChangedResponseCopyWithImpl;
+abstract mixin class $OnServerInfoChangedStreamCopyWith<$Res>
+    implements $IsolateStreamCopyWith<$Res> {
+  factory $OnServerInfoChangedStreamCopyWith(OnServerInfoChangedStream value,
+          $Res Function(OnServerInfoChangedStream) _then) =
+      _$OnServerInfoChangedStreamCopyWithImpl;
   @useResult
   $Res call({PulseAudioServerInfo serverInfo});
 
@@ -103,20 +345,20 @@ abstract mixin class $OnServerInfoChangedResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class _$OnServerInfoChangedResponseCopyWithImpl<$Res>
-    implements $OnServerInfoChangedResponseCopyWith<$Res> {
-  _$OnServerInfoChangedResponseCopyWithImpl(this._self, this._then);
+class _$OnServerInfoChangedStreamCopyWithImpl<$Res>
+    implements $OnServerInfoChangedStreamCopyWith<$Res> {
+  _$OnServerInfoChangedStreamCopyWithImpl(this._self, this._then);
 
-  final OnServerInfoChangedResponse _self;
-  final $Res Function(OnServerInfoChangedResponse) _then;
+  final OnServerInfoChangedStream _self;
+  final $Res Function(OnServerInfoChangedStream) _then;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? serverInfo = null,
   }) {
-    return _then(OnServerInfoChangedResponse(
+    return _then(OnServerInfoChangedStream(
       serverInfo: null == serverInfo
           ? _self.serverInfo
           : serverInfo // ignore: cast_nullable_to_non_nullable
@@ -124,7 +366,7 @@ class _$OnServerInfoChangedResponseCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -137,24 +379,23 @@ class _$OnServerInfoChangedResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class OnSinkChangedResponse implements IsolateResponse {
-  const OnSinkChangedResponse({required this.sink});
+class OnSinkChangedStream implements IsolateStream {
+  const OnSinkChangedStream({required this.sink});
 
   final PulseAudioSink sink;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $OnSinkChangedResponseCopyWith<OnSinkChangedResponse> get copyWith =>
-      _$OnSinkChangedResponseCopyWithImpl<OnSinkChangedResponse>(
-          this, _$identity);
+  $OnSinkChangedStreamCopyWith<OnSinkChangedStream> get copyWith =>
+      _$OnSinkChangedStreamCopyWithImpl<OnSinkChangedStream>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is OnSinkChangedResponse &&
+            other is OnSinkChangedStream &&
             (identical(other.sink, sink) || other.sink == sink));
   }
 
@@ -163,16 +404,16 @@ class OnSinkChangedResponse implements IsolateResponse {
 
   @override
   String toString() {
-    return 'IsolateResponse.onSinkChanged(sink: $sink)';
+    return 'IsolateStream.onSinkChanged(sink: $sink)';
   }
 }
 
 /// @nodoc
-abstract mixin class $OnSinkChangedResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $OnSinkChangedResponseCopyWith(OnSinkChangedResponse value,
-          $Res Function(OnSinkChangedResponse) _then) =
-      _$OnSinkChangedResponseCopyWithImpl;
+abstract mixin class $OnSinkChangedStreamCopyWith<$Res>
+    implements $IsolateStreamCopyWith<$Res> {
+  factory $OnSinkChangedStreamCopyWith(
+          OnSinkChangedStream value, $Res Function(OnSinkChangedStream) _then) =
+      _$OnSinkChangedStreamCopyWithImpl;
   @useResult
   $Res call({PulseAudioSink sink});
 
@@ -180,20 +421,20 @@ abstract mixin class $OnSinkChangedResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class _$OnSinkChangedResponseCopyWithImpl<$Res>
-    implements $OnSinkChangedResponseCopyWith<$Res> {
-  _$OnSinkChangedResponseCopyWithImpl(this._self, this._then);
+class _$OnSinkChangedStreamCopyWithImpl<$Res>
+    implements $OnSinkChangedStreamCopyWith<$Res> {
+  _$OnSinkChangedStreamCopyWithImpl(this._self, this._then);
 
-  final OnSinkChangedResponse _self;
-  final $Res Function(OnSinkChangedResponse) _then;
+  final OnSinkChangedStream _self;
+  final $Res Function(OnSinkChangedStream) _then;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? sink = null,
   }) {
-    return _then(OnSinkChangedResponse(
+    return _then(OnSinkChangedStream(
       sink: null == sink
           ? _self.sink
           : sink // ignore: cast_nullable_to_non_nullable
@@ -201,7 +442,7 @@ class _$OnSinkChangedResponseCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -214,24 +455,23 @@ class _$OnSinkChangedResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class OnSinkRemovedResponse implements IsolateResponse {
-  const OnSinkRemovedResponse({required this.index});
+class OnSinkRemovedStream implements IsolateStream {
+  const OnSinkRemovedStream({required this.index});
 
   final int index;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $OnSinkRemovedResponseCopyWith<OnSinkRemovedResponse> get copyWith =>
-      _$OnSinkRemovedResponseCopyWithImpl<OnSinkRemovedResponse>(
-          this, _$identity);
+  $OnSinkRemovedStreamCopyWith<OnSinkRemovedStream> get copyWith =>
+      _$OnSinkRemovedStreamCopyWithImpl<OnSinkRemovedStream>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is OnSinkRemovedResponse &&
+            other is OnSinkRemovedStream &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -240,35 +480,35 @@ class OnSinkRemovedResponse implements IsolateResponse {
 
   @override
   String toString() {
-    return 'IsolateResponse.onSinkRemoved(index: $index)';
+    return 'IsolateStream.onSinkRemoved(index: $index)';
   }
 }
 
 /// @nodoc
-abstract mixin class $OnSinkRemovedResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $OnSinkRemovedResponseCopyWith(OnSinkRemovedResponse value,
-          $Res Function(OnSinkRemovedResponse) _then) =
-      _$OnSinkRemovedResponseCopyWithImpl;
+abstract mixin class $OnSinkRemovedStreamCopyWith<$Res>
+    implements $IsolateStreamCopyWith<$Res> {
+  factory $OnSinkRemovedStreamCopyWith(
+          OnSinkRemovedStream value, $Res Function(OnSinkRemovedStream) _then) =
+      _$OnSinkRemovedStreamCopyWithImpl;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class _$OnSinkRemovedResponseCopyWithImpl<$Res>
-    implements $OnSinkRemovedResponseCopyWith<$Res> {
-  _$OnSinkRemovedResponseCopyWithImpl(this._self, this._then);
+class _$OnSinkRemovedStreamCopyWithImpl<$Res>
+    implements $OnSinkRemovedStreamCopyWith<$Res> {
+  _$OnSinkRemovedStreamCopyWithImpl(this._self, this._then);
 
-  final OnSinkRemovedResponse _self;
-  final $Res Function(OnSinkRemovedResponse) _then;
+  final OnSinkRemovedStream _self;
+  final $Res Function(OnSinkRemovedStream) _then;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? index = null,
   }) {
-    return _then(OnSinkRemovedResponse(
+    return _then(OnSinkRemovedStream(
       index: null == index
           ? _self.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -279,24 +519,24 @@ class _$OnSinkRemovedResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class OnSourceChangedResponse implements IsolateResponse {
-  const OnSourceChangedResponse({required this.source});
+class OnSourceChangedStream implements IsolateStream {
+  const OnSourceChangedStream({required this.source});
 
   final PulseAudioSource source;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $OnSourceChangedResponseCopyWith<OnSourceChangedResponse> get copyWith =>
-      _$OnSourceChangedResponseCopyWithImpl<OnSourceChangedResponse>(
+  $OnSourceChangedStreamCopyWith<OnSourceChangedStream> get copyWith =>
+      _$OnSourceChangedStreamCopyWithImpl<OnSourceChangedStream>(
           this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is OnSourceChangedResponse &&
+            other is OnSourceChangedStream &&
             (identical(other.source, source) || other.source == source));
   }
 
@@ -305,16 +545,16 @@ class OnSourceChangedResponse implements IsolateResponse {
 
   @override
   String toString() {
-    return 'IsolateResponse.onSourceChanged(source: $source)';
+    return 'IsolateStream.onSourceChanged(source: $source)';
   }
 }
 
 /// @nodoc
-abstract mixin class $OnSourceChangedResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $OnSourceChangedResponseCopyWith(OnSourceChangedResponse value,
-          $Res Function(OnSourceChangedResponse) _then) =
-      _$OnSourceChangedResponseCopyWithImpl;
+abstract mixin class $OnSourceChangedStreamCopyWith<$Res>
+    implements $IsolateStreamCopyWith<$Res> {
+  factory $OnSourceChangedStreamCopyWith(OnSourceChangedStream value,
+          $Res Function(OnSourceChangedStream) _then) =
+      _$OnSourceChangedStreamCopyWithImpl;
   @useResult
   $Res call({PulseAudioSource source});
 
@@ -322,20 +562,20 @@ abstract mixin class $OnSourceChangedResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class _$OnSourceChangedResponseCopyWithImpl<$Res>
-    implements $OnSourceChangedResponseCopyWith<$Res> {
-  _$OnSourceChangedResponseCopyWithImpl(this._self, this._then);
+class _$OnSourceChangedStreamCopyWithImpl<$Res>
+    implements $OnSourceChangedStreamCopyWith<$Res> {
+  _$OnSourceChangedStreamCopyWithImpl(this._self, this._then);
 
-  final OnSourceChangedResponse _self;
-  final $Res Function(OnSourceChangedResponse) _then;
+  final OnSourceChangedStream _self;
+  final $Res Function(OnSourceChangedStream) _then;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? source = null,
   }) {
-    return _then(OnSourceChangedResponse(
+    return _then(OnSourceChangedStream(
       source: null == source
           ? _self.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -343,7 +583,7 @@ class _$OnSourceChangedResponseCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -356,24 +596,24 @@ class _$OnSourceChangedResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class OnSourceRemovedResponse implements IsolateResponse {
-  const OnSourceRemovedResponse({required this.index});
+class OnSourceRemovedStream implements IsolateStream {
+  const OnSourceRemovedStream({required this.index});
 
   final int index;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $OnSourceRemovedResponseCopyWith<OnSourceRemovedResponse> get copyWith =>
-      _$OnSourceRemovedResponseCopyWithImpl<OnSourceRemovedResponse>(
+  $OnSourceRemovedStreamCopyWith<OnSourceRemovedStream> get copyWith =>
+      _$OnSourceRemovedStreamCopyWithImpl<OnSourceRemovedStream>(
           this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is OnSourceRemovedResponse &&
+            other is OnSourceRemovedStream &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -382,35 +622,35 @@ class OnSourceRemovedResponse implements IsolateResponse {
 
   @override
   String toString() {
-    return 'IsolateResponse.onSourceRemoved(index: $index)';
+    return 'IsolateStream.onSourceRemoved(index: $index)';
   }
 }
 
 /// @nodoc
-abstract mixin class $OnSourceRemovedResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $OnSourceRemovedResponseCopyWith(OnSourceRemovedResponse value,
-          $Res Function(OnSourceRemovedResponse) _then) =
-      _$OnSourceRemovedResponseCopyWithImpl;
+abstract mixin class $OnSourceRemovedStreamCopyWith<$Res>
+    implements $IsolateStreamCopyWith<$Res> {
+  factory $OnSourceRemovedStreamCopyWith(OnSourceRemovedStream value,
+          $Res Function(OnSourceRemovedStream) _then) =
+      _$OnSourceRemovedStreamCopyWithImpl;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class _$OnSourceRemovedResponseCopyWithImpl<$Res>
-    implements $OnSourceRemovedResponseCopyWith<$Res> {
-  _$OnSourceRemovedResponseCopyWithImpl(this._self, this._then);
+class _$OnSourceRemovedStreamCopyWithImpl<$Res>
+    implements $OnSourceRemovedStreamCopyWith<$Res> {
+  _$OnSourceRemovedStreamCopyWithImpl(this._self, this._then);
 
-  final OnSourceRemovedResponse _self;
-  final $Res Function(OnSourceRemovedResponse) _then;
+  final OnSourceRemovedStream _self;
+  final $Res Function(OnSourceRemovedStream) _then;
 
-  /// Create a copy of IsolateResponse
+  /// Create a copy of IsolateStream
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   $Res call({
     Object? index = null,
   }) {
-    return _then(OnSourceRemovedResponse(
+    return _then(OnSourceRemovedStream(
       index: null == index
           ? _self.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -420,22 +660,348 @@ class _$OnSourceRemovedResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-class OnSinkListResponse implements IsolateResponse {
-  const OnSinkListResponse(
-      {required this.requestId, required final List<PulseAudioSink> list})
-      : _list = list;
-
-  final int requestId;
-  final List<PulseAudioSink> _list;
-  List<PulseAudioSink> get list {
-    if (_list is EqualUnmodifiableListView) return _list;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_list);
-  }
+mixin _$IsolateResponse {
+  int get requestId;
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $IsolateResponseCopyWith<IsolateResponse> get copyWith =>
+      _$IsolateResponseCopyWithImpl<IsolateResponse>(
+          this as IsolateResponse, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is IsolateResponse &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  @override
+  String toString() {
+    return 'IsolateResponse(requestId: $requestId)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $IsolateResponseCopyWith<$Res> {
+  factory $IsolateResponseCopyWith(
+          IsolateResponse value, $Res Function(IsolateResponse) _then) =
+      _$IsolateResponseCopyWithImpl;
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class _$IsolateResponseCopyWithImpl<$Res>
+    implements $IsolateResponseCopyWith<$Res> {
+  _$IsolateResponseCopyWithImpl(this._self, this._then);
+
+  final IsolateResponse _self;
+  final $Res Function(IsolateResponse) _then;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(_self.copyWith(
+      requestId: null == requestId
+          ? _self.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// Adds pattern-matching-related methods to [IsolateResponse].
+extension IsolateResponsePatterns on IsolateResponse {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OnSinkListResponse value)? onSinkList,
+    TResult Function(OnSinkInputListResponse value)? onSinkInputList,
+    TResult Function(OnSourceListResponse value)? onSourceList,
+    TResult Function(OnClientListResponse value)? onClientList,
+    TResult Function(OnClientResponse value)? onClient,
+    TResult Function(OnServerInfoResponse value)? onServerInfo,
+    TResult Function(EmptyResponse value)? empty,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnSinkListResponse() when onSinkList != null:
+        return onSinkList(_that);
+      case OnSinkInputListResponse() when onSinkInputList != null:
+        return onSinkInputList(_that);
+      case OnSourceListResponse() when onSourceList != null:
+        return onSourceList(_that);
+      case OnClientListResponse() when onClientList != null:
+        return onClientList(_that);
+      case OnClientResponse() when onClient != null:
+        return onClient(_that);
+      case OnServerInfoResponse() when onServerInfo != null:
+        return onServerInfo(_that);
+      case EmptyResponse() when empty != null:
+        return empty(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OnSinkListResponse value) onSinkList,
+    required TResult Function(OnSinkInputListResponse value) onSinkInputList,
+    required TResult Function(OnSourceListResponse value) onSourceList,
+    required TResult Function(OnClientListResponse value) onClientList,
+    required TResult Function(OnClientResponse value) onClient,
+    required TResult Function(OnServerInfoResponse value) onServerInfo,
+    required TResult Function(EmptyResponse value) empty,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnSinkListResponse():
+        return onSinkList(_that);
+      case OnSinkInputListResponse():
+        return onSinkInputList(_that);
+      case OnSourceListResponse():
+        return onSourceList(_that);
+      case OnClientListResponse():
+        return onClientList(_that);
+      case OnClientResponse():
+        return onClient(_that);
+      case OnServerInfoResponse():
+        return onServerInfo(_that);
+      case EmptyResponse():
+        return empty(_that);
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OnSinkListResponse value)? onSinkList,
+    TResult? Function(OnSinkInputListResponse value)? onSinkInputList,
+    TResult? Function(OnSourceListResponse value)? onSourceList,
+    TResult? Function(OnClientListResponse value)? onClientList,
+    TResult? Function(OnClientResponse value)? onClient,
+    TResult? Function(OnServerInfoResponse value)? onServerInfo,
+    TResult? Function(EmptyResponse value)? empty,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnSinkListResponse() when onSinkList != null:
+        return onSinkList(_that);
+      case OnSinkInputListResponse() when onSinkInputList != null:
+        return onSinkInputList(_that);
+      case OnSourceListResponse() when onSourceList != null:
+        return onSourceList(_that);
+      case OnClientListResponse() when onClientList != null:
+        return onClientList(_that);
+      case OnClientResponse() when onClient != null:
+        return onClient(_that);
+      case OnServerInfoResponse() when onServerInfo != null:
+        return onServerInfo(_that);
+      case EmptyResponse() when empty != null:
+        return empty(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult Function(int requestId, List<PulseAudioSinkInput> list)?
+        onSinkInputList,
+    TResult Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult Function(int requestId, List<PulseAudioClient> list)? onClientList,
+    TResult Function(int requestId, PulseAudioClient client)? onClient,
+    TResult Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult Function(int requestId)? empty,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnSinkListResponse() when onSinkList != null:
+        return onSinkList(_that.requestId, _that.list);
+      case OnSinkInputListResponse() when onSinkInputList != null:
+        return onSinkInputList(_that.requestId, _that.list);
+      case OnSourceListResponse() when onSourceList != null:
+        return onSourceList(_that.requestId, _that.list);
+      case OnClientListResponse() when onClientList != null:
+        return onClientList(_that.requestId, _that.list);
+      case OnClientResponse() when onClient != null:
+        return onClient(_that.requestId, _that.client);
+      case OnServerInfoResponse() when onServerInfo != null:
+        return onServerInfo(_that.requestId, _that.info);
+      case EmptyResponse() when empty != null:
+        return empty(_that.requestId);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int requestId, List<PulseAudioSink> list)
+        onSinkList,
+    required TResult Function(int requestId, List<PulseAudioSinkInput> list)
+        onSinkInputList,
+    required TResult Function(int requestId, List<PulseAudioSource> list)
+        onSourceList,
+    required TResult Function(int requestId, List<PulseAudioClient> list)
+        onClientList,
+    required TResult Function(int requestId, PulseAudioClient client) onClient,
+    required TResult Function(int requestId, PulseAudioServerInfo info)
+        onServerInfo,
+    required TResult Function(int requestId) empty,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnSinkListResponse():
+        return onSinkList(_that.requestId, _that.list);
+      case OnSinkInputListResponse():
+        return onSinkInputList(_that.requestId, _that.list);
+      case OnSourceListResponse():
+        return onSourceList(_that.requestId, _that.list);
+      case OnClientListResponse():
+        return onClientList(_that.requestId, _that.list);
+      case OnClientResponse():
+        return onClient(_that.requestId, _that.client);
+      case OnServerInfoResponse():
+        return onServerInfo(_that.requestId, _that.info);
+      case EmptyResponse():
+        return empty(_that.requestId);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int requestId, List<PulseAudioSink> list)? onSinkList,
+    TResult? Function(int requestId, List<PulseAudioSinkInput> list)?
+        onSinkInputList,
+    TResult? Function(int requestId, List<PulseAudioSource> list)? onSourceList,
+    TResult? Function(int requestId, List<PulseAudioClient> list)? onClientList,
+    TResult? Function(int requestId, PulseAudioClient client)? onClient,
+    TResult? Function(int requestId, PulseAudioServerInfo info)? onServerInfo,
+    TResult? Function(int requestId)? empty,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case OnSinkListResponse() when onSinkList != null:
+        return onSinkList(_that.requestId, _that.list);
+      case OnSinkInputListResponse() when onSinkInputList != null:
+        return onSinkInputList(_that.requestId, _that.list);
+      case OnSourceListResponse() when onSourceList != null:
+        return onSourceList(_that.requestId, _that.list);
+      case OnClientListResponse() when onClientList != null:
+        return onClientList(_that.requestId, _that.list);
+      case OnClientResponse() when onClient != null:
+        return onClient(_that.requestId, _that.client);
+      case OnServerInfoResponse() when onServerInfo != null:
+        return onServerInfo(_that.requestId, _that.info);
+      case EmptyResponse() when empty != null:
+        return empty(_that.requestId);
+      case _:
+        return null;
+    }
+  }
+}
+
+/// @nodoc
+
+class OnSinkListResponse implements IsolateResponse {
+  const OnSinkListResponse({required this.requestId, required this.list});
+
+  @override
+  final int requestId;
+  final List<PulseAudioSink> list;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $OnSinkListResponseCopyWith<OnSinkListResponse> get copyWith =>
@@ -448,12 +1014,12 @@ class OnSinkListResponse implements IsolateResponse {
             other is OnSinkListResponse &&
             (identical(other.requestId, requestId) ||
                 other.requestId == requestId) &&
-            const DeepCollectionEquality().equals(other._list, _list));
+            const DeepCollectionEquality().equals(other.list, list));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, requestId, const DeepCollectionEquality().hash(_list));
+      runtimeType, requestId, const DeepCollectionEquality().hash(list));
 
   @override
   String toString() {
@@ -467,6 +1033,7 @@ abstract mixin class $OnSinkListResponseCopyWith<$Res>
   factory $OnSinkListResponseCopyWith(
           OnSinkListResponse value, $Res Function(OnSinkListResponse) _then) =
       _$OnSinkListResponseCopyWithImpl;
+  @override
   @useResult
   $Res call({int requestId, List<PulseAudioSink> list});
 }
@@ -481,6 +1048,7 @@ class _$OnSinkListResponseCopyWithImpl<$Res>
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? requestId = null,
@@ -492,7 +1060,7 @@ class _$OnSinkListResponseCopyWithImpl<$Res>
           : requestId // ignore: cast_nullable_to_non_nullable
               as int,
       list: null == list
-          ? _self._list
+          ? _self.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<PulseAudioSink>,
     ));
@@ -501,21 +1069,94 @@ class _$OnSinkListResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class OnSourceListResponse implements IsolateResponse {
-  const OnSourceListResponse(
-      {required this.requestId, required final List<PulseAudioSource> list})
-      : _list = list;
+class OnSinkInputListResponse implements IsolateResponse {
+  const OnSinkInputListResponse({required this.requestId, required this.list});
 
+  @override
   final int requestId;
-  final List<PulseAudioSource> _list;
-  List<PulseAudioSource> get list {
-    if (_list is EqualUnmodifiableListView) return _list;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_list);
-  }
+  final List<PulseAudioSinkInput> list;
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OnSinkInputListResponseCopyWith<OnSinkInputListResponse> get copyWith =>
+      _$OnSinkInputListResponseCopyWithImpl<OnSinkInputListResponse>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OnSinkInputListResponse &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
+            const DeepCollectionEquality().equals(other.list, list));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, requestId, const DeepCollectionEquality().hash(list));
+
+  @override
+  String toString() {
+    return 'IsolateResponse.onSinkInputList(requestId: $requestId, list: $list)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OnSinkInputListResponseCopyWith<$Res>
+    implements $IsolateResponseCopyWith<$Res> {
+  factory $OnSinkInputListResponseCopyWith(OnSinkInputListResponse value,
+          $Res Function(OnSinkInputListResponse) _then) =
+      _$OnSinkInputListResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int requestId, List<PulseAudioSinkInput> list});
+}
+
+/// @nodoc
+class _$OnSinkInputListResponseCopyWithImpl<$Res>
+    implements $OnSinkInputListResponseCopyWith<$Res> {
+  _$OnSinkInputListResponseCopyWithImpl(this._self, this._then);
+
+  final OnSinkInputListResponse _self;
+  final $Res Function(OnSinkInputListResponse) _then;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? requestId = null,
+    Object? list = null,
+  }) {
+    return _then(OnSinkInputListResponse(
+      requestId: null == requestId
+          ? _self.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+      list: null == list
+          ? _self.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<PulseAudioSinkInput>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class OnSourceListResponse implements IsolateResponse {
+  const OnSourceListResponse({required this.requestId, required this.list});
+
+  @override
+  final int requestId;
+  final List<PulseAudioSource> list;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $OnSourceListResponseCopyWith<OnSourceListResponse> get copyWith =>
@@ -529,12 +1170,12 @@ class OnSourceListResponse implements IsolateResponse {
             other is OnSourceListResponse &&
             (identical(other.requestId, requestId) ||
                 other.requestId == requestId) &&
-            const DeepCollectionEquality().equals(other._list, _list));
+            const DeepCollectionEquality().equals(other.list, list));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, requestId, const DeepCollectionEquality().hash(_list));
+      runtimeType, requestId, const DeepCollectionEquality().hash(list));
 
   @override
   String toString() {
@@ -548,6 +1189,7 @@ abstract mixin class $OnSourceListResponseCopyWith<$Res>
   factory $OnSourceListResponseCopyWith(OnSourceListResponse value,
           $Res Function(OnSourceListResponse) _then) =
       _$OnSourceListResponseCopyWithImpl;
+  @override
   @useResult
   $Res call({int requestId, List<PulseAudioSource> list});
 }
@@ -562,6 +1204,7 @@ class _$OnSourceListResponseCopyWithImpl<$Res>
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? requestId = null,
@@ -573,7 +1216,7 @@ class _$OnSourceListResponseCopyWithImpl<$Res>
           : requestId // ignore: cast_nullable_to_non_nullable
               as int,
       list: null == list
-          ? _self._list
+          ? _self.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<PulseAudioSource>,
     ));
@@ -582,14 +1225,182 @@ class _$OnSourceListResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
+class OnClientListResponse implements IsolateResponse {
+  const OnClientListResponse({required this.requestId, required this.list});
+
+  @override
+  final int requestId;
+  final List<PulseAudioClient> list;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OnClientListResponseCopyWith<OnClientListResponse> get copyWith =>
+      _$OnClientListResponseCopyWithImpl<OnClientListResponse>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OnClientListResponse &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
+            const DeepCollectionEquality().equals(other.list, list));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, requestId, const DeepCollectionEquality().hash(list));
+
+  @override
+  String toString() {
+    return 'IsolateResponse.onClientList(requestId: $requestId, list: $list)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OnClientListResponseCopyWith<$Res>
+    implements $IsolateResponseCopyWith<$Res> {
+  factory $OnClientListResponseCopyWith(OnClientListResponse value,
+          $Res Function(OnClientListResponse) _then) =
+      _$OnClientListResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int requestId, List<PulseAudioClient> list});
+}
+
+/// @nodoc
+class _$OnClientListResponseCopyWithImpl<$Res>
+    implements $OnClientListResponseCopyWith<$Res> {
+  _$OnClientListResponseCopyWithImpl(this._self, this._then);
+
+  final OnClientListResponse _self;
+  final $Res Function(OnClientListResponse) _then;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? requestId = null,
+    Object? list = null,
+  }) {
+    return _then(OnClientListResponse(
+      requestId: null == requestId
+          ? _self.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+      list: null == list
+          ? _self.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<PulseAudioClient>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class OnClientResponse implements IsolateResponse {
+  const OnClientResponse({required this.requestId, required this.client});
+
+  @override
+  final int requestId;
+  final PulseAudioClient client;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OnClientResponseCopyWith<OnClientResponse> get copyWith =>
+      _$OnClientResponseCopyWithImpl<OnClientResponse>(this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OnClientResponse &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
+            (identical(other.client, client) || other.client == client));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId, client);
+
+  @override
+  String toString() {
+    return 'IsolateResponse.onClient(requestId: $requestId, client: $client)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OnClientResponseCopyWith<$Res>
+    implements $IsolateResponseCopyWith<$Res> {
+  factory $OnClientResponseCopyWith(
+          OnClientResponse value, $Res Function(OnClientResponse) _then) =
+      _$OnClientResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int requestId, PulseAudioClient client});
+
+  $PulseAudioClientCopyWith<$Res> get client;
+}
+
+/// @nodoc
+class _$OnClientResponseCopyWithImpl<$Res>
+    implements $OnClientResponseCopyWith<$Res> {
+  _$OnClientResponseCopyWithImpl(this._self, this._then);
+
+  final OnClientResponse _self;
+  final $Res Function(OnClientResponse) _then;
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? requestId = null,
+    Object? client = null,
+  }) {
+    return _then(OnClientResponse(
+      requestId: null == requestId
+          ? _self.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+      client: null == client
+          ? _self.client
+          : client // ignore: cast_nullable_to_non_nullable
+              as PulseAudioClient,
+    ));
+  }
+
+  /// Create a copy of IsolateResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PulseAudioClientCopyWith<$Res> get client {
+    return $PulseAudioClientCopyWith<$Res>(_self.client, (value) {
+      return _then(_self.copyWith(client: value));
+    });
+  }
+}
+
+/// @nodoc
+
 class OnServerInfoResponse implements IsolateResponse {
   const OnServerInfoResponse({required this.requestId, required this.info});
 
+  @override
   final int requestId;
   final PulseAudioServerInfo info;
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
   $OnServerInfoResponseCopyWith<OnServerInfoResponse> get copyWith =>
@@ -621,6 +1432,7 @@ abstract mixin class $OnServerInfoResponseCopyWith<$Res>
   factory $OnServerInfoResponseCopyWith(OnServerInfoResponse value,
           $Res Function(OnServerInfoResponse) _then) =
       _$OnServerInfoResponseCopyWithImpl;
+  @override
   @useResult
   $Res call({int requestId, PulseAudioServerInfo info});
 
@@ -637,6 +1449,7 @@ class _$OnServerInfoResponseCopyWithImpl<$Res>
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? requestId = null,
@@ -667,24 +1480,25 @@ class _$OnServerInfoResponseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class SetSinkVolumeResponse implements IsolateResponse {
-  const SetSinkVolumeResponse({required this.requestId});
+class EmptyResponse implements IsolateResponse {
+  const EmptyResponse({required this.requestId});
 
+  @override
   final int requestId;
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   @pragma('vm:prefer-inline')
-  $SetSinkVolumeResponseCopyWith<SetSinkVolumeResponse> get copyWith =>
-      _$SetSinkVolumeResponseCopyWithImpl<SetSinkVolumeResponse>(
-          this, _$identity);
+  $EmptyResponseCopyWith<EmptyResponse> get copyWith =>
+      _$EmptyResponseCopyWithImpl<EmptyResponse>(this, _$identity);
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is SetSinkVolumeResponse &&
+            other is EmptyResponse &&
             (identical(other.requestId, requestId) ||
                 other.requestId == requestId));
   }
@@ -694,364 +1508,37 @@ class SetSinkVolumeResponse implements IsolateResponse {
 
   @override
   String toString() {
-    return 'IsolateResponse.setSinkVolume(requestId: $requestId)';
+    return 'IsolateResponse.empty(requestId: $requestId)';
   }
 }
 
 /// @nodoc
-abstract mixin class $SetSinkVolumeResponseCopyWith<$Res>
+abstract mixin class $EmptyResponseCopyWith<$Res>
     implements $IsolateResponseCopyWith<$Res> {
-  factory $SetSinkVolumeResponseCopyWith(SetSinkVolumeResponse value,
-          $Res Function(SetSinkVolumeResponse) _then) =
-      _$SetSinkVolumeResponseCopyWithImpl;
+  factory $EmptyResponseCopyWith(
+          EmptyResponse value, $Res Function(EmptyResponse) _then) =
+      _$EmptyResponseCopyWithImpl;
+  @override
   @useResult
   $Res call({int requestId});
 }
 
 /// @nodoc
-class _$SetSinkVolumeResponseCopyWithImpl<$Res>
-    implements $SetSinkVolumeResponseCopyWith<$Res> {
-  _$SetSinkVolumeResponseCopyWithImpl(this._self, this._then);
+class _$EmptyResponseCopyWithImpl<$Res>
+    implements $EmptyResponseCopyWith<$Res> {
+  _$EmptyResponseCopyWithImpl(this._self, this._then);
 
-  final SetSinkVolumeResponse _self;
-  final $Res Function(SetSinkVolumeResponse) _then;
+  final EmptyResponse _self;
+  final $Res Function(EmptyResponse) _then;
 
   /// Create a copy of IsolateResponse
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @pragma('vm:prefer-inline')
   $Res call({
     Object? requestId = null,
   }) {
-    return _then(SetSinkVolumeResponse(
-      requestId: null == requestId
-          ? _self.requestId
-          : requestId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class SetSourceVolumeResponse implements IsolateResponse {
-  const SetSourceVolumeResponse({required this.requestId});
-
-  final int requestId;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $SetSourceVolumeResponseCopyWith<SetSourceVolumeResponse> get copyWith =>
-      _$SetSourceVolumeResponseCopyWithImpl<SetSourceVolumeResponse>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is SetSourceVolumeResponse &&
-            (identical(other.requestId, requestId) ||
-                other.requestId == requestId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, requestId);
-
-  @override
-  String toString() {
-    return 'IsolateResponse.setSourceVolume(requestId: $requestId)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $SetSourceVolumeResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $SetSourceVolumeResponseCopyWith(SetSourceVolumeResponse value,
-          $Res Function(SetSourceVolumeResponse) _then) =
-      _$SetSourceVolumeResponseCopyWithImpl;
-  @useResult
-  $Res call({int requestId});
-}
-
-/// @nodoc
-class _$SetSourceVolumeResponseCopyWithImpl<$Res>
-    implements $SetSourceVolumeResponseCopyWith<$Res> {
-  _$SetSourceVolumeResponseCopyWithImpl(this._self, this._then);
-
-  final SetSourceVolumeResponse _self;
-  final $Res Function(SetSourceVolumeResponse) _then;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? requestId = null,
-  }) {
-    return _then(SetSourceVolumeResponse(
-      requestId: null == requestId
-          ? _self.requestId
-          : requestId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class SetSinkMuteResponse implements IsolateResponse {
-  const SetSinkMuteResponse({required this.requestId});
-
-  final int requestId;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $SetSinkMuteResponseCopyWith<SetSinkMuteResponse> get copyWith =>
-      _$SetSinkMuteResponseCopyWithImpl<SetSinkMuteResponse>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is SetSinkMuteResponse &&
-            (identical(other.requestId, requestId) ||
-                other.requestId == requestId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, requestId);
-
-  @override
-  String toString() {
-    return 'IsolateResponse.setSinkMute(requestId: $requestId)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $SetSinkMuteResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $SetSinkMuteResponseCopyWith(
-          SetSinkMuteResponse value, $Res Function(SetSinkMuteResponse) _then) =
-      _$SetSinkMuteResponseCopyWithImpl;
-  @useResult
-  $Res call({int requestId});
-}
-
-/// @nodoc
-class _$SetSinkMuteResponseCopyWithImpl<$Res>
-    implements $SetSinkMuteResponseCopyWith<$Res> {
-  _$SetSinkMuteResponseCopyWithImpl(this._self, this._then);
-
-  final SetSinkMuteResponse _self;
-  final $Res Function(SetSinkMuteResponse) _then;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? requestId = null,
-  }) {
-    return _then(SetSinkMuteResponse(
-      requestId: null == requestId
-          ? _self.requestId
-          : requestId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class SetSourceMuteResponse implements IsolateResponse {
-  const SetSourceMuteResponse({required this.requestId});
-
-  final int requestId;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $SetSourceMuteResponseCopyWith<SetSourceMuteResponse> get copyWith =>
-      _$SetSourceMuteResponseCopyWithImpl<SetSourceMuteResponse>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is SetSourceMuteResponse &&
-            (identical(other.requestId, requestId) ||
-                other.requestId == requestId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, requestId);
-
-  @override
-  String toString() {
-    return 'IsolateResponse.setSourceMute(requestId: $requestId)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $SetSourceMuteResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $SetSourceMuteResponseCopyWith(SetSourceMuteResponse value,
-          $Res Function(SetSourceMuteResponse) _then) =
-      _$SetSourceMuteResponseCopyWithImpl;
-  @useResult
-  $Res call({int requestId});
-}
-
-/// @nodoc
-class _$SetSourceMuteResponseCopyWithImpl<$Res>
-    implements $SetSourceMuteResponseCopyWith<$Res> {
-  _$SetSourceMuteResponseCopyWithImpl(this._self, this._then);
-
-  final SetSourceMuteResponse _self;
-  final $Res Function(SetSourceMuteResponse) _then;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? requestId = null,
-  }) {
-    return _then(SetSourceMuteResponse(
-      requestId: null == requestId
-          ? _self.requestId
-          : requestId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class SetDefaultSinkResponse implements IsolateResponse {
-  const SetDefaultSinkResponse({required this.requestId});
-
-  final int requestId;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $SetDefaultSinkResponseCopyWith<SetDefaultSinkResponse> get copyWith =>
-      _$SetDefaultSinkResponseCopyWithImpl<SetDefaultSinkResponse>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is SetDefaultSinkResponse &&
-            (identical(other.requestId, requestId) ||
-                other.requestId == requestId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, requestId);
-
-  @override
-  String toString() {
-    return 'IsolateResponse.setDefaultSink(requestId: $requestId)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $SetDefaultSinkResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $SetDefaultSinkResponseCopyWith(SetDefaultSinkResponse value,
-          $Res Function(SetDefaultSinkResponse) _then) =
-      _$SetDefaultSinkResponseCopyWithImpl;
-  @useResult
-  $Res call({int requestId});
-}
-
-/// @nodoc
-class _$SetDefaultSinkResponseCopyWithImpl<$Res>
-    implements $SetDefaultSinkResponseCopyWith<$Res> {
-  _$SetDefaultSinkResponseCopyWithImpl(this._self, this._then);
-
-  final SetDefaultSinkResponse _self;
-  final $Res Function(SetDefaultSinkResponse) _then;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? requestId = null,
-  }) {
-    return _then(SetDefaultSinkResponse(
-      requestId: null == requestId
-          ? _self.requestId
-          : requestId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class SetDefaultSourceResponse implements IsolateResponse {
-  const SetDefaultSourceResponse({required this.requestId});
-
-  final int requestId;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $SetDefaultSourceResponseCopyWith<SetDefaultSourceResponse> get copyWith =>
-      _$SetDefaultSourceResponseCopyWithImpl<SetDefaultSourceResponse>(
-          this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is SetDefaultSourceResponse &&
-            (identical(other.requestId, requestId) ||
-                other.requestId == requestId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, requestId);
-
-  @override
-  String toString() {
-    return 'IsolateResponse.setDefaultSource(requestId: $requestId)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $SetDefaultSourceResponseCopyWith<$Res>
-    implements $IsolateResponseCopyWith<$Res> {
-  factory $SetDefaultSourceResponseCopyWith(SetDefaultSourceResponse value,
-          $Res Function(SetDefaultSourceResponse) _then) =
-      _$SetDefaultSourceResponseCopyWithImpl;
-  @useResult
-  $Res call({int requestId});
-}
-
-/// @nodoc
-class _$SetDefaultSourceResponseCopyWithImpl<$Res>
-    implements $SetDefaultSourceResponseCopyWith<$Res> {
-  _$SetDefaultSourceResponseCopyWithImpl(this._self, this._then);
-
-  final SetDefaultSourceResponse _self;
-  final $Res Function(SetDefaultSourceResponse) _then;
-
-  /// Create a copy of IsolateResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  $Res call({
-    Object? requestId = null,
-  }) {
-    return _then(SetDefaultSourceResponse(
+    return _then(EmptyResponse(
       requestId: null == requestId
           ? _self.requestId
           : requestId // ignore: cast_nullable_to_non_nullable
