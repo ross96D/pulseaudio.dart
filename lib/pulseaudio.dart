@@ -16,6 +16,8 @@
 library pulseaudio;
 
 export 'src/model/server_info.dart';
+export 'src/model/client.dart';
 export 'src/model/sink.dart';
+export 'src/model/sink_input.dart';
 export 'src/model/source.dart';
 export 'src/pulseaudio_client.dart';
