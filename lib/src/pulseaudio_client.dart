@@ -136,7 +136,7 @@ class PulseAudio {
   }
 
   /// Disposes the PulseAudio connection.
-  dispose() {
+  void dispose() {
     _sendPort.send(IsolateRequest.dispose(requestId: newRequestId));
     _receiverPort.close();
     _instance = null;
