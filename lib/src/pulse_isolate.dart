@@ -419,6 +419,20 @@ class PulseIsolate {
     }
   }
 
+  static void _onSinkInputInfoChanged(
+    Pointer<pa_context> context,
+    Pointer<pa_sink_input_info> input,
+    int eol,
+    Pointer<Void> userdata,
+  ) {
+    // The first call doesn't have info of the sink
+    if (input != nullptr) {
+      _instance!._sendPort.send(IsolateStream.onSinkInputChanged(
+        input: PulseAudioSinkInput.fromNative(input.ref),
+      ));
+    }
+  }
+
   static void _onSourceInfoChanged(
     Pointer<pa_context> context,
     Pointer<pa_source_info> source,
@@ -478,7 +492,17 @@ class PulseIsolate {
         break;
 
       case PA_SUBSCRIPTION_EVENT_SINK_INPUT:
-        print("TODO implement sink input");
+        if (eventType == PA_SUBSCRIPTION_EVENT_REMOVE) {
+          _instance!._sendPort.send(IsolateStream.onSinkRemoved(index: idx));
+        } else {
+          op = pa.pa_context_get_sink_input_info(
+            context,
+            idx,
+            Pointer.fromFunction(_onSinkInputInfoChanged),
+            userdata,
+          );
+        }
+        break;
 
       case PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT:
         print("TODO implement source output");

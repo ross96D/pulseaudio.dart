@@ -17,7 +17,12 @@ sealed class IsolateStream with _$IsolateStream {
 
   const factory IsolateStream.onSinkChanged({required PulseAudioSink sink}) = OnSinkChangedStream;
 
+  const factory IsolateStream.onSinkInputChanged({required PulseAudioSinkInput input}) =
+      OnSinkInputChangedStream;
+
   const factory IsolateStream.onSinkRemoved({required int index}) = OnSinkRemovedStream;
+
+  const factory IsolateStream.onSinkInputRemoved({required int index}) = OnSinkInputRemovedStream;
 
   const factory IsolateStream.onSourceChanged({required PulseAudioSource source}) =
       OnSourceChangedStream;

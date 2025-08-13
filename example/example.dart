@@ -56,9 +56,21 @@ void sinks() async {
   final client = PulseAudio();
   await client.initialize("TestPulseAudioDartClient");
 
+  client.onSinkInputChanged.listen((input) {
+    print("onSinkInputChanged ${input.name} ${input.volume}");
+  });
+
   final sinkinputs = await client.getSinkInputList();
   for (final input in sinkinputs) {
-    print("${input.name} ${input.volume} ${input.mute}");
+    print("${input.name} ${input.volume} ${input.mute}\n\t${input.props.map((k, v) => MapEntry(k, const Utf8Decoder().convert(v)))}");
+    if (input.props.applicationName == "Music") {
+      await client.setSinkInputVolume(input.index, 0.5);
+      await Future.delayed(const Duration(seconds: 4));
+      await client.setSinkInputVolume(input.index, 3);
+      await Future.delayed(const Duration(seconds: 4));
+      await client.setSinkInputVolume(input.index, 1);
+    }
   }
+
   client.dispose();
 }

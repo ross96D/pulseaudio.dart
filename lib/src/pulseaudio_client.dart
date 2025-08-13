@@ -44,51 +44,45 @@ class PulseAudio {
 
   /// Stream of [PulseAudioServerInfo]
   Stream<PulseAudioServerInfo> get onServerInfoChanged => _broadcastStream
-      .where(
-        (event) => event is OnServerInfoChangedStream,
-      )
+      .where((event) => event is OnServerInfoChangedStream)
       .cast<OnServerInfoChangedStream>()
       .map((message) => message.serverInfo);
 
   /// Stream of [PulseAudioSink]
   Stream<PulseAudioSink> get onSinkChanged => _broadcastStream
-      .where((message) {
-        return message is OnSinkChangedStream;
-      })
+      .where((message) => message is OnSinkChangedStream)
       .cast<OnSinkChangedStream>()
-      .map((message) {
-        return message.sink;
-      });
+      .map((message) => message.sink);
+
+  /// Stream of [PulseAudioSinkInput]
+  Stream<PulseAudioSinkInput> get onSinkInputChanged => _broadcastStream
+      .where((message) => message is OnSinkInputChangedStream)
+      .cast<OnSinkInputChangedStream>()
+      .map((message) => message.input);
 
   /// Stream of [PulseAudioSource]
   Stream<PulseAudioSource> get onSourceChanged => _broadcastStream
-      .where((message) {
-        return message is OnSourceChangedStream;
-      })
+      .where((message) => message is OnSourceChangedStream)
       .cast<OnSourceChangedStream>()
-      .map((message) {
-        return message.source;
-      });
+      .map((message) => message.source);
 
   /// When a sink is removed
   Stream<int> get onSinkRemoved => _broadcastStream
-      .where((message) {
-        return message is OnSinkRemovedStream;
-      })
+      .where((message) => message is OnSinkRemovedStream)
       .cast<OnSinkRemovedStream>()
-      .map((message) {
-        return message.index;
-      });
+      .map((message) => message.index);
+
+  /// When a sink is removed
+  Stream<int> get onSinkInputRemoved => _broadcastStream
+      .where((message) => message is OnSinkInputRemovedStream)
+      .cast<OnSinkInputRemovedStream>()
+      .map((message) => message.index);
 
   /// When a source is removed
   Stream<int> get onSourceRemoved => _broadcastStream
-      .where((message) {
-        return message is OnSourceRemovedStream;
-      })
+      .where((message) => message is OnSourceRemovedStream)
       .cast<OnSourceRemovedStream>()
-      .map((message) {
-        return message.index;
-      });
+      .map((message) => message.index);
 
   final _initializedCompleter = Completer();
 

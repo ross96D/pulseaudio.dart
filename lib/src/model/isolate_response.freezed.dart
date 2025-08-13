@@ -53,7 +53,9 @@ extension IsolateStreamPatterns on IsolateStream {
     TResult Function(OnReadyStream value)? ready,
     TResult Function(OnServerInfoChangedStream value)? onServerInfoChanged,
     TResult Function(OnSinkChangedStream value)? onSinkChanged,
+    TResult Function(OnSinkInputChangedStream value)? onSinkInputChanged,
     TResult Function(OnSinkRemovedStream value)? onSinkRemoved,
+    TResult Function(OnSinkInputRemovedStream value)? onSinkInputRemoved,
     TResult Function(OnSourceChangedStream value)? onSourceChanged,
     TResult Function(OnSourceRemovedStream value)? onSourceRemoved,
     required TResult orElse(),
@@ -66,8 +68,12 @@ extension IsolateStreamPatterns on IsolateStream {
         return onServerInfoChanged(_that);
       case OnSinkChangedStream() when onSinkChanged != null:
         return onSinkChanged(_that);
+      case OnSinkInputChangedStream() when onSinkInputChanged != null:
+        return onSinkInputChanged(_that);
       case OnSinkRemovedStream() when onSinkRemoved != null:
         return onSinkRemoved(_that);
+      case OnSinkInputRemovedStream() when onSinkInputRemoved != null:
+        return onSinkInputRemoved(_that);
       case OnSourceChangedStream() when onSourceChanged != null:
         return onSourceChanged(_that);
       case OnSourceRemovedStream() when onSourceRemoved != null:
@@ -96,7 +102,11 @@ extension IsolateStreamPatterns on IsolateStream {
     required TResult Function(OnServerInfoChangedStream value)
         onServerInfoChanged,
     required TResult Function(OnSinkChangedStream value) onSinkChanged,
+    required TResult Function(OnSinkInputChangedStream value)
+        onSinkInputChanged,
     required TResult Function(OnSinkRemovedStream value) onSinkRemoved,
+    required TResult Function(OnSinkInputRemovedStream value)
+        onSinkInputRemoved,
     required TResult Function(OnSourceChangedStream value) onSourceChanged,
     required TResult Function(OnSourceRemovedStream value) onSourceRemoved,
   }) {
@@ -108,8 +118,12 @@ extension IsolateStreamPatterns on IsolateStream {
         return onServerInfoChanged(_that);
       case OnSinkChangedStream():
         return onSinkChanged(_that);
+      case OnSinkInputChangedStream():
+        return onSinkInputChanged(_that);
       case OnSinkRemovedStream():
         return onSinkRemoved(_that);
+      case OnSinkInputRemovedStream():
+        return onSinkInputRemoved(_that);
       case OnSourceChangedStream():
         return onSourceChanged(_that);
       case OnSourceRemovedStream():
@@ -134,7 +148,9 @@ extension IsolateStreamPatterns on IsolateStream {
     TResult? Function(OnReadyStream value)? ready,
     TResult? Function(OnServerInfoChangedStream value)? onServerInfoChanged,
     TResult? Function(OnSinkChangedStream value)? onSinkChanged,
+    TResult? Function(OnSinkInputChangedStream value)? onSinkInputChanged,
     TResult? Function(OnSinkRemovedStream value)? onSinkRemoved,
+    TResult? Function(OnSinkInputRemovedStream value)? onSinkInputRemoved,
     TResult? Function(OnSourceChangedStream value)? onSourceChanged,
     TResult? Function(OnSourceRemovedStream value)? onSourceRemoved,
   }) {
@@ -146,8 +162,12 @@ extension IsolateStreamPatterns on IsolateStream {
         return onServerInfoChanged(_that);
       case OnSinkChangedStream() when onSinkChanged != null:
         return onSinkChanged(_that);
+      case OnSinkInputChangedStream() when onSinkInputChanged != null:
+        return onSinkInputChanged(_that);
       case OnSinkRemovedStream() when onSinkRemoved != null:
         return onSinkRemoved(_that);
+      case OnSinkInputRemovedStream() when onSinkInputRemoved != null:
+        return onSinkInputRemoved(_that);
       case OnSourceChangedStream() when onSourceChanged != null:
         return onSourceChanged(_that);
       case OnSourceRemovedStream() when onSourceRemoved != null:
@@ -174,7 +194,9 @@ extension IsolateStreamPatterns on IsolateStream {
     TResult Function()? ready,
     TResult Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
     TResult Function(PulseAudioSink sink)? onSinkChanged,
+    TResult Function(PulseAudioSinkInput input)? onSinkInputChanged,
     TResult Function(int index)? onSinkRemoved,
+    TResult Function(int index)? onSinkInputRemoved,
     TResult Function(PulseAudioSource source)? onSourceChanged,
     TResult Function(int index)? onSourceRemoved,
     required TResult orElse(),
@@ -187,8 +209,12 @@ extension IsolateStreamPatterns on IsolateStream {
         return onServerInfoChanged(_that.serverInfo);
       case OnSinkChangedStream() when onSinkChanged != null:
         return onSinkChanged(_that.sink);
+      case OnSinkInputChangedStream() when onSinkInputChanged != null:
+        return onSinkInputChanged(_that.input);
       case OnSinkRemovedStream() when onSinkRemoved != null:
         return onSinkRemoved(_that.index);
+      case OnSinkInputRemovedStream() when onSinkInputRemoved != null:
+        return onSinkInputRemoved(_that.index);
       case OnSourceChangedStream() when onSourceChanged != null:
         return onSourceChanged(_that.source);
       case OnSourceRemovedStream() when onSourceRemoved != null:
@@ -217,7 +243,9 @@ extension IsolateStreamPatterns on IsolateStream {
     required TResult Function(PulseAudioServerInfo serverInfo)
         onServerInfoChanged,
     required TResult Function(PulseAudioSink sink) onSinkChanged,
+    required TResult Function(PulseAudioSinkInput input) onSinkInputChanged,
     required TResult Function(int index) onSinkRemoved,
+    required TResult Function(int index) onSinkInputRemoved,
     required TResult Function(PulseAudioSource source) onSourceChanged,
     required TResult Function(int index) onSourceRemoved,
   }) {
@@ -229,8 +257,12 @@ extension IsolateStreamPatterns on IsolateStream {
         return onServerInfoChanged(_that.serverInfo);
       case OnSinkChangedStream():
         return onSinkChanged(_that.sink);
+      case OnSinkInputChangedStream():
+        return onSinkInputChanged(_that.input);
       case OnSinkRemovedStream():
         return onSinkRemoved(_that.index);
+      case OnSinkInputRemovedStream():
+        return onSinkInputRemoved(_that.index);
       case OnSourceChangedStream():
         return onSourceChanged(_that.source);
       case OnSourceRemovedStream():
@@ -255,7 +287,9 @@ extension IsolateStreamPatterns on IsolateStream {
     TResult? Function()? ready,
     TResult? Function(PulseAudioServerInfo serverInfo)? onServerInfoChanged,
     TResult? Function(PulseAudioSink sink)? onSinkChanged,
+    TResult? Function(PulseAudioSinkInput input)? onSinkInputChanged,
     TResult? Function(int index)? onSinkRemoved,
+    TResult? Function(int index)? onSinkInputRemoved,
     TResult? Function(PulseAudioSource source)? onSourceChanged,
     TResult? Function(int index)? onSourceRemoved,
   }) {
@@ -267,8 +301,12 @@ extension IsolateStreamPatterns on IsolateStream {
         return onServerInfoChanged(_that.serverInfo);
       case OnSinkChangedStream() when onSinkChanged != null:
         return onSinkChanged(_that.sink);
+      case OnSinkInputChangedStream() when onSinkInputChanged != null:
+        return onSinkInputChanged(_that.input);
       case OnSinkRemovedStream() when onSinkRemoved != null:
         return onSinkRemoved(_that.index);
+      case OnSinkInputRemovedStream() when onSinkInputRemoved != null:
+        return onSinkInputRemoved(_that.index);
       case OnSourceChangedStream() when onSourceChanged != null:
         return onSourceChanged(_that.source);
       case OnSourceRemovedStream() when onSourceRemoved != null:
@@ -455,6 +493,83 @@ class _$OnSinkChangedStreamCopyWithImpl<$Res>
 
 /// @nodoc
 
+class OnSinkInputChangedStream implements IsolateStream {
+  const OnSinkInputChangedStream({required this.input});
+
+  final PulseAudioSinkInput input;
+
+  /// Create a copy of IsolateStream
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OnSinkInputChangedStreamCopyWith<OnSinkInputChangedStream> get copyWith =>
+      _$OnSinkInputChangedStreamCopyWithImpl<OnSinkInputChangedStream>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OnSinkInputChangedStream &&
+            (identical(other.input, input) || other.input == input));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, input);
+
+  @override
+  String toString() {
+    return 'IsolateStream.onSinkInputChanged(input: $input)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OnSinkInputChangedStreamCopyWith<$Res>
+    implements $IsolateStreamCopyWith<$Res> {
+  factory $OnSinkInputChangedStreamCopyWith(OnSinkInputChangedStream value,
+          $Res Function(OnSinkInputChangedStream) _then) =
+      _$OnSinkInputChangedStreamCopyWithImpl;
+  @useResult
+  $Res call({PulseAudioSinkInput input});
+
+  $PulseAudioSinkInputCopyWith<$Res> get input;
+}
+
+/// @nodoc
+class _$OnSinkInputChangedStreamCopyWithImpl<$Res>
+    implements $OnSinkInputChangedStreamCopyWith<$Res> {
+  _$OnSinkInputChangedStreamCopyWithImpl(this._self, this._then);
+
+  final OnSinkInputChangedStream _self;
+  final $Res Function(OnSinkInputChangedStream) _then;
+
+  /// Create a copy of IsolateStream
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? input = null,
+  }) {
+    return _then(OnSinkInputChangedStream(
+      input: null == input
+          ? _self.input
+          : input // ignore: cast_nullable_to_non_nullable
+              as PulseAudioSinkInput,
+    ));
+  }
+
+  /// Create a copy of IsolateStream
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PulseAudioSinkInputCopyWith<$Res> get input {
+    return $PulseAudioSinkInputCopyWith<$Res>(_self.input, (value) {
+      return _then(_self.copyWith(input: value));
+    });
+  }
+}
+
+/// @nodoc
+
 class OnSinkRemovedStream implements IsolateStream {
   const OnSinkRemovedStream({required this.index});
 
@@ -509,6 +624,71 @@ class _$OnSinkRemovedStreamCopyWithImpl<$Res>
     Object? index = null,
   }) {
     return _then(OnSinkRemovedStream(
+      index: null == index
+          ? _self.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class OnSinkInputRemovedStream implements IsolateStream {
+  const OnSinkInputRemovedStream({required this.index});
+
+  final int index;
+
+  /// Create a copy of IsolateStream
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $OnSinkInputRemovedStreamCopyWith<OnSinkInputRemovedStream> get copyWith =>
+      _$OnSinkInputRemovedStreamCopyWithImpl<OnSinkInputRemovedStream>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is OnSinkInputRemovedStream &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @override
+  String toString() {
+    return 'IsolateStream.onSinkInputRemoved(index: $index)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $OnSinkInputRemovedStreamCopyWith<$Res>
+    implements $IsolateStreamCopyWith<$Res> {
+  factory $OnSinkInputRemovedStreamCopyWith(OnSinkInputRemovedStream value,
+          $Res Function(OnSinkInputRemovedStream) _then) =
+      _$OnSinkInputRemovedStreamCopyWithImpl;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class _$OnSinkInputRemovedStreamCopyWithImpl<$Res>
+    implements $OnSinkInputRemovedStreamCopyWith<$Res> {
+  _$OnSinkInputRemovedStreamCopyWithImpl(this._self, this._then);
+
+  final OnSinkInputRemovedStream _self;
+  final $Res Function(OnSinkInputRemovedStream) _then;
+
+  /// Create a copy of IsolateStream
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(OnSinkInputRemovedStream(
       index: null == index
           ? _self.index
           : index // ignore: cast_nullable_to_non_nullable
