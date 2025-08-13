@@ -69,7 +69,7 @@ class PropList with _UnmodifiableMapMixin<String, Uint8List> {
       return null;
     }
     try {
-      return const Utf8Codec().decoder.convert(data);
+      return const Utf8Codec().decoder.convert(data.takeWhile((e) => e != 0).toList());
     } catch (_) {
       return null;
     }
@@ -100,7 +100,7 @@ class PropList with _UnmodifiableMapMixin<String, Uint8List> {
   }
 
   @override
-  Uint8List? operator [](covariant String key) =>  _internal[key];
+  Uint8List? operator [](covariant String key) => _internal[key];
 
   @override
   Map<RK, RV> cast<RK, RV>() => _internal.cast<RK, RV>();
