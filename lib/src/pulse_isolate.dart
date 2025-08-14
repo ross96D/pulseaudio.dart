@@ -495,7 +495,7 @@ class PulseIsolate {
 
       case PA_SUBSCRIPTION_EVENT_SINK_INPUT:
         if (eventType == PA_SUBSCRIPTION_EVENT_REMOVE) {
-          _instance!._sendPort.send(IsolateStream.onSinkRemoved(index: idx));
+          _instance!._sendPort.send(IsolateStream.onSinkInputRemoved(index: idx));
         } else {
           op = pa.pa_context_get_sink_input_info(
             context,
