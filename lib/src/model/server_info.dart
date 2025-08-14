@@ -14,13 +14,20 @@ abstract class PulseAudioServerInfo with _$PulseAudioServerInfo {
     // Add more fields as needed
   }) = _PulseAudioServerInfo;
 
+  factory PulseAudioServerInfo.emtpy() {
+    return const PulseAudioServerInfo(
+      name: "",
+      version: "",
+      defaultSinkName: "",
+      defaultSourceName: "",
+    );
+  }
+
   factory PulseAudioServerInfo.fromNative(pa_server_info serverInfo) {
     return PulseAudioServerInfo(
         name: serverInfo.server_name.cast<Utf8>().toDartString(),
         version: serverInfo.server_version.cast<Utf8>().toDartString(),
-        defaultSinkName:
-            serverInfo.default_sink_name.cast<Utf8>().toDartString(),
-        defaultSourceName:
-            serverInfo.default_source_name.cast<Utf8>().toDartString());
+        defaultSinkName: serverInfo.default_sink_name.cast<Utf8>().toDartString(),
+        defaultSourceName: serverInfo.default_source_name.cast<Utf8>().toDartString());
   }
 }

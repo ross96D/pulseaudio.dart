@@ -17,11 +17,14 @@ abstract class PulseAudioSink with _$PulseAudioSink {
     required double volume,
   }) = _PulseAudioSink;
 
+  factory PulseAudioSink.empty() {
+    return const PulseAudioSink(index: 0, name: "", description: "", mute: false, volume: 0);
+  }
+
   factory PulseAudioSink.fromNative(pa_sink_info device) {
     final Pointer<pa_cvolume> volumePointer =
         calloc<pa_cvolume>(); // Allocate memory for pa_cvolume
-    volumePointer.ref =
-        device.volume; // Copy the struct value to the allocated memory
+    volumePointer.ref = device.volume; // Copy the struct value to the allocated memory
     final volumeAvg = pa.pa_cvolume_avg(volumePointer) / PA_VOLUME_NORM;
     calloc.free(volumePointer); // Free the allocated memory
 
