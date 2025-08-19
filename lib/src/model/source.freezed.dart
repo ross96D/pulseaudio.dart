@@ -19,6 +19,7 @@ mixin _$PulseAudioSource {
   String get description;
   bool get mute;
   double get volume;
+  int? get monitorOfSink;
 
   /// Create a copy of PulseAudioSource
   /// with the given fields replaced by the non-null parameter values.
@@ -38,16 +39,18 @@ mixin _$PulseAudioSource {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.mute, mute) || other.mute == mute) &&
-            (identical(other.volume, volume) || other.volume == volume));
+            (identical(other.volume, volume) || other.volume == volume) &&
+            (identical(other.monitorOfSink, monitorOfSink) ||
+                other.monitorOfSink == monitorOfSink));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, index, name, description, mute, volume);
+  int get hashCode => Object.hash(
+      runtimeType, index, name, description, mute, volume, monitorOfSink);
 
   @override
   String toString() {
-    return 'PulseAudioSource(index: $index, name: $name, description: $description, mute: $mute, volume: $volume)';
+    return 'PulseAudioSource(index: $index, name: $name, description: $description, mute: $mute, volume: $volume, monitorOfSink: $monitorOfSink)';
   }
 }
 
@@ -58,7 +61,12 @@ abstract mixin class $PulseAudioSourceCopyWith<$Res> {
       _$PulseAudioSourceCopyWithImpl;
   @useResult
   $Res call(
-      {int index, String name, String description, bool mute, double volume});
+      {int index,
+      String name,
+      String description,
+      bool mute,
+      double volume,
+      int? monitorOfSink});
 }
 
 /// @nodoc
@@ -79,6 +87,7 @@ class _$PulseAudioSourceCopyWithImpl<$Res>
     Object? description = null,
     Object? mute = null,
     Object? volume = null,
+    Object? monitorOfSink = freezed,
   }) {
     return _then(_self.copyWith(
       index: null == index
@@ -101,6 +110,10 @@ class _$PulseAudioSourceCopyWithImpl<$Res>
           ? _self.volume
           : volume // ignore: cast_nullable_to_non_nullable
               as double,
+      monitorOfSink: freezed == monitorOfSink
+          ? _self.monitorOfSink
+          : monitorOfSink // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -199,7 +212,7 @@ extension PulseAudioSourcePatterns on PulseAudioSource {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function(int index, String name, String description, bool mute,
-            double volume)?
+            double volume, int? monitorOfSink)?
         $default, {
     required TResult orElse(),
   }) {
@@ -207,7 +220,7 @@ extension PulseAudioSourcePatterns on PulseAudioSource {
     switch (_that) {
       case _PulseAudioSource() when $default != null:
         return $default(_that.index, _that.name, _that.description, _that.mute,
-            _that.volume);
+            _that.volume, _that.monitorOfSink);
       case _:
         return orElse();
     }
@@ -229,14 +242,14 @@ extension PulseAudioSourcePatterns on PulseAudioSource {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function(int index, String name, String description, bool mute,
-            double volume)
+            double volume, int? monitorOfSink)
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _PulseAudioSource():
         return $default(_that.index, _that.name, _that.description, _that.mute,
-            _that.volume);
+            _that.volume, _that.monitorOfSink);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -257,14 +270,14 @@ extension PulseAudioSourcePatterns on PulseAudioSource {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function(int index, String name, String description, bool mute,
-            double volume)?
+            double volume, int? monitorOfSink)?
         $default,
   ) {
     final _that = this;
     switch (_that) {
       case _PulseAudioSource() when $default != null:
         return $default(_that.index, _that.name, _that.description, _that.mute,
-            _that.volume);
+            _that.volume, _that.monitorOfSink);
       case _:
         return null;
     }
@@ -279,7 +292,8 @@ class _PulseAudioSource implements PulseAudioSource {
       required this.name,
       required this.description,
       required this.mute,
-      required this.volume});
+      required this.volume,
+      required this.monitorOfSink});
 
   @override
   final int index;
@@ -291,6 +305,8 @@ class _PulseAudioSource implements PulseAudioSource {
   final bool mute;
   @override
   final double volume;
+  @override
+  final int? monitorOfSink;
 
   /// Create a copy of PulseAudioSource
   /// with the given fields replaced by the non-null parameter values.
@@ -310,16 +326,18 @@ class _PulseAudioSource implements PulseAudioSource {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.mute, mute) || other.mute == mute) &&
-            (identical(other.volume, volume) || other.volume == volume));
+            (identical(other.volume, volume) || other.volume == volume) &&
+            (identical(other.monitorOfSink, monitorOfSink) ||
+                other.monitorOfSink == monitorOfSink));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, index, name, description, mute, volume);
+  int get hashCode => Object.hash(
+      runtimeType, index, name, description, mute, volume, monitorOfSink);
 
   @override
   String toString() {
-    return 'PulseAudioSource(index: $index, name: $name, description: $description, mute: $mute, volume: $volume)';
+    return 'PulseAudioSource(index: $index, name: $name, description: $description, mute: $mute, volume: $volume, monitorOfSink: $monitorOfSink)';
   }
 }
 
@@ -332,7 +350,12 @@ abstract mixin class _$PulseAudioSourceCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int index, String name, String description, bool mute, double volume});
+      {int index,
+      String name,
+      String description,
+      bool mute,
+      double volume,
+      int? monitorOfSink});
 }
 
 /// @nodoc
@@ -353,6 +376,7 @@ class __$PulseAudioSourceCopyWithImpl<$Res>
     Object? description = null,
     Object? mute = null,
     Object? volume = null,
+    Object? monitorOfSink = freezed,
   }) {
     return _then(_PulseAudioSource(
       index: null == index
@@ -375,6 +399,10 @@ class __$PulseAudioSourceCopyWithImpl<$Res>
           ? _self.volume
           : volume // ignore: cast_nullable_to_non_nullable
               as double,
+      monitorOfSink: freezed == monitorOfSink
+          ? _self.monitorOfSink
+          : monitorOfSink // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }

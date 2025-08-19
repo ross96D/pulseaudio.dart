@@ -15,10 +15,18 @@ abstract class PulseAudioSource with _$PulseAudioSource {
     required String description,
     required bool mute,
     required double volume,
+    required int? monitorOfSink,
   }) = _PulseAudioSource;
 
   factory PulseAudioSource.empty() {
-    return const PulseAudioSource(index: 0, name: "", description: "", mute: false, volume: 0);
+    return const PulseAudioSource(
+      index: 0,
+      name: "",
+      description: "",
+      mute: false,
+      volume: 0,
+      monitorOfSink: null,
+    );
   }
 
   factory PulseAudioSource.fromNative(pa_source_info source) {
@@ -34,6 +42,7 @@ abstract class PulseAudioSource with _$PulseAudioSource {
       description: source.description.cast<Utf8>().toDartString(),
       mute: source.mute == 1,
       volume: volumeAvg,
+      monitorOfSink: source.monitor_of_sink != PA_INVALID_INDEX ? source.monitor_of_sink : null,
     );
   }
 }
