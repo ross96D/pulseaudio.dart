@@ -96,7 +96,7 @@ class PropList with _UnmodifiableMapMixin<String, Uint8List> {
   }
 
   String? get applicationIconName {
-    return _valueToString(this[PA_PROP_APPLICATION_ICON]);
+    return _valueToString(this[PA_PROP_APPLICATION_ICON_NAME]);
   }
 
   @override
