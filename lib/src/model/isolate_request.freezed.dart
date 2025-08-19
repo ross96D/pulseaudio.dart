@@ -97,6 +97,8 @@ extension IsolateRequestPatterns on IsolateRequest {
     TResult Function(GetSinkInputRequest value)? getSinkInput,
     TResult Function(GetSourceListRequest value)? getSourceList,
     TResult Function(GetSourceRequest value)? getSource,
+    TResult Function(GetSourceOutputListRequest value)? getSourceOutputList,
+    TResult Function(GetSourceOutputRequest value)? getSourceOutput,
     TResult Function(GetClientListRequest value)? getClientList,
     TResult Function(GetClientRequest value)? getClient,
     TResult Function(GetServerInfoRequest value)? getServerInfo,
@@ -125,6 +127,10 @@ extension IsolateRequestPatterns on IsolateRequest {
         return getSourceList(_that);
       case GetSourceRequest() when getSource != null:
         return getSource(_that);
+      case GetSourceOutputListRequest() when getSourceOutputList != null:
+        return getSourceOutputList(_that);
+      case GetSourceOutputRequest() when getSourceOutput != null:
+        return getSourceOutput(_that);
       case GetClientListRequest() when getClientList != null:
         return getClientList(_that);
       case GetClientRequest() when getClient != null:
@@ -175,6 +181,9 @@ extension IsolateRequestPatterns on IsolateRequest {
     required TResult Function(GetSinkInputRequest value) getSinkInput,
     required TResult Function(GetSourceListRequest value) getSourceList,
     required TResult Function(GetSourceRequest value) getSource,
+    required TResult Function(GetSourceOutputListRequest value)
+        getSourceOutputList,
+    required TResult Function(GetSourceOutputRequest value) getSourceOutput,
     required TResult Function(GetClientListRequest value) getClientList,
     required TResult Function(GetClientRequest value) getClient,
     required TResult Function(GetServerInfoRequest value) getServerInfo,
@@ -203,6 +212,10 @@ extension IsolateRequestPatterns on IsolateRequest {
         return getSourceList(_that);
       case GetSourceRequest():
         return getSource(_that);
+      case GetSourceOutputListRequest():
+        return getSourceOutputList(_that);
+      case GetSourceOutputRequest():
+        return getSourceOutput(_that);
       case GetClientListRequest():
         return getClientList(_that);
       case GetClientRequest():
@@ -250,6 +263,8 @@ extension IsolateRequestPatterns on IsolateRequest {
     TResult? Function(GetSinkInputRequest value)? getSinkInput,
     TResult? Function(GetSourceListRequest value)? getSourceList,
     TResult? Function(GetSourceRequest value)? getSource,
+    TResult? Function(GetSourceOutputListRequest value)? getSourceOutputList,
+    TResult? Function(GetSourceOutputRequest value)? getSourceOutput,
     TResult? Function(GetClientListRequest value)? getClientList,
     TResult? Function(GetClientRequest value)? getClient,
     TResult? Function(GetServerInfoRequest value)? getServerInfo,
@@ -277,6 +292,10 @@ extension IsolateRequestPatterns on IsolateRequest {
         return getSourceList(_that);
       case GetSourceRequest() when getSource != null:
         return getSource(_that);
+      case GetSourceOutputListRequest() when getSourceOutputList != null:
+        return getSourceOutputList(_that);
+      case GetSourceOutputRequest() when getSourceOutput != null:
+        return getSourceOutput(_that);
       case GetClientListRequest() when getClientList != null:
         return getClientList(_that);
       case GetClientRequest() when getClient != null:
@@ -326,6 +345,8 @@ extension IsolateRequestPatterns on IsolateRequest {
     TResult Function(int requestId, int index)? getSinkInput,
     TResult Function(int requestId)? getSourceList,
     TResult Function(int requestId, int index)? getSource,
+    TResult Function(int requestId)? getSourceOutputList,
+    TResult Function(int requestId, int index)? getSourceOutput,
     TResult Function(int requestId)? getClientList,
     TResult Function(int requestId, int index)? getClient,
     TResult Function(int requestId)? getServerInfo,
@@ -358,6 +379,10 @@ extension IsolateRequestPatterns on IsolateRequest {
         return getSourceList(_that.requestId);
       case GetSourceRequest() when getSource != null:
         return getSource(_that.requestId, _that.index);
+      case GetSourceOutputListRequest() when getSourceOutputList != null:
+        return getSourceOutputList(_that.requestId);
+      case GetSourceOutputRequest() when getSourceOutput != null:
+        return getSourceOutput(_that.requestId, _that.index);
       case GetClientListRequest() when getClientList != null:
         return getClientList(_that.requestId);
       case GetClientRequest() when getClient != null:
@@ -408,6 +433,8 @@ extension IsolateRequestPatterns on IsolateRequest {
     required TResult Function(int requestId, int index) getSinkInput,
     required TResult Function(int requestId) getSourceList,
     required TResult Function(int requestId, int index) getSource,
+    required TResult Function(int requestId) getSourceOutputList,
+    required TResult Function(int requestId, int index) getSourceOutput,
     required TResult Function(int requestId) getClientList,
     required TResult Function(int requestId, int index) getClient,
     required TResult Function(int requestId) getServerInfo,
@@ -442,6 +469,10 @@ extension IsolateRequestPatterns on IsolateRequest {
         return getSourceList(_that.requestId);
       case GetSourceRequest():
         return getSource(_that.requestId, _that.index);
+      case GetSourceOutputListRequest():
+        return getSourceOutputList(_that.requestId);
+      case GetSourceOutputRequest():
+        return getSourceOutput(_that.requestId, _that.index);
       case GetClientListRequest():
         return getClientList(_that.requestId);
       case GetClientRequest():
@@ -489,6 +520,8 @@ extension IsolateRequestPatterns on IsolateRequest {
     TResult? Function(int requestId, int index)? getSinkInput,
     TResult? Function(int requestId)? getSourceList,
     TResult? Function(int requestId, int index)? getSource,
+    TResult? Function(int requestId)? getSourceOutputList,
+    TResult? Function(int requestId, int index)? getSourceOutput,
     TResult? Function(int requestId)? getClientList,
     TResult? Function(int requestId, int index)? getClient,
     TResult? Function(int requestId)? getServerInfo,
@@ -520,6 +553,10 @@ extension IsolateRequestPatterns on IsolateRequest {
         return getSourceList(_that.requestId);
       case GetSourceRequest() when getSource != null:
         return getSource(_that.requestId, _that.index);
+      case GetSourceOutputListRequest() when getSourceOutputList != null:
+        return getSourceOutputList(_that.requestId);
+      case GetSourceOutputRequest() when getSourceOutput != null:
+        return getSourceOutput(_that.requestId, _that.index);
       case GetClientListRequest() when getClientList != null:
         return getClientList(_that.requestId);
       case GetClientRequest() when getClient != null:
@@ -975,6 +1012,154 @@ class _$GetSourceRequestCopyWithImpl<$Res>
     Object? index = null,
   }) {
     return _then(GetSourceRequest(
+      requestId: null == requestId
+          ? _self.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+      index: null == index
+          ? _self.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class GetSourceOutputListRequest implements IsolateRequest {
+  const GetSourceOutputListRequest({required this.requestId});
+
+  @override
+  final int requestId;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetSourceOutputListRequestCopyWith<GetSourceOutputListRequest>
+      get copyWith =>
+          _$GetSourceOutputListRequestCopyWithImpl<GetSourceOutputListRequest>(
+              this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GetSourceOutputListRequest &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId);
+
+  @override
+  String toString() {
+    return 'IsolateRequest.getSourceOutputList(requestId: $requestId)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $GetSourceOutputListRequestCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
+  factory $GetSourceOutputListRequestCopyWith(GetSourceOutputListRequest value,
+          $Res Function(GetSourceOutputListRequest) _then) =
+      _$GetSourceOutputListRequestCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int requestId});
+}
+
+/// @nodoc
+class _$GetSourceOutputListRequestCopyWithImpl<$Res>
+    implements $GetSourceOutputListRequestCopyWith<$Res> {
+  _$GetSourceOutputListRequestCopyWithImpl(this._self, this._then);
+
+  final GetSourceOutputListRequest _self;
+  final $Res Function(GetSourceOutputListRequest) _then;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? requestId = null,
+  }) {
+    return _then(GetSourceOutputListRequest(
+      requestId: null == requestId
+          ? _self.requestId
+          : requestId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class GetSourceOutputRequest implements IsolateRequest {
+  const GetSourceOutputRequest({required this.requestId, required this.index});
+
+  @override
+  final int requestId;
+  final int index;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  $GetSourceOutputRequestCopyWith<GetSourceOutputRequest> get copyWith =>
+      _$GetSourceOutputRequestCopyWithImpl<GetSourceOutputRequest>(
+          this, _$identity);
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is GetSourceOutputRequest &&
+            (identical(other.requestId, requestId) ||
+                other.requestId == requestId) &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, requestId, index);
+
+  @override
+  String toString() {
+    return 'IsolateRequest.getSourceOutput(requestId: $requestId, index: $index)';
+  }
+}
+
+/// @nodoc
+abstract mixin class $GetSourceOutputRequestCopyWith<$Res>
+    implements $IsolateRequestCopyWith<$Res> {
+  factory $GetSourceOutputRequestCopyWith(GetSourceOutputRequest value,
+          $Res Function(GetSourceOutputRequest) _then) =
+      _$GetSourceOutputRequestCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int requestId, int index});
+}
+
+/// @nodoc
+class _$GetSourceOutputRequestCopyWithImpl<$Res>
+    implements $GetSourceOutputRequestCopyWith<$Res> {
+  _$GetSourceOutputRequestCopyWithImpl(this._self, this._then);
+
+  final GetSourceOutputRequest _self;
+  final $Res Function(GetSourceOutputRequest) _then;
+
+  /// Create a copy of IsolateRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? requestId = null,
+    Object? index = null,
+  }) {
+    return _then(GetSourceOutputRequest(
       requestId: null == requestId
           ? _self.requestId
           : requestId // ignore: cast_nullable_to_non_nullable

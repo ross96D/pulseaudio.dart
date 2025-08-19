@@ -31,6 +31,15 @@ sealed class IsolateRequest with _$IsolateRequest implements RequestID {
     required int index,
   }) = GetSourceRequest;
 
+  const factory IsolateRequest.getSourceOutputList({
+    required int requestId,
+  }) = GetSourceOutputListRequest;
+
+  const factory IsolateRequest.getSourceOutput({
+    required int requestId,
+    required int index,
+  }) = GetSourceOutputRequest;
+
   const factory IsolateRequest.getClientList({
     required int requestId,
   }) = GetClientListRequest;

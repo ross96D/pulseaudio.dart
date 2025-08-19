@@ -25,6 +25,7 @@ import 'package:pulseaudio/src/model/server_info.dart';
 import 'package:pulseaudio/src/model/sink.dart';
 import 'package:pulseaudio/src/model/sink_input.dart';
 import 'package:pulseaudio/src/model/source.dart';
+import 'package:pulseaudio/src/model/source_output.dart';
 import 'package:pulseaudio/src/pulse_isolate.dart';
 
 /// A class for interacting with the PulseAudio sound server.
@@ -66,6 +67,12 @@ class PulseAudio {
       .cast<OnSourceChangedStream>()
       .map((message) => message.source);
 
+  /// Stream of [PulseAudioSource]
+  Stream<PulseAudioSourceOutput> get onSourceOutputChanged => _broadcastStream
+      .where((message) => message is OnSourceOutputChangedStream)
+      .cast<OnSourceOutputChangedStream>()
+      .map((message) => message.sourceOutput);
+
   /// When a sink is removed
   Stream<int> get onSinkRemoved => _broadcastStream
       .where((message) => message is OnSinkRemovedStream)
@@ -82,6 +89,12 @@ class PulseAudio {
   Stream<int> get onSourceRemoved => _broadcastStream
       .where((message) => message is OnSourceRemovedStream)
       .cast<OnSourceRemovedStream>()
+      .map((message) => message.index);
+
+  /// When a source is removed
+  Stream<int> get onSourceOutputRemoved => _broadcastStream
+      .where((message) => message is OnSourceOutputRemovedStream)
+      .cast<OnSourceOutputRemovedStream>()
       .map((message) => message.index);
 
   final _initializedCompleter = Completer();
@@ -193,6 +206,24 @@ class PulseAudio {
     checkInitialized();
     final requestId = newRequestId;
     final response = await _request<OnSourceListResponse>(
+      IsolateRequest.getSourceList(requestId: requestId),
+    );
+    return response.list;
+  }
+
+  Future<PulseAudioSourceOutput> getSourceOutput(int index) async {
+    checkInitialized();
+    final requestId = newRequestId;
+    final response = await _request<OnSourceOutputListResponse>(
+      IsolateRequest.getSource(requestId: requestId, index: index),
+    );
+    return response.list[0];
+  }
+
+  Future<List<PulseAudioSourceOutput>> getSourceOutputList() async {
+    checkInitialized();
+    final requestId = newRequestId;
+    final response = await _request<OnSourceOutputListResponse>(
       IsolateRequest.getSourceList(requestId: requestId),
     );
     return response.list;

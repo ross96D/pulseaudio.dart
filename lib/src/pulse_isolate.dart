@@ -11,6 +11,7 @@ import 'package:pulseaudio/src/model/server_info.dart';
 import 'package:pulseaudio/src/model/sink.dart';
 import 'package:pulseaudio/src/model/sink_input.dart';
 import 'package:pulseaudio/src/model/source.dart';
+import 'package:pulseaudio/src/model/source_output.dart';
 
 late final PulseAudioBindings pa;
 
@@ -85,6 +86,9 @@ class PulseIsolate {
         case GetSourceListRequest():
           _getSourceList(message.requestId);
           break;
+        case GetSourceOutputListRequest():
+          _getSourceOutputList(message.requestId);
+          break;
         case GetSinkInputListRequest():
           _getSinkInputList(message.requestId);
           break;
@@ -105,6 +109,8 @@ class PulseIsolate {
           break;
         case GetSinkInputRequest():
           _getSinkInput(message.requestId, message.index);
+        case GetSourceOutputRequest():
+        _getSourceOutput(message.requestId, message.index);
       }
     });
 
@@ -323,6 +329,51 @@ class PulseIsolate {
     response.list.add(PulseAudioSource.fromNative(source.ref));
   }
 
+  static void _getSourceOutput(int requestId, int index) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+    _instance!.responsePerIdMap[requestId] = OnSourceOutputListResponse(requestId: requestId, list: []);
+
+    final operation = pa.pa_context_get_source_output_info(
+        context, index, Pointer.fromFunction(_onSourceOutputListInfo), requestIdNative.cast());
+
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(_instance!.responsePerIdMap[requestId]!);
+      calloc.free(requestIdNative); // Free memory when the operation is done
+    };
+  }
+
+  static void _getSourceOutputList(int requestId) {
+    final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
+
+    _instance!.responsePerIdMap[requestId] =
+        OnSourceOutputListResponse(requestId: requestId, list: []);
+
+    final operation = pa.pa_context_get_source_output_info_list(
+      context,
+      Pointer.fromFunction(_onSourceOutputListInfo),
+      requestIdNative.cast(),
+    );
+
+    _instance!.operationCallbackMap[operation] = () {
+      _instance!._sendPort.send(_instance!.responsePerIdMap[requestId]!);
+      calloc.free(requestIdNative); // Free memory when the operation is done
+    };
+  }
+
+  static void _onSourceOutputListInfo(
+    Pointer<pa_context> context,
+    Pointer<pa_source_output_info> sourceOutput,
+    int eol,
+    Pointer<Void> userdata,
+  ) {
+    if (eol > 0) {
+      return;
+    }
+    final requestId = userdata.cast<Int>().value;
+    final response = _instance!.responsePerIdMap[requestId]! as OnSourceOutputListResponse;
+    response.list.add(PulseAudioSourceOutput.fromNative(sourceOutput.ref));
+  }
+
   static void _getSinkInput(int requestId, int index) {
     final requestIdNative = calloc<Int>()..value = requestId; // Allocate memory explicitly
     _instance!.responsePerIdMap[requestId] =
@@ -448,6 +499,18 @@ class PulseIsolate {
     }
   }
 
+  static void _onSourceOutputChanged(
+    Pointer<pa_context> context,
+    Pointer<pa_source_output_info> sourceOutput,
+    int eol,
+    Pointer<Void> userdata,
+  ) {
+    if (sourceOutput != nullptr) {
+      _instance!._sendPort.send(IsolateStream.onSourceOutputChanged(
+          sourceOutput: PulseAudioSourceOutput.fromNative(sourceOutput.ref)));
+    }
+  }
+
   static void _onSubscribe(
     Pointer<pa_context> context,
     int type,
@@ -507,7 +570,16 @@ class PulseIsolate {
         break;
 
       case PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT:
-        print("TODO implement source output");
+        if (eventType == PA_SUBSCRIPTION_EVENT_REMOVE) {
+          _instance!._sendPort.send(IsolateStream.onSourceOutputRemoved(index: idx));
+        } else {
+          op = pa.pa_context_get_source_output_info(
+            context,
+            idx,
+            Pointer.fromFunction(_onSourceOutputChanged),
+            userdata,
+          );
+        }
     }
 
     if (op.address != nullptr.address) pa.pa_operation_unref(op);

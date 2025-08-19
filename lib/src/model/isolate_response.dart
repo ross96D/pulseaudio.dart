@@ -5,6 +5,7 @@ import 'package:pulseaudio/src/model/server_info.dart';
 import 'package:pulseaudio/src/model/sink.dart';
 import 'package:pulseaudio/src/model/sink_input.dart';
 import 'package:pulseaudio/src/model/source.dart';
+import 'package:pulseaudio/src/model/source_output.dart';
 
 part 'isolate_response.freezed.dart';
 
@@ -28,6 +29,11 @@ sealed class IsolateStream with _$IsolateStream {
       OnSourceChangedStream;
 
   const factory IsolateStream.onSourceRemoved({required int index}) = OnSourceRemovedStream;
+
+  const factory IsolateStream.onSourceOutputChanged({required PulseAudioSourceOutput sourceOutput}) =
+      OnSourceOutputChangedStream;
+
+  const factory IsolateStream.onSourceOutputRemoved({required int index}) = OnSourceOutputRemovedStream;
 }
 
 @Freezed(makeCollectionsUnmodifiable: false)
@@ -46,6 +52,11 @@ sealed class IsolateResponse with _$IsolateResponse implements RequestID {
     required int requestId,
     required List<PulseAudioSource> list,
   }) = OnSourceListResponse;
+
+  const factory IsolateResponse.onSourceOutputList({
+    required int requestId,
+    required List<PulseAudioSourceOutput> list,
+  }) = OnSourceOutputListResponse;
 
   const factory IsolateResponse.onClientList({
     required int requestId,
