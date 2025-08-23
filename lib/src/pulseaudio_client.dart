@@ -337,6 +337,9 @@ class PulseAudio {
 
   Future<R> _request<R extends IsolateResponse>(IsolateRequest request) async {
     _sendPort.send(request);
-    return (await _broadcastStream.firstWhere((msg) => msg.requestId == request.requestId)) as R;
+    return (await _broadcastStream
+        .where((msg) => msg is IsolateResponse)
+        .cast<IsolateResponse>()
+        .firstWhere((msg) => msg.requestId == request.requestId)) as R;
   }
 }
