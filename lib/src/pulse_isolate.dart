@@ -580,6 +580,7 @@ class PulseIsolate {
             userdata,
           );
         }
+        break;
     }
 
     if (op.address != nullptr.address) pa.pa_operation_unref(op);
